@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "jsx": "react-jsx", // Use "react-jsx" for React 17+ or "react" for older versions
+    "target": "ESNext",// Ensures support for modern JavaScript features
+    "declaration": true,
+    "declarationDir": "./dist",
+    "emitDeclarationOnly": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
+}
