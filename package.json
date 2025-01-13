@@ -1,4 +1,5 @@
 {
+  "type": "module",
   "name": "ssw-consulting-component-lib",
   "version": "1.0.3",
   "description": "A set of high quality react components, and compatible TinaCMS schema definitions.",
