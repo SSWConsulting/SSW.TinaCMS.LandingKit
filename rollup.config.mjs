@@ -9,7 +9,7 @@ import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 // const peerDepsExternal = require('rollup-plugin-peer-deps-external');
 
 export default {
-  input: 'src/index.js',
+  input: 'src/index.ts',
   output: {
     file: 'dist/index.js',
     format: 'esm',
