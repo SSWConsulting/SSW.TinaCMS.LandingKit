@@ -3,9 +3,9 @@
 import { usePathname } from "next/navigation";
 import React, { FC } from "react";
 import { tinaField } from "tinacms/dist/react";
+import { BreadcrumbProps, BreadcrumbStyleProvider, useBreadcrumbStyleContext } from "../component-providers";
 import { ColorPickerOptions } from "../interfaces/color-options";
-import ComponentWrapper, { BackgroundData } from "../internal/component-wrapper";
-import { defaultBackgroundOptions } from "../internal/default-config/default-bg-options";
+import { BackgroundData } from "../internal/component-wrapper";
 import {
   Breadcrumb,
   BreadcrumbEllipsis,
@@ -102,32 +102,36 @@ function getLinks(
   }
 }
 
-
 type BreadcrumbData = BackgroundData & {
   finalBreadcrumb: string;
 }
 
 const Breadcrumbs: FC<{
   data: BreadcrumbData;
+  className?: string;
   options?: {
     backgroundColors: ColorPickerOptions[];
     breadcrumbReplacements: { from: string; to: string }[];
     firstBreadcrumb: string;
-    contentWidth: number;
-  }
+    contentWidth?: number;
+  } & BreadcrumbProps;
   children?: React.ReactNode;
 }> = (props) => {
   const { data, options } = props;
   const paths = usePathname().split("/").filter(path => path !== "");
   // Index 0 is an empty string if the path starts with a slash
   const links = getLinks(paths, data, options?.firstBreadcrumb, data.finalBreadcrumb, options?.breadcrumbReplacements);
-
-
+  const textColor = options?.textColor ?? "text-gray-300";
+  const separatorColor = options?.separatorColor ?? "stroke-gray-300";
+  const hoverColor = options?.hoverColor ?? "hover:text-gray-300";
+  const textSize = options?.textSize ?? "text-xs";
+  const separatorSize = options?.separatorSize ?? "size-4";
   return (
-    <div className="pt-8 sm:pt-12 w-full">
-      <ComponentWrapper data={data} backgroundOptions={options?.backgroundColors ?? defaultBackgroundOptions}>
-        <div style={{ maxWidth: options?.contentWidth }} className="w-full">
-          <Breadcrumb className="text-gray-300">
+    <BreadcrumbStyleProvider value={{textColor, separatorColor, hoverColor,textSize, separatorSize}}>
+    {/* <div className={cn("pt-8 sm:pt-12 w-full stroke-gray-300", props.className)}> */}
+      {/* <ComponentWrapper data={data} backgroundOptions={options?.backgroundColors ?? defaultBackgroundOptions}> */}
+        {/* <div style={{ maxWidth: options?.contentWidth }} className="w-full"> */}
+          <Breadcrumb className="">
             <BreadcrumbList>
               {links.map((link, index) => (
                 // react fragments don't appear in the dom
@@ -142,18 +146,20 @@ const Breadcrumbs: FC<{
               ))}
             </BreadcrumbList>
           </Breadcrumb>
-        </div>
-      </ComponentWrapper>
-    </div>
+        {/* </div> */}
+      {/* </ComponentWrapper> */}
+   { /* </div> */}
+    </BreadcrumbStyleProvider>
   );
 };
 
 export default Breadcrumbs;
 
 const Separator = () => {
+  const { separatorSize } = useBreadcrumbStyleContext();
   return (
     <svg
-      className={cn("h-4 w-4", "dark:stroke-gray-300")}
+      className={cn(separatorSize)}
       strokeWidth={1}
       width="10"
       height="10"
