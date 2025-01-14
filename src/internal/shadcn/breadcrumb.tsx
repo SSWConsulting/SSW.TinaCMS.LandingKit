@@ -48,14 +48,13 @@ const BreadcrumbLink = React.forwardRef<
     asChild?: boolean;
   }
 >(({ asChild, className, ...props }, ref) => {
-  const {hoverColor, textColor} = useBreadcrumbStyleContext()
+  const {hoverColor, textColor, textUnderlineOffset} = useBreadcrumbStyleContext()
   const Comp = asChild ? Slot : "a";
-
   return (
     <Comp
       ref={ref}
       className={cn(
-        "unstyled underline underline-offset-3 transition-colors",
+        "unstyled underline underline-offset-3 transition-colors", textUnderlineOffset,
         textColor,
         hoverColor,
         className

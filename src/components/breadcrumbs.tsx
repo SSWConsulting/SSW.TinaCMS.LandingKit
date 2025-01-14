@@ -126,8 +126,11 @@ const Breadcrumbs: FC<{
   const hoverColor = options?.hoverColor ?? "hover:text-gray-300";
   const textSize = options?.textSize ?? "text-xs";
   const separatorSize = options?.separatorSize ?? "size-4";
+  const textUnderlineOffset = options?.textUnderlineOffset ?? "underline-offset-3";
+
+
   return (
-    <BreadcrumbStyleProvider value={{textColor, separatorColor, hoverColor,textSize, separatorSize}}>
+    <BreadcrumbStyleProvider value={{textColor, separatorColor, hoverColor,textSize, separatorSize, textUnderlineOffset}}>
     {/* <div className={cn("pt-8 sm:pt-12 w-full stroke-gray-300", props.className)}> */}
       {/* <ComponentWrapper data={data} backgroundOptions={options?.backgroundColors ?? defaultBackgroundOptions}> */}
         {/* <div style={{ maxWidth: options?.contentWidth }} className="w-full"> */}
