@@ -18,11 +18,11 @@ const BreadcrumbList = React.forwardRef<
   React.ComponentPropsWithoutRef<"ol">
   
 >(({ className, ...props }, ref) => {
-  const {textSize} = useBreadcrumbStyleContext()
+  const {textSize, textColor} = useBreadcrumbStyleContext()
   return <ol
     ref={ref}
     className={cn(
-      "unstyled flex flex-wrap items-center gap-1 break-words pb-1 font-light" ,textSize,
+      "unstyled flex flex-wrap items-center gap-1 break-words pb-1 font-light" ,textSize, textColor,
       className
     )}
     {...props}
@@ -68,8 +68,10 @@ BreadcrumbLink.displayName = "BreadcrumbLink";
 const BreadcrumbPage = React.forwardRef<
   HTMLSpanElement,
   React.ComponentPropsWithoutRef<"span">
->(({ className, ...props }, ref) => (
-  <span
+>(({ className, ...props }, ref) => {
+
+
+  return <span
     ref={ref}
     role="link"
     aria-disabled="true"
@@ -77,7 +79,7 @@ const BreadcrumbPage = React.forwardRef<
     className={cn(className, "min-h-4 min-w-1")}
     {...props}
   />
-));
+});
 BreadcrumbPage.displayName = "BreadcrumbPage";
 
 const BreadcrumbSeparator = ({
