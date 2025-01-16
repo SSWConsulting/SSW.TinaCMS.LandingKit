@@ -1,6 +1,5 @@
 "use client";
 
-import { usePathname } from "next/navigation";
 import React, { FC } from "react";
 import { tinaField } from "tinacms/dist/react";
 import { BreadcrumbProps, BreadcrumbStyleProvider, useBreadcrumbStyleContext } from "../component-providers";
@@ -118,7 +117,7 @@ const Breadcrumbs: FC<{
   children?: React.ReactNode;
 }& BreadcrumbProps> = (props) => {
   const { data, options } = props;
-  const paths = usePathname().split("/").filter(path => path !== "");
+  const paths = window.location.pathname.split("/").filter(path => path !== "");
   // Index 0 is an empty string if the path starts with a slash
   const links = getLinks(paths, data, options?.firstBreadcrumb, data.finalBreadcrumb, options?.breadcrumbReplacements);
   const textColor = props?.textColor ?? "text-gray-300";
@@ -127,7 +126,6 @@ const Breadcrumbs: FC<{
   const textSize = props?.textSize ?? "text-xs";
   const separatorSize = props?.separatorSize ?? "size-4";
   const textUnderlineOffset = props?.textUnderlineOffset ?? "underline-offset-3";
-
 
   return (
     <BreadcrumbStyleProvider value={{textColor, separatorColor, hoverColor,textSize, separatorSize, textUnderlineOffset}}>
