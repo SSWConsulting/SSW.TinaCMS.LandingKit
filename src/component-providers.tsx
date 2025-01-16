@@ -1,5 +1,5 @@
 'use client';
-import React from "react";
+import React, { AnchorHTMLAttributes } from "react";
 
 export type BreadcrumbProps = { 
     textColor: `text-${string}-${number}` | `text-${string}`,
@@ -10,12 +10,19 @@ export type BreadcrumbProps = {
     separatorSize: `size-${number}`
 }
 
+
+export type LinkComponentType = React.FC<AnchorHTMLAttributes<HTMLAnchorElement>>;
+  
 export type CarouselProps = { 
-    LinkComponent : React.ComponentType<any>,
+    LinkComponent : LinkComponentType
 }
 
-const BreadcrumbContext = React.createContext<BreadcrumbProps>({})
-const CarouselContext = React.createContext<CarouselProps>({})
+
+const BreadcrumbContext = React.createContext<BreadcrumbProps>(null)
+
+
+
+const CarouselContext = React.createContext<CarouselProps>({LinkComponent: ({href, className, children})=> <a href={href} className={className}>{children}</a>})
 
 function BuildProvider<Type> ({context, children, value}: { context: React.Context<Type>, children: React.ReactNode, value: Type})  {
     return <context.Provider value={value}>{children}</context.Provider>
