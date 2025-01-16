@@ -114,19 +114,19 @@ const Breadcrumbs: FC<{
     breadcrumbReplacements: { from: string; to: string }[];
     firstBreadcrumb: string;
     contentWidth?: number;
-  } & BreadcrumbProps;
+  } ;
   children?: React.ReactNode;
-}> = (props) => {
+}& BreadcrumbProps> = (props) => {
   const { data, options } = props;
   const paths = usePathname().split("/").filter(path => path !== "");
   // Index 0 is an empty string if the path starts with a slash
   const links = getLinks(paths, data, options?.firstBreadcrumb, data.finalBreadcrumb, options?.breadcrumbReplacements);
-  const textColor = options?.textColor ?? "text-gray-300";
-  const separatorColor = options?.separatorColor ?? "stroke-gray-300";
-  const hoverColor = options?.hoverColor ?? "hover:text-gray-300";
-  const textSize = options?.textSize ?? "text-xs";
-  const separatorSize = options?.separatorSize ?? "size-4";
-  const textUnderlineOffset = options?.textUnderlineOffset ?? "underline-offset-3";
+  const textColor = props?.textColor ?? "text-gray-300";
+  const separatorColor = props?.separatorColor ?? "stroke-gray-300";
+  const hoverColor = props?.hoverColor ?? "hover:text-white";
+  const textSize = props?.textSize ?? "text-xs";
+  const separatorSize = props?.separatorSize ?? "size-4";
+  const textUnderlineOffset = props?.textUnderlineOffset ?? "underline-offset-3";
 
 
   return (
