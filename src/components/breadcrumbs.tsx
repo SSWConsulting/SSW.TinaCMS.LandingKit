@@ -131,10 +131,7 @@ const Breadcrumbs: FC<{
 
   return (
     <BreadcrumbStyleProvider value={{textColor, separatorColor, hoverColor,textSize, separatorSize, textUnderlineOffset}}>
-    {/* <div className={cn("pt-8 sm:pt-12 w-full stroke-gray-300", props.className)}> */}
-      {/* <ComponentWrapper data={data} backgroundOptions={options?.backgroundColors ?? defaultBackgroundOptions}> */}
-        {/* <div style={{ maxWidth: options?.contentWidth }} className="w-full"> */}
-          <Breadcrumb className="">
+          <Breadcrumb className={props.className}>
             <BreadcrumbList>
               {links.map((link, index) => (
                 // react fragments don't appear in the dom
@@ -149,9 +146,6 @@ const Breadcrumbs: FC<{
               ))}
             </BreadcrumbList>
           </Breadcrumb>
-        {/* </div> */}
-      {/* </ComponentWrapper> */}
-   { /* </div> */}
     </BreadcrumbStyleProvider>
   );
 };
