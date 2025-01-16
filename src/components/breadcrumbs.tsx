@@ -3,8 +3,6 @@
 import React, { FC } from "react";
 import { tinaField } from "tinacms/dist/react";
 import { BreadcrumbProps, BreadcrumbStyleProvider, useBreadcrumbStyleContext } from "../component-providers";
-import { ColorPickerOptions } from "../interfaces/color-options";
-import { BackgroundData } from "../internal/component-wrapper";
 import {
   Breadcrumb,
   BreadcrumbEllipsis,
@@ -22,20 +20,25 @@ import {
 } from "../internal/shadcn/dropdown-menu";
 import { cn } from "../internal/shadcn/utils";
 
-function getLinks(
-  paths: string[],
-  data,
-  finalNode?: string,
-  firstNode?: string,
-  breadcrumbReplacements?: { from: string; to: string }[]
-): React.ReactNode[] {
-  const placeholder = "Lorem Ipsum";
 
-  // Replace paths with character replacements
-  console.log('Debugging values:', {
-    paths,
-    breadcrumbReplacements
-});
+type GetLinksProps = {
+    paths: string[],
+    data,
+    firstNode?: string,
+    finalNode?: string,
+    finalNodePlaceholder?: string,
+    breadcrumbReplacements?: { from: string; to: string }[]
+} 
+
+function getLinks({
+  paths,
+  data,
+  firstNode,
+  finalNode,
+  finalNodePlaceholder = "",
+  breadcrumbReplacements,
+}:GetLinksProps ): React.ReactNode[] {
+  const placeholder = finalNodePlaceholder;
   const displayNames = paths.map(
     (path) =>
       breadcrumbReplacements?.find((value) => value.from === path)?.to ||
@@ -101,25 +104,22 @@ function getLinks(
   }
 }
 
-type BreadcrumbData = BackgroundData & {
-  finalBreadcrumb: string;
-}
-
 const Breadcrumbs: FC<{
-  data: BreadcrumbData;
-  className?: string;
-  options?: {
-    backgroundColors: ColorPickerOptions[];
+  data:  & {
     breadcrumbReplacements: { from: string; to: string }[];
     firstBreadcrumb: string;
-    contentWidth?: number;
-  } ;
+    finalBreadcrumb: string;
+    finalNodePlaceholder?: string;
+  };
+  className?: string;
   children?: React.ReactNode;
 }& BreadcrumbProps> = (props) => {
-  const { data, options } = props;
+  const { data } = props;
   const paths = window.location.pathname.split("/").filter(path => path !== "");
   // Index 0 is an empty string if the path starts with a slash
-  const links = getLinks(paths, data, options?.firstBreadcrumb, data.finalBreadcrumb, options?.breadcrumbReplacements);
+  const links = getLinks({paths : paths, data : data, firstNode: data?.firstBreadcrumb, finalNode: 
+    data.finalBreadcrumb, finalNodePlaceholder: data.finalNodePlaceholder, 
+    breadcrumbReplacements:  data?.breadcrumbReplacements});
   const textColor = props?.textColor ?? "text-gray-300";
   const separatorColor = props?.separatorColor ?? "stroke-gray-300";
   const hoverColor = props?.hoverColor ?? "hover:text-white";
@@ -132,7 +132,6 @@ const Breadcrumbs: FC<{
           <Breadcrumb className={props.className}>
             <BreadcrumbList>
               {links.map((link, index) => (
-                // react fragments don't appear in the dom
                 <React.Fragment key={`breadcrumb-${index}`}>
                   {index !== 0 ? (
                     <BreadcrumbSeparator>
