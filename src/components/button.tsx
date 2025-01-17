@@ -1,4 +1,5 @@
 import React, { MouseEvent, useEffect, useState } from "react";
+import { tinaField } from "tinacms/dist/react";
 import { cn } from "../internal/shadcn/utils";
 
 enum ButtonColors {
@@ -29,10 +30,8 @@ export const Button = ({
   return (
     <>
       <RippleButton
-        onClick={() => {
-        //   if (data.showLeadCaptureForm) setOpen(true);
-        }}
-        // textTinaField={tinaField(data, "buttonText")}
+        onClick={data.onClick}
+        textTinaField={tinaField(data, "buttonText")}
         className={className}
         fontClassName={cn(
           "gap-0.5",
@@ -50,23 +49,8 @@ export const Button = ({
             name: data.icon,
           }}
         /> */}
-
         {buttonText}
-        
       </RippleButton>
-
-        {/* TODO: Add support for JotForms */}
-      {/* {data.showLeadCaptureForm && (
-        <Popup
-          isVisible={open}
-          showCloseIcon={true}
-          onClose={() => setOpen(false)}
-        >
-          <Jotform
-            src={`https://form.jotform.com/${globals.bookingJotFormId}`}
-          ></Jotform>
-        </Popup>
-      )} */}
     </>
   );
 };
