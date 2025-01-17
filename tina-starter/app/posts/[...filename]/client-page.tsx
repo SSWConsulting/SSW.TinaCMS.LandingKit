@@ -1,6 +1,5 @@
 "use client";
-import { tinaField, useTina } from "tinacms/dist/react";
-import { TinaMarkdown } from "tinacms/dist/rich-text";
+import { useTina } from "tinacms/dist/react";
 import type { PostQuery } from "../../../tina/__generated__/types";
 
 import { Breadcrumbs } from "ssw-tinacms-launchkit/dist/";
@@ -23,9 +22,10 @@ export default function Post(props: ClientPageProps) {
   const content = data.post.body;
   return (
     <>
-
+    <h2>Breadcrumbs</h2>
     <Breadcrumbs 
     hoverColor="hover:text-blue-500"
+    separatorColor="stroke-black"
     textColor="text-black"
     data={{
       breadcrumbReplacements: [
@@ -34,12 +34,6 @@ export default function Post(props: ClientPageProps) {
       finalBreadcrumb: props.data.post.title || "",
       firstBreadcrumb: "Home",
     }}  />
-      <h1 data-tina-field={tinaField(data.post, "title")}>
-        {data.post.title}
-      </h1>
-      <div data-tina-field={tinaField(data.post, "body")}>
-        <TinaMarkdown content={content} />
-      </div>
     </>
   );
 }
