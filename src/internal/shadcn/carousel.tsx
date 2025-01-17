@@ -57,9 +57,9 @@ const Carousel = React.forwardRef<
       plugins,
       className,
       children,
+      itemLength,
       ...props
     },
-    itemLength,
     ref
   ) => {
     const [carouselRef, api] = useEmblaCarousel(
@@ -139,6 +139,14 @@ const Carousel = React.forwardRef<
         api?.off("select", onSelect);
       };
     }, [api, onSelect]);
+
+    React.useEffect(() => {
+      const lengthOrApiMissing = !api || !itemLength;
+      if (!lengthOrApiMissing) {
+        api?.scrollTo(Math.floor((itemLength - 1) / 2));
+        setSelectedIndex(Math.floor((itemLength - 1) / 2));
+      }
+    }, [itemLength, api]);
 
     return (
       <CarouselContext.Provider
