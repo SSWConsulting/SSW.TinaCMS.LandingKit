@@ -2,12 +2,12 @@
 import React, { AnchorHTMLAttributes } from "react";
 
 export type BreadcrumbProps = { 
-    textColor: `text-${string}-${number}` | `text-${string}`,
-    textSize: `text-${string}`
-    textUnderlineOffset: `underline-offset-${string}`,
-    hoverColor: `hover:text-${string}-${number}` | `hover:text-${string}`,
-    separatorColor: `stroke-${string}-${number}` | `stroke-${string}`,
-    separatorSize: `size-${number}`
+    textColor?: `text-${string}-${number}` | `text-${string}`,
+    textSize?: `text-${string}`
+    textUnderlineOffset?: `underline-offset-${string}`,
+    hoverColor?: `hover:text-${string}-${number}` | `hover:text-${string}`,
+    separatorColor?: `stroke-${string}-${number}` | `stroke-${string}`,
+    separatorSize?: `size-${number}`
 }
 
 
