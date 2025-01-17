@@ -1,6 +1,6 @@
 import React from "react";
 import "ssw-tinacms-launchkit/dist/style.css";
-
+import "../styles.css";
 
 export default function RootLayout({
   children,
