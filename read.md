@@ -109,4 +109,17 @@ import { LogoCarousel } from 'ssw-consulting-component-lib';
 
 ## License
 
+
+
+## Contributing
+
+
+### Local Testing
+- rebuild the components with your customizations by running `pnpm run build`
+- run the following at the root of the project `npm link`
+- navigate to the root of the test project `cd tina-starter`
+- link test project with the component package by running `npm link ssw-tinacms-launchkit`
+- run the test project by running `pnpm dev` this will give you a playhground project on `localhost:3000/posts/HelloWorld`
+
+
 MIT License
