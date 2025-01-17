@@ -1,16 +1,23 @@
 /**
  * @type {import('tinacms').Collection}
  */
-import { BreadcrumbSchema } from "ssw-tinacms-launchkit/dist/";
 
-
-
-export default {
+const blogPosts = {
   label: "Blog Posts",
   name: "post",
   path: "content/post",
   fields: [
-    BreadcrumbSchema,
+    {
+      type: "object",
+      label: "Breadcrumbs",
+      name: "breadcrumbs",
+      fields: [{
+        name: "finalBreadcrumb",
+        type: "string",
+        label: "Final Breadcrumb",
+        required: true,
+      }]
+    },
     {
       type: "string",
       label: "Title",
@@ -25,7 +32,8 @@ export default {
   ],
   ui: {
     router: ({ document }) => {
-      return `/posts/explore/{document._sys.filename}`;
+      return `/posts/explore/${document._sys.filename}`;
     },
   },
 };
+export default blogPosts;
