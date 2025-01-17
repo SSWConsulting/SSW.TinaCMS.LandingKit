@@ -1,6 +1,5 @@
 "use client";
 
-import { cn } from "./utils";
 import { EmblaCarouselType } from "embla-carousel";
 import AutoPlay from "embla-carousel-autoplay";
 import useEmblaCarousel, {
@@ -8,16 +7,20 @@ import useEmblaCarousel, {
 } from "embla-carousel-react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import * as React from "react";
+import { cn } from "./utils";
 type CarouselApi = UseEmblaCarouselType[1];
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>;
 type CarouselOptions = UseCarouselParameters[0];
 type CarouselPlugin = UseCarouselParameters[1];
 
+type Orientation = "horizontal" | "vertical";
+
 type CarouselProps = {
   opts?: CarouselOptions;
   plugins?: CarouselPlugin;
-  orientation?: "horizontal" | "vertical";
+  orientation?: Orientation;
   setApi?: (api: CarouselApi) => void;
+  itemLength?: number;
 };
 
 type CarouselContextProps = {
@@ -54,6 +57,7 @@ const Carousel = React.forwardRef<
       plugins,
       className,
       children,
+      itemLength,
       ...props
     },
     ref
@@ -136,6 +140,14 @@ const Carousel = React.forwardRef<
       };
     }, [api, onSelect]);
 
+    React.useEffect(() => {
+      const lengthOrApiMissing = !api || !itemLength;
+      if (!lengthOrApiMissing) {
+        api?.scrollTo(Math.floor((itemLength - 1) / 2));
+        setSelectedIndex(Math.floor((itemLength - 1) / 2));
+      }
+    }, [itemLength, api]);
+
     return (
       <CarouselContext.Provider
         value={{
@@ -144,7 +156,7 @@ const Carousel = React.forwardRef<
           api: api,
           opts,
           orientation:
-            orientation || (opts?.axis === "y" ? "vertical" : "horizontal"),
+            orientation as Orientation || (opts?.axis === "y" ? "vertical" : "horizontal") as Orientation, 
           scrollPrev,
           scrollNext,
           canScrollPrev,
@@ -291,5 +303,6 @@ export {
   CarouselNext,
   CarouselPickItem,
   CarouselPrevious,
-  type CarouselApi,
+  type CarouselApi
 };
+

@@ -11,7 +11,7 @@ export function backgroundSchema(backgroundOptions: ColorPickerOptions[]) {
         {
           type: "number",
           label: "Background Colour",
-          name: "backgroundColour",
+          name: "backgroundColor",
           component: ColorPickerInput(backgroundOptions),
         },
         {

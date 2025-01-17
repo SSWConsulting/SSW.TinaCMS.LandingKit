@@ -8,7 +8,7 @@ import { ColorPickerOptions } from "../interfaces/color-options";
 
 export type BackgroundData = {
   background?: {
-    backgroundColour?: number;
+    backgroundColor?: number;
     backgroundImage?: string;
     bleed?: boolean;
   };
@@ -57,7 +57,7 @@ const ComponentWrapper = ({
     <section
       className={`
         ${backgroundOptions.find((value) => {
-          return value.reference === data.background?.backgroundColour;
+          return value.reference === data.background?.backgroundColor;
         })?.classes}
         w-full relative overflow-visible
         ${className}`

@@ -1,10 +1,10 @@
-import { ReactElement } from 'react';
-import ComponentWrapper from "../internal/component-wrapper";
-import { Marquee } from "../internal/shadcn/marquee";
 import Image from "next/image";
+import { ReactElement } from 'react';
 import { tinaField } from "tinacms/dist/react";
 import { ColorPickerOptions } from "../interfaces/color-options";
+import ComponentWrapper from "../internal/component-wrapper";
 import { defaultBackgroundOptions } from "../internal/default-config/default-bg-options";
+import { Marquee } from "../internal/shadcn/marquee";
 
 export default function LogoCarousel(props: {
   data: any;

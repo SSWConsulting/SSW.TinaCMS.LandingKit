@@ -1,3 +1,14 @@
+
+
+
+<!-- TODO: Create instructions for linking the tailwind config with the dependent's tailwind config -->
+
+<!-- TODO: Add instructions for importing the minified tailwind classes from this project -->
+
+<!-- TODO: Add instructions for importing style.css into your layout.tsx for app routing -->
+
+
+<!-- TODO: DON'T CROSS THE STREAMS! be careful not to include conflicting classes in your tailwind configration -->
 # SSW Consulting Component Library
 
 A React component library built with TypeScript, Next.js, and Shadcn/UI, providing customizable UI components for web applications.
@@ -69,6 +80,8 @@ import { LogoCarousel } from 'ssw-consulting-component-lib';
 />
 ```
 
+### Styling 
+
 #### Props
 
 - `data`: Object containing the carousel content
@@ -88,8 +101,9 @@ import { LogoCarousel } from 'ssw-consulting-component-lib';
 - 🎯 TinaCMS integration for content management
 
 ## Requirements
-
 - React 18 or higher
+- TailwindCSS
+<!-- remove this from the requirements? -->
 - Next.js 13 or higher
 - TypeScript 4.5 or higher
 
