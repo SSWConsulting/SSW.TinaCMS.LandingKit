@@ -1,11 +1,16 @@
 /**
  * @type {import('tinacms').Collection}
  */
+import { BreadcrumbSchema } from "ssw-tinacms-launchkit/dist/";
+
+
+
 export default {
   label: "Blog Posts",
   name: "post",
   path: "content/post",
   fields: [
+    BreadcrumbSchema,
     {
       type: "string",
       label: "Title",
@@ -20,7 +25,7 @@ export default {
   ],
   ui: {
     router: ({ document }) => {
-      return `/posts/${document._sys.filename}`;
+      return `/posts/explore/{document._sys.filename}`;
     },
   },
 };
