@@ -1,5 +1,6 @@
-import Link from "next/link";
 import React from "react";
+import "ssw-tinacms-launchkit/dist/style.css";
+
 
 export default function RootLayout({
   children,
@@ -13,11 +14,11 @@ export default function RootLayout({
           margin: "3rem",
         }}
       >
-        <header>
+        {/* <header>
           <Link href="/">Home</Link>
           {" | "}
           <Link href="/posts">Posts</Link>
-        </header>
+        </header> */}
         <main>{children}</main>
       </body>
     </html>
