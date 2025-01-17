@@ -1,6 +1,6 @@
 "use client";
 import { useTina } from "tinacms/dist/react";
-import type { PostQuery } from "../../../tina/__generated__/types";
+import type { PostQuery } from "../../../../tina/__generated__/types";
 
 import { Breadcrumbs } from "ssw-tinacms-launchkit/dist/";
 
@@ -19,21 +19,34 @@ export default function Post(props: ClientPageProps) {
     variables: props.variables,
     data: props.data,
   });
-  const content = data.post.body;
+  console.log("data",data);
   return (
     <>
     <h2>Breadcrumbs</h2>
-    <Breadcrumbs 
-    hoverColor="hover:text-blue-500"
-    separatorColor="stroke-black"
-    textColor="text-black"
-    data={{
-      breadcrumbReplacements: [
-        { from: "posts", to: "Blog" },
-      ],
-      finalBreadcrumb: props.data.post.title || "",
-      firstBreadcrumb: "Home",
-    }}  />
+    {
+      data.post.breadcrumbs && <Breadcrumbs 
+      hoverColor="hover:text-blue-500"
+      separatorColor="stroke-black"
+      textColor="text-black"
+      data={{
+        ...data.post?.breadcrumbs,
+        firstBreadcrumb: "Home",
+      }}  />
+
+    }
+
+
+
+    <h2>Card Carousel</h2>
+
+{/* 
+    <CardCarousel data={
+
+      
+    }>
+
+
+    </CardCarousel> */}
     </>
   );
 }
