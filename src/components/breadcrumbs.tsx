@@ -106,7 +106,7 @@ function getLinks({
 
 const Breadcrumbs: FC<{
   data:  & {
-    breadcrumbReplacements: { from: string; to: string }[];
+    breadcrumbReplacements?: { from: string; to: string }[];
     firstBreadcrumb: string;
     finalBreadcrumb: string;
     finalNodePlaceholder?: string;
