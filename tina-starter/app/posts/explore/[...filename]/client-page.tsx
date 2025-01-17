@@ -19,7 +19,6 @@ export default function Post(props: ClientPageProps) {
     variables: props.variables,
     data: props.data,
   });
-  console.log("data",data);
   return (
     <>
     <h2>Breadcrumbs</h2>
@@ -29,6 +28,9 @@ export default function Post(props: ClientPageProps) {
       separatorColor="stroke-black"
       textColor="text-black"
       data={{
+        breadcrumbReplacements: [{
+          from: "explore", to: "Explore"
+        }],
         ...data.post?.breadcrumbs,
         firstBreadcrumb: "Home",
       }}  />
