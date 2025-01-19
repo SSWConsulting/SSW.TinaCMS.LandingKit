@@ -1,5 +1,6 @@
 import { Template } from 'tinacms';
 
+//Breadcrumbs configuration
 const breadcrumbBlock : Template =
 {
   label: "Breadcrumbs",
