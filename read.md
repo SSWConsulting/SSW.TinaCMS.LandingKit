@@ -7,7 +7,6 @@
 
 <!-- TODO: Add instructions for importing style.css into your layout.tsx for app routing -->
 
-
 <!-- TODO: DON'T CROSS THE STREAMS! be careful not to include conflicting classes in your tailwind configration -->
 # SSW Consulting Component Library
 
@@ -15,33 +14,62 @@ A React component library built with TypeScript, Next.js, and Shadcn/UI, providi
 
 ## Installation
 
+- run the following command to install the npm package 
 ```bash
-npm install ssw-consulting-component-lib
+npm install ssw-tinacms-landingkit"
 ```
+- add an import at the top of `app/layout.tsx` `import "ssw-tinacms-launchkit/dist/style.css";`
+
 
 ## Components
 
-### Breadcrumbs
+### Styling 
+The component scan be manually styled by applying tailwind classes to the components themselves.
+For conflicting tailwind classes or styling that cannot be configured by appending styles to the 
+outer component each compnent inludes input props. This can include classes defined in your tailwind
+config file.
+
+###### BreadCrumb props
+- hoverColor: hover:text-<textcolor> <br>
+the color links will glow when hovered by the user
+- separatorSize: size-<size> <br>
+the size of the breadcrumb separator
+- textSize: text-<size> <br>
+The size of links and the final breadcrumb text
+textColor: text-<color> <br>
+the color of the the text, as well as links when inactive.
+
+
+
+#### Breadcrumbs
 
 A navigation component that shows the current page's location within a navigational hierarchy.
 
+##### Example usage for tina
 ```tsx
+// using with TinaCMS
 import { Breadcrumbs } from 'ssw-consulting-component-lib';
-
-// Example usage
 <Breadcrumbs 
   data={{
-    finalBreadcrumb: "Current Page"
-  }}
-  options={{
-    backgroundColors: [], // Custom background color options
+    ...<data from tina>
+    firstBreadcrumb: "<first breadcrumb title>"
     breadcrumbReplacements: [
-      { from: "old-path", to: "Display Name" }
+      { from: "<old-segment>", to: "<new-segmentmapping>" }
     ],
-    firstBreadcrumb: "Home",
-    contentWidth: 1200
   }}
 />
+
+// using with out TinaCMS
+<Breadcrumbs 
+  data={{
+    finalBreadcrumb: "<custom final breadcrumb title>"
+    firstBreadcrumb: "<first breadcrumb title>",
+     breadcrumbReplacements: [
+      { from: "<old-segment>", to: "<new-segmentmapping>" }
+    ],
+  }}
+/>
+
 ```
 
 #### Props
@@ -110,16 +138,24 @@ import { LogoCarousel } from 'ssw-consulting-component-lib';
 ## License
 
 
-
 ## Contributing
 
-
 ### Local Testing
-- rebuild the components with your customizations by running `pnpm run build`
-- run the following at the root of the project `npm link`
+
+
+#### Previewing Components
+
+
+- run the following at the root of the project `pnpm link --global`
 - navigate to the root of the test project `cd tina-starter`
-- link test project with the component package by running `npm link ssw-tinacms-launchkit`
-- run the test project by running `pnpm dev` this will give you a playhground project on `localhost:3000/posts/HelloWorld`
+- link test project with the component package by running `pnpm link --global ssw-tinacms-landingkit`
+- install all dependencies and run the project by running `pnpm i` and then `pnpm dev`
+- check you can view the components at `http://localhost:3000/admin/index.html#/~/posts/explore/HelloWorld`
+
+
+#### Testing Customizations
+- rebuild the components with your customizations by running `pnpm run build`
+- If you've already linked the repo using the steps outlined in `Previewing components` you should be able to see your changes
 
 
 MIT License
