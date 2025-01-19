@@ -1,5 +1,5 @@
 "use client";
-import { Breadcrumbs } from "ssw-tinacms-launchkit/dist/";
+import { Breadcrumbs } from "ssw-tinacms-landingkit/dist/";
 import { useTina } from "tinacms/dist/react";
 import type { PostBlocks, PostQuery } from "../../../../tina/__generated__/types";
 
