@@ -1,8 +1,8 @@
 "use client";
-import { useTina } from "tinacms/dist/react";
-import type { PostQuery } from "../../../../tina/__generated__/types";
-
 import { Breadcrumbs } from "ssw-tinacms-launchkit/dist/";
+import { useTina } from "tinacms/dist/react";
+import type { PostBlocks, PostQuery } from "../../../../tina/__generated__/types";
+
 
 interface ClientPageProps {
   query: string;
@@ -21,34 +21,41 @@ export default function Post(props: ClientPageProps) {
   });
   return (
     <>
-    <h2>Breadcrumbs</h2>
-    {
-      data.post.breadcrumbs && <Breadcrumbs 
-      hoverColor="hover:text-blue-500"
-      separatorColor="stroke-black"
-      textColor="text-black"
-      data={{
-        breadcrumbReplacements: [{
-          from: "explore", to: "Explore"
-        }],
-        ...data.post?.breadcrumbs,
-        firstBreadcrumb: "Home",
-      }}  />
-
-    }
-
-
-
-    <h2>Card Carousel</h2>
-
-{/* 
-    <CardCarousel data={
-
-      
-    }>
-
-
-    </CardCarousel> */}
+    <h2>Breadcrumbs hot reload</h2>
+    <Blocks blocks={data.post.blocks}></Blocks>
     </>
   );
+}
+
+type Block = PostBlocks | null | undefined;
+interface BlocksProps {
+  blocks: Block[] | null | undefined;
+}
+
+const Blocks = ({ blocks }: BlocksProps) => {
+  if(!blocks) return <></>
+  return <>{blocks.map((block) => { 
+    if(!block) 
+    {
+      return <></>
+    }
+    switch(block.__typename) {
+      case "PostBlocksBreadcrumbs":
+        return  <Breadcrumbs 
+        hoverColor="hover:text-blue-500"
+        separatorColor="stroke-black"
+        textColor="text-black"
+        data={
+          {
+          ...block,
+          //URL segment mapping is configured outside of the schema
+          breadcrumbReplacements: [{
+            from: "explore", to: "Explore"
+          }],
+          firstBreadcrumb: "Home",
+        }}  />
+      }
+    })}
+    </>
+
 }
