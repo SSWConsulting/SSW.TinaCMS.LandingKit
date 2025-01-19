@@ -14,11 +14,6 @@ export default function RootLayout({
           margin: "3rem",
         }}
       >
-        {/* <header>
-          <Link href="/">Home</Link>
-          {" | "}
-          <Link href="/posts">Posts</Link>
-        </header> */}
         <main>{children}</main>
       </body>
     </html>
