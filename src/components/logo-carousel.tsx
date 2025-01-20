@@ -5,20 +5,21 @@ import { Marquee } from "../internal/shadcn/marquee";
 import { cn } from "../internal/shadcn/utils";
 
 type Logo = { 
-  logo?: string;
-  altText?: string;
-}
+  logo?: string | null;
+  altText?: string | null;
+};
+
 
 type LogoCarouselData = { 
   placeholderImage?: string;
-  heading? : string;
-  logos?: Logo[]
-  maskImages? : boolean;
-}
+  heading? : string | null;
+  logos?: (Logo | null)[] | null;
+  maskImages? : boolean | null;
+};
 
 export default function LogoCarousel(props: {
   data: LogoCarouselData;
-  className : string;
+  className? : string;
   textSize?: `text-${string}`;
   textPadding? : `p-${string}`;
   mediumTextSize?: `md:text-${string}`;
