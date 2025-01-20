@@ -20,7 +20,8 @@ npm install ssw-tinacms-landingkit
 ```
 - add an import at the top of `app/layout.tsx` `import "ssw-tinacms-launchkit/dist/style.css";`
 - for example usage of the components visit: `tina-starter\app\posts\explore\[...filename]\client-page.tsx`
-- for example schema configurations visit: `tina-starter\tina\collections\post.tsx`
+#### Schema configuration
+- for example schema configurations see: `tina-starter\tina\collections\post.tsx`
 
 ## Features
 
