@@ -90,7 +90,8 @@ import { Breadcrumbs } from "ssw-tinacms-landingkit/dist/";
   - **example prop**: `text-<size>`
 - `textColor`:the color of the the text, as well as links when inactive.
   - **example prop**: `text-<color>`
-
+- `textUnderlineOffset`: The spacing between the underline and text for breadcrumb links
+  - **example prop**: `underline-offset-<number>`
 <!--
 ### Logo Carousel
 
