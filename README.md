@@ -16,7 +16,7 @@ A React component library built with TypeScript, Next.js, and Shadcn/UI, providi
 
 - run the following command to install the npm package 
 ```bash
-npm install ssw-tinacms-landingkit"
+npm install ssw-tinacms-landingkit
 ```
 - add an import at the top of `app/layout.tsx` `import "ssw-tinacms-launchkit/dist/style.css";`
 
@@ -44,7 +44,7 @@ A navigation component that shows the current page's location within a navigatio
 import { Breadcrumbs } from 'ssw-consulting-component-lib';
 <Breadcrumbs 
   data={{
-    ...<data from tina>
+    // ...<data from tina>
     firstBreadcrumb: "<first breadcrumb title>"
     breadcrumbReplacements: [
       { from: "<old-segment>", to: "<new-segmentmapping>" }
