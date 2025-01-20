@@ -1,5 +1,5 @@
 "use client";
-import { Breadcrumbs } from "ssw-tinacms-landingkit/dist/";
+import { Breadcrumbs, LogoCarousel } from "ssw-tinacms-landingkit/dist/";
 import { useTina } from "tinacms/dist/react";
 import type { PostBlocks, PostQuery } from "../../../../tina/__generated__/types";
 
@@ -20,7 +20,7 @@ export default function Post(props: ClientPageProps) {
   });
   return (
     <>
-    <Blocks blocks={data.post.blocks}></Blocks>
+      <Blocks blocks={data.post.blocks}></Blocks>
     </>
   );
 }
@@ -52,6 +52,8 @@ const Blocks = ({ blocks }: BlocksProps) => {
           }],
           firstBreadcrumb: "Home",
         }}  />
+      case "PostBlocksLogoCarousel":
+        return <LogoCarousel data={block} /> 
       }
     })}
     </>
