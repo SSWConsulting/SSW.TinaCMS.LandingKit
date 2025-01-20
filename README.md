@@ -24,9 +24,9 @@ npm install ssw-tinacms-landingkit
 ## Components
 
 ### Styling 
-The component scan be manually styled by applying tailwind classes to the components themselves.
+The component scan be manually styled by applying tailwind classes to the components themselves using the `className` property.
 For conflicting tailwind classes or styling that cannot be configured by appending styles to the 
-outer component each compnent inludes input props. This can include classes defined in your tailwind
+outer component each component inludes input props. This can include classes defined in your tailwind
 config file.
 
 ###### BreadCrumb props
@@ -69,10 +69,11 @@ import { Breadcrumbs } from 'ssw-consulting-component-lib';
 - `data`: Object containing the breadcrumb content
   - `finalBreadcrumb`: Text for the current page
 - `hoverColor`: the color links will glow when hovered by the user
-  - **example prop**: hover:text-`<textcolor>`
+  - **example prop**: `hover:text-<color>`
 - `separatorSize`: the size of the breadcrumb separator 
-  - **example prop**:size-<size> <br>
-- textSize: text-<size> <br>
+  - **example prop**: `size-<size>`
+- `textSize`: `text-<size>`
+  - **example prop**: `text-<size>`
 The size of links and the final breadcrumb text
 textColor: text-<color> <br>
 the color of the the text, as well as links when inactive.
