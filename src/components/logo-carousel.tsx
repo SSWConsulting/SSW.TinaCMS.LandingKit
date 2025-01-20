@@ -1,25 +1,40 @@
 import Image from "next/image";
 import { ReactElement } from 'react';
 import { tinaField } from "tinacms/dist/react";
-import { ColorPickerOptions } from "../interfaces/color-options";
-import ComponentWrapper from "../internal/component-wrapper";
-import { defaultBackgroundOptions } from "../internal/default-config/default-bg-options";
 import { Marquee } from "../internal/shadcn/marquee";
+import { cn } from "../internal/shadcn/utils";
+
+type Logo = { 
+  logo?: string;
+  altText?: string;
+}
+
+type LogoCarouselData = { 
+  placeholderImage?: string;
+  heading? : string;
+  logos?: Logo[]
+  maskImages? : boolean;
+}
 
 export default function LogoCarousel(props: {
-  data: any;
-  options?: {
-    backgroundColors: ColorPickerOptions[];
-    contentWidth: number;
-  }
-  children?: React.ReactNode;
+  data: LogoCarouselData;
+  className : string;
+  textSize?: `text-${string}`;
+  textPadding? : `p-${string}`;
+  mediumTextSize?: `md:text-${string}`;
+  textColor?: `text-${string}`;
 }): ReactElement {
-  const { data, options } = props;
+  const { data } = props;
+
+
+  const textSize = props.textSize ?? "text-xl";
+  const mediumTextSize = props.mediumTextSize ?? "md:text-2xl";
+  const textColor = props.textColor ?? "text-black";
+  const textPadding = props.textPadding ?? "p-2";
   return (
-    <ComponentWrapper data={data} backgroundOptions={options?.backgroundColors ?? defaultBackgroundOptions}>
-        <div className="flex w-full flex-col items-center justify-center pb-14" style={{ maxWidth: options?.contentWidth }}>
+        <div className={cn("flex w-full flex-col items-center justify-center pb-14", props.className)}>
           <h2
-            className="p-2 text-xl font-semibold text-white md:text-2xl"
+            className={cn("text-xl font-semibold md:text-2xl", textSize, textColor, mediumTextSize, textPadding)}
             data-tina-field={tinaField(data, "heading")}
           >
             {data.heading}
@@ -37,13 +52,13 @@ export default function LogoCarousel(props: {
                       key={`logo-${index}`}
                     >
                       <Image
-                        src={logo?.logo ?? "/images/placeholder.png"}
+                        src={logo?.logo ?? data.placeholderImage} 
                         alt={logo?.altText ?? "Logo"}
                         fill={true}
                         objectFit="contain"
                         data-tina-field={tinaField(logo, "altText")}
                         className={
-                          data.isWhiteImages ? "brightness-0 invert" : ""
+                          data.maskImages ? "brightness-0 invert" : ""
                         }
                       />
                     </div>
@@ -52,6 +67,5 @@ export default function LogoCarousel(props: {
             </Marquee>
           </div>
         </div>
-    </ComponentWrapper>
   );
 }
