@@ -51,7 +51,7 @@ A navigation component that shows the current page's location within a navigatio
 
 ```tsx
 // using with TinaCMS
-import { Breadcrumbs } from 'ssw-consulting-component-lib';
+import { Breadcrumbs } from "ssw-tinacms-landingkit/dist/";
 <Breadcrumbs 
   data={{
     // ...<data from tina>
