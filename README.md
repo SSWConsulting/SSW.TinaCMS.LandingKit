@@ -29,11 +29,6 @@ For conflicting tailwind classes or styling that cannot be configured by appendi
 outer component each component inludes input props. This can include classes defined in your tailwind
 config file.
 
-###### BreadCrumb props
-
-
-
-
 #### Breadcrumbs
 
 A navigation component that shows the current page's location within a navigational hierarchy.
@@ -68,6 +63,7 @@ import { Breadcrumbs } from 'ssw-consulting-component-lib';
 #### Props
 - `data`: Object containing the breadcrumb content
   - `finalBreadcrumb`: Text for the current page
+  - `breadcrumbReplacements`: a dictionary containing the title mapping for each url segment
 - `hoverColor`: the color links will glow when hovered by the user
   - **example prop**: `hover:text-<color>`
 - `separatorSize`: the size of the breadcrumb separator 
