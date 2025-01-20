@@ -3,7 +3,6 @@ import { Breadcrumbs } from "ssw-tinacms-landingkit/dist/";
 import { useTina } from "tinacms/dist/react";
 import type { PostBlocks, PostQuery } from "../../../../tina/__generated__/types";
 
-
 interface ClientPageProps {
   query: string;
   variables: {
@@ -21,7 +20,6 @@ export default function Post(props: ClientPageProps) {
   });
   return (
     <>
-    <h2>Breadcrumbs hot reload</h2>
     <Blocks blocks={data.post.blocks}></Blocks>
     </>
   );
