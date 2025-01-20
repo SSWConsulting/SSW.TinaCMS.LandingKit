@@ -30,14 +30,7 @@ outer component each compnent inludes input props. This can include classes defi
 config file.
 
 ###### BreadCrumb props
-- hoverColor: hover:text-<textcolor> <br>
-the color links will glow when hovered by the user
-- separatorSize: size-<size> <br>
-the size of the breadcrumb separator
-- textSize: text-<size> <br>
-The size of links and the final breadcrumb text
-textColor: text-<color> <br>
-the color of the the text, as well as links when inactive.
+
 
 
 
@@ -73,6 +66,18 @@ import { Breadcrumbs } from 'ssw-consulting-component-lib';
 ```
 
 #### Props
+- `data`: Object containing the breadcrumb content
+  - `finalBreadcrumb`: Text for the current page
+- `hoverColor`: the color links will glow when hovered by the user
+  - **example prop**: hover:text-`<textcolor>`
+- `separatorSize`: the size of the breadcrumb separator 
+  - **example prop**:size-<size> <br>
+- textSize: text-<size> <br>
+The size of links and the final breadcrumb text
+textColor: text-<color> <br>
+the color of the the text, as well as links when inactive.
+
+
 
 - `data`: Object containing the breadcrumb content
   - `finalBreadcrumb`: Text for the current page
@@ -112,13 +117,13 @@ import { LogoCarousel } from 'ssw-consulting-component-lib';
 
 #### Props
 
-- `data`: Object containing the carousel content
+<!-- - `data`: Object containing the carousel content
   - `heading`: Title displayed above the carousel
   - `logos`: Array of logo objects with `logo` (path) and `altText`
   - `isWhiteImages`: Boolean to enable white image mode (inverts colors)
 - `options`: Configuration object (optional)
   - `backgroundColors`: Array of color options for the background
-  - `contentWidth`: Maximum width of the component in pixels
+  - `contentWidth`: Maximum width of the component in pixels -->
 
 ## Features
 
