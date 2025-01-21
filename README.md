@@ -46,89 +46,10 @@ For conflicting tailwind classes or styling that cannot be configured by appendi
 outer component each component inludes input props. This can include classes defined in your tailwind
 config file.
 
-#### Breadcrumbs
 
-A navigation component that shows the current page's location within a navigational hierarchy.
+- [Breadcrumbs](_docs/Breadcrumbs.md)
+- [Logo Carousel](_docs/LogoCarousel.md)
 
-```tsx
-// using with TinaCMS
-import { Breadcrumbs } from "ssw-tinacms-landingkit/dist/";
-<Breadcrumbs 
-  data={{
-    // ...<data from tina>
-    firstBreadcrumb: "<first breadcrumb title>"
-    breadcrumbReplacements: [
-      { from: "<old-segment>", to: "<new-segmentmapping>" }
-    ],
-  }}
-/>
-
-// using with out TinaCMS
-<Breadcrumbs 
-  data={{
-    finalBreadcrumb: "<custom final breadcrumb title>"
-    firstBreadcrumb: "<first breadcrumb title>",
-     breadcrumbReplacements: [
-      { from: "<old-segment>", to: "<new-segmentmapping>" }
-    ],
-  }}
-/>
-
-```
-##### Props
-- `data`: Object containing the breadcrumb content
-  - `finalBreadcrumb`: Text for the current page (supports contextual editing when returned from TinaCMS)
-  - `firstBreadcrumb`: Text for the first breadcrumb item
-  - `breadcrumbReplacements`: a dictionary containing the title mapping for each url segment
- 
-###### Optional
-- `hoverColor`: the color links will glow when hovered by the user
-  - **example prop**: `hover:text-<color>`
-- `separatorSize`: the size of the breadcrumb separator 
-  - **example prop**: `size-<size>`
-- `textSize`: The size of links and the final breadcrumb text
-  - **example prop**: `text-<size>`
-- `textColor`:the color of the the text, as well as links when inactive.
-  - **example prop**: `text-<color>`
-- `textUnderlineOffset`: The spacing between the underline and text for breadcrumb links
-  - **example prop**: `underline-offset-<number>`
-<!--
-### Logo Carousel
-
-A responsive carousel component for displaying a collection of logos with smooth animation.
-
-```tsx
-import { LogoCarousel } from 'ssw-consulting-component-lib';
-
-// Example usage
-<LogoCarousel 
-  data={{
-    heading: "Our Partners",
-    logos: [
-      { 
-        logo: "/path/to/logo.png",
-        altText: "Partner Logo"
-      }
-    ],
-    isWhiteImages: false
-  }}
-  options={{
-    backgroundColors: [], // Custom background color options
-    contentWidth: 1200
-  }}
-/>
-```
-#### Props
-
-<!-- - `data`: Object containing the carousel content
-  - `heading`: Title displayed above the carousel
-  - `logos`: Array of logo objects with `logo` (path) and `altText`
-  - `isWhiteImages`: Boolean to enable white image mode (inverts colors)
-- `options`: Configuration object (optional)
-  - `backgroundColors`: Array of color options for the background
-  - `contentWidth`: Maximum width of the component in pixels
-
--->
 
 ## Contributing
 
