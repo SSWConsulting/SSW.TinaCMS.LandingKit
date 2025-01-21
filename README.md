@@ -20,8 +20,50 @@ npm install ssw-tinacms-landingkit
 ```
 - add an import at the top of `app/layout.tsx` `import "ssw-tinacms-launchkit/dist/style.css";`
 - for example usage of the components visit: `tina-starter\app\posts\explore\[...filename]\client-page.tsx`
+
 #### Schema configuration
 - for example schema configurations see: `tina-starter\tina\collections\post.tsx`
+
+#### Adding Inter fonts (Recommended)
+
+These components were designed with Inter fonts in, so it's recommended that you use Inter in your project.
+Please note that you can import and apply inter fonts at varying scopes in your project. In this example we're 
+configuring the full application to use it inside of `app/layout.tsx`
+
+
+```tsx
+
+//import inter fonts
+import { Inter } from "next/font/google";
+
+//configure inter font variants
+const inter = Inter({
+  variable: "--inter-font",
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["200", "300", "400", "500", "600", "700"],
+});
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+
+  //apply inter fonts to full application
+  return (
+    <html lang="en" className={`${inter.className}`}>
+      <body
+        style={{
+          margin: "3rem",
+        }}
+      >
+        <main>{children}</main>
+      </body>
+    </html>
+  );
+}
+```
 
 ## Features
 
