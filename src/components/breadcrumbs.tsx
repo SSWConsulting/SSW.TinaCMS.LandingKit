@@ -125,10 +125,6 @@ const Breadcrumbs: FC<{
       }
     }, [window]);
   const [links, setLinks] = React.useState<React.ReactNode[]>([]);
-  // const paths = window.location.pathname.split("/").filter(path => path !== "");
-  // Index 0 is an empty string if the path starts with a slash
-  // const links = getLinks({paths : paths, data : data, firstNode: data?.firstBreadcrumb, finalNode: data.finalBreadcrumb, finalNodePlaceholder: data.finalNodePlaceholder, 
-    // breadcrumbReplacements:  data?.breadcrumbReplacements});
   const textColor = props?.textColor ?? "text-gray-300";
   const separatorColor = props?.separatorColor ?? "stroke-gray-300";
   const hoverColor = props?.hoverColor ?? "hover:text-white";
