@@ -1,6 +1,6 @@
 "use client";
 
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 import { tinaField } from "tinacms/dist/react";
 import { BreadcrumbProps, BreadcrumbStyleProvider, useBreadcrumbStyleContext } from "../component-providers";
 import {
@@ -115,11 +115,20 @@ const Breadcrumbs: FC<{
   children?: React.ReactNode;
 }& BreadcrumbProps> = (props) => {
   const { data } = props;
-  const paths = window.location.pathname.split("/").filter(path => path !== "");
+
+  useEffect(()=> {
+      if(window?.location?.pathname) { 
+        const paths = window.location.pathname.split("/").filter(path => path !== "");
+        const links = getLinks({paths : paths, data : data, firstNode: data?.firstBreadcrumb, finalNode: data.finalBreadcrumb, finalNodePlaceholder: data.finalNodePlaceholder, 
+          breadcrumbReplacements:  data?.breadcrumbReplacements});
+        setLinks(links);
+      }
+    }, [window]);
+  const [links, setLinks] = React.useState<React.ReactNode[]>([]);
+  // const paths = window.location.pathname.split("/").filter(path => path !== "");
   // Index 0 is an empty string if the path starts with a slash
-  const links = getLinks({paths : paths, data : data, firstNode: data?.firstBreadcrumb, finalNode: 
-    data.finalBreadcrumb, finalNodePlaceholder: data.finalNodePlaceholder, 
-    breadcrumbReplacements:  data?.breadcrumbReplacements});
+  // const links = getLinks({paths : paths, data : data, firstNode: data?.firstBreadcrumb, finalNode: data.finalBreadcrumb, finalNodePlaceholder: data.finalNodePlaceholder, 
+    // breadcrumbReplacements:  data?.breadcrumbReplacements});
   const textColor = props?.textColor ?? "text-gray-300";
   const separatorColor = props?.separatorColor ?? "stroke-gray-300";
   const hoverColor = props?.hoverColor ?? "hover:text-white";
