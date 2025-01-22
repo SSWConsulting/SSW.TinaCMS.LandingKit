@@ -82,6 +82,17 @@ export default function RootLayout({
 
 ## Components
 
+### List
+
+| Component Name  | Preview Image                                         |
+| --------------- | ----------------------------------------------------- |
+| LogoCarousel    | ![Logo Caorusel](_docs/images/LogoCarousel.jpg)       |
+| Breadcrumbs     | ![Card Carousel](_docs/images/Breadcrumbs.jpg)        |
+
+### Documentation
+- [Breadcrumbs](_docs/Breadcrumbs.md)
+- [Logo Carousel](_docs/LogoCarousel.md)
+
 ### Styling 
 The component scan be manually styled by applying tailwind classes to the components themselves using the `className` property.
 For conflicting tailwind classes or styling that cannot be configured by appending styles to the 
@@ -89,8 +100,6 @@ outer component each component inludes input props. This can include classes def
 config file.
 
 
-- [Breadcrumbs](_docs/Breadcrumbs.md)
-- [Logo Carousel](_docs/LogoCarousel.md)
 
 
 ## Contributing
