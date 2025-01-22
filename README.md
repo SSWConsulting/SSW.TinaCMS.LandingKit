@@ -82,7 +82,6 @@ export default function RootLayout({
 
 ## Components
 
-### List
 
 | Component Name  | Preview Image                                         |
 | --------------- | ----------------------------------------------------- |
