@@ -3,7 +3,7 @@
 A responsive carousel component for displaying a collection of logos with smooth animation.
 
 ```tsx
-import { LogoCarousel } from 'ssw-consulting-component-lib';
+import { LogoCarousel } from 'ssw-consulting-component-lib/dist/';
 
 //usage with tina
 return <LogoCarousel data={/*<data from tina>*/} /> 
