@@ -24,10 +24,9 @@ export default function LogoCarousel(props: {
   textPadding? : `p-${string}`;
   mediumTextSize?: `md:text-${string}`;
   textColor?: `text-${string}`;
+  repeat?: number;
 }): ReactElement {
   const { data } = props;
-
-
   const textSize = props.textSize ?? "text-xl";
   const mediumTextSize = props.mediumTextSize ?? "md:text-2xl";
   const textColor = props.textColor ?? "text-black";
@@ -42,6 +41,7 @@ export default function LogoCarousel(props: {
           </h2>
           <div className="mask-horizontal-fade relative h-17 w-full md:h-40">
             <Marquee
+              repeat={props.repeat}
               pauseOnHover
               className="h-full justify-center overflow-hidden"
             >

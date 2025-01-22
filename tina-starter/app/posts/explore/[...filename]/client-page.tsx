@@ -53,7 +53,7 @@ const Blocks = ({ blocks }: BlocksProps) => {
           firstBreadcrumb: "Home",
         }}  />
       case "PostBlocksLogoCarousel":
-        return <LogoCarousel data={block} /> 
+        return <LogoCarousel repeat={10} data={block} /> 
       }
     })}
     </>

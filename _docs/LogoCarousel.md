@@ -29,6 +29,9 @@ return <LogoCarousel data={/*<data from tina>*/} />
   - `isWhiteImages`: Boolean to enable the white mask for images
  
 ###### Optional
+
+- `repeat`: The number of times the logos will repeat in the carousel
+  - this can be used to fix pop in issues that occur when the logo carousel length is smaller than the viewport
 - `className`: a set of custom tailwind classes for styling;
 - `textSize`: a prop that allows the headign size to be overriden with a tailwind class
   - **example prop**: `text-<size>`
