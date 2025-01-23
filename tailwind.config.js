@@ -3,7 +3,13 @@
 export default {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
-    extend: {
+    extend: {      
+      borderWidth: { 
+        1: "1px",
+      },
+      backgroundImage: {
+        glass: "linear-gradient(152.97deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%)",
+      },
       height: {
         '17': '4.25rem',
         '22': '5.5rem',
