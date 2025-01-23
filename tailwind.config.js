@@ -4,6 +4,10 @@ export default {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {      
+      colors: { 
+        sswRed: "#cc4141",
+        sswDarkRed: "#8e2c2c",
+      },
       borderWidth: { 
         1: "1px",
       },
@@ -15,6 +19,11 @@ export default {
         '22': '5.5rem',
       },
       animation: {
+        ripple: "ripple-out 0.6s",
+        "ripple-pseudo": "ripple-out-pseudo 0.6s",
+        rippling: "rippling 0.6s ease-out",
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
         marquee: "marquee 20s linear infinite",
       },
       textUnderlineOffset: {
@@ -30,6 +39,23 @@ export default {
         marquee: {
           from: { transform: "translateX(50%)" },
           to: { transform: "translateX(calc(-50% - var(--gap)))" },
+        },
+        "ripple-out": {
+          "0%": { width: "0%" },
+          "100%": { width: "100%" },
+        },
+        "ripple-out-pseudo": {
+          "0%": { background: "rgba(0, 0, 0, 0.25)" },
+          "100%": { background: "transparent" },
+        },
+        rippling: {
+          "0%": {
+            opacity: "1",
+          },
+          "100%": {
+            transform: "scale(2)",
+            opacity: "0",
+          },
         },
       }
     },

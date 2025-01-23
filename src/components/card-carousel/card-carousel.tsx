@@ -1,25 +1,46 @@
-// "use client";
-
-// import { Button } from "@/components/button/templateButton";
-// import { Container } from "@/components/util/container";
-// import Link from "next/link";
-// import { useEffect, useState } from "react";
-// import { tinaField } from "tinacms/dist/react";
-// import V2ComponentWrapper from "../../../layout/v2ComponentWrapper";
-// import { Card } from "../layout/card";
-// import { CardList } from "../layout/cardCarouseSlideshow";
-// import { Tabs, useTabCarousel } from "../layout/cardCarouselTabs";
+"use client"
 import { useEffect, useState } from "react";
-import { useCarouselContext } from "../../component-providers";
-import { Button } from "../button";
-import { Card } from "./card";
+import { tinaField } from "tinacms/dist/react";
+import { CardCarouselProps, CardCarouselProvider, LinkComponentType, useCarouselContext } from "../../component-providers";
+import { Button, ButtonColors } from "../button";
+import { Icon } from "../subtemplates/tina-form-elements/icon";
+import { Card, CardData, CardOptions } from "./card";
 import { CardList } from "./layouts/card-carousel-slideshow";
 import { Tabs, useTabCarousel } from "./layouts/card-carousel-tabs";
 
-export const CardCarousel = ({ data }) => {
+type CardGuidList = { 
+  guid?: string | null;
+  cardGuidList?: (string | null )[] | null;
+}
 
-  const { LinkComponent } = useCarouselContext();
+export type CategoryGroup = { 
+  categoryName?: string | null;
+  cardGuidList?: CardGuidList | null | null;
+}
 
+type Button = {
+  buttonText?: string | null;
+  //TODO: add field for callback functions
+  buttonLink?: string | null;
+  icon?: string | null;
+  iconFirst?: boolean | null;
+  colour?:  ButtonColors | null;
+}
+
+type CardCarouselData = {
+  linkComponent?: LinkComponentType
+  isStacked? : boolean | null;
+  heading?: string | null;
+  body?: string | null; 
+  buttons?: (Button | null) [] | null;
+  categoryGroup?: (CategoryGroup | null)[] | null;
+  cardStyle?: CardOptions | null;
+  isH1?: boolean | null;
+  cards?: (CardData | null)[] | null;
+} 
+
+const CardCarouselContents = ({ data }: {data :CardCarouselData}) => {
+  const { LinkComponent, icons } = useCarouselContext();
   //Check if any images are used in cards (adds a placeholder to the other cards)
   const [hasImages, setHasImages] = useState(false);
   const { tabsData, activeCategory, categoryGroup } = useTabCarousel({
@@ -43,22 +64,20 @@ export const CardCarousel = ({ data }) => {
   }, [data.cards]);
 
   return (
-    // <V2ComponentWrapper data={data}>
-    //   <Container>
     <>
         <div className="flex flex-col gap-4 text-center">
           <Tabs tabsData={tabsData} categoryGroup={categoryGroup} />
           {data.isH1 ? (
             <h1
-              // data-tina-field={tinaField(data, "heading")}
-              className="my-0 py-2 text-3xl font-bold lg:text-4xl dark:text-gray-200"
+              data-tina-field={tinaField(data, "heading")}
+              className="my-0 mx-auto py-2 text-3xl font-bold lg:text-4xl dark:text-gray-200"
             >
               {data.heading}
             </h1>
           ) : (
             <h2
-              // data-tina-field={tinaField(data, "heading")}
-              className="my-0 py-2 text-2xl font-semibold lg:text-3xl dark:text-gray-200"
+              data-tina-field={tinaField(data, "heading")}
+              className="my-0 py-2 mx-auto text-2xl font-semibold lg:text-3xl dark:text-gray-200"
             >
               {data.heading}
             </h2>
@@ -66,7 +85,7 @@ export const CardCarousel = ({ data }) => {
           {data.body && (
             <p
               className="m-auto max-w-4xl py-2 text-base font-light dark:text-gray-300"
-              // data-tina-field={tinaField(data, "body")}
+              data-tina-field={tinaField(data, "body")}
             >
               {data.body}
             </p>
@@ -74,15 +93,19 @@ export const CardCarousel = ({ data }) => {
           {data.buttons?.length > 0 && (
             <div className={"mb-4 mt-2 flex justify-center gap-3"}>
               {data.buttons?.map((button, index) => {
+
+                console.log("button", button);
+                console.log("icons", icons);
+                const iconInfo = button.icon ? { icon: () => <Icon icons={icons} data={{ name: button.icon }} /> } : { icon: undefined };
                 const buttonElement = (
                   <Button
                     className="text-base font-semibold"
                     key={`image-text-button-${index}`}
-                    data={button}
+                    data={{...button, ...iconInfo}}
                   />
                 );
 
-                return button.buttonLink && !button.showLeadCaptureForm ? (
+                return button.buttonLink? (
                   <LinkComponent href={button.buttonLink} key={`link-wrapper-${index}`}>
                     {buttonElement}
                   </LinkComponent>
@@ -99,8 +122,9 @@ export const CardCarousel = ({ data }) => {
                   return (
                     <Card
                       key={`card-${index}`}
-                      placeholder={hasImages}
-                      data={{ ...cardData, cardStyle: data.cardStyle ?? 0 }}
+                      showPlaceholder={hasImages} 
+                      // placeholder={hasImages && placeholder}
+                      data={{ ...cardData, cardStyle: data.cardStyle ?? "Glass"}}
                     />
                   );
                 })}
@@ -112,14 +136,27 @@ export const CardCarousel = ({ data }) => {
           // <Container size="custom" padding="sm:px-8" className="py-4">
             <CardList
               activeCategory={activeCategory}
-              data={{ cards: cardSet, cardStyle: data.cardStyle ?? 0 }}
+              data={{ cards: cardSet, cardStyle: data.cardStyle ?? "Glass" }}
               hasImages={hasImages}
             />
           // </Container>
         )}
 
     </>
-    //   </Container>
-    // </V2ComponentWrapper>
   );
 };
+
+const defaultLinkComponent = ({href, className, children})=> <a href={href} className={className}>{children}</a>
+
+export const CardCarousel = (props: {data: CardCarouselData} & CardCarouselProps)=> {
+  const icons = props.icons ?? {};
+  const data = props.data;
+  const LinkComponent = props.LinkComponent ?? defaultLinkComponent;
+  const iconColor = props.iconColor ?? "text-sswRed";
+  const callbackFunctions = props.callbackFunctions ?? {};
+  return (
+    <CardCarouselProvider value={{ LinkComponent, iconColor, callbackFunctions, icons}}>
+      <CardCarouselContents data={data} />
+    </CardCarouselProvider>
+  )
+}

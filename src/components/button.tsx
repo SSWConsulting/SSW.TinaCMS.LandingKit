@@ -1,21 +1,16 @@
-import React, { MouseEvent, useEffect, useState } from "react";
+import React, { HtmlHTMLAttributes, MouseEvent, useEffect, useState } from "react";
 import { tinaField } from "tinacms/dist/react";
 import { cn } from "../internal/shadcn/utils";
 
-enum ButtonColors {
-  Red = 0,
-  Transparent = 1,
-}
-
+export type ButtonColors = "Red" | "Transparent" | string;
 export interface TemplateButtonOptions extends ButtonTinaFields {
   buttonText?: string;
   colour?: ButtonColors;
   iconFirst?: boolean;
-  Icon?: React.ElementType;
+  icon?: React.FC<HtmlHTMLAttributes<HTMLBaseElement>>;
   showLeadCaptureForm?: boolean;
   onClick?: () => void;
 }
-
 export const Button = ({
   className,
   data,
@@ -24,9 +19,9 @@ export const Button = ({
   data: TemplateButtonOptions;
 }) => {
 //   const [open, setOpen] = useState(false);
-  const variants: ColorVariant[] = ["primary", "secondary"];
+  const Icon = data?.icon;
+  // const variants: ButtonColors[] = ["Red", "Transparent"];
   const { iconFirst, buttonText, colour } = data;
-  const Icon = data.Icon;
   return (
     <>
       <RippleButton
@@ -37,14 +32,13 @@ export const Button = ({
           "gap-0.5",
           iconFirst ? "flex-row" : "flex-row-reverse"
         )}
-        variant={variants[colour]}
+        variant={colour}
       >
-        {Icon && <Icon />}
+
+        {Icon && <Icon/>}
         {/* <Icon
-          { */
-            //TODO: Add support for tinaField highlighting
-            /* tinaField={tinaField(data, "icon")} */
-          /* className="size-6"
+          tinaField={tinaField(data, "icon")}
+          className="size-6"
           data={{
             name: data.icon,
           }}
@@ -68,14 +62,14 @@ interface RippleButtonProps
   rippleColor?: string;
   fontClassName?: string;
   duration?: string;
-  variant: ColorVariant;
+  variant: ButtonColors;
   onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
 }
 
 const RippleButton = React.forwardRef<HTMLButtonElement, RippleButtonProps>(
   (
     {
-      variant = "primary",
+      variant = "Red",
       className,
       fontClassName,
       children,
@@ -91,7 +85,7 @@ const RippleButton = React.forwardRef<HTMLButtonElement, RippleButtonProps>(
       Array<{ x: number; y: number; size: number; key: number }>
     >([]);
 
-    const isPrimary = variant === "primary";
+    const isPrimary = variant === "Red";
     const createRipple = (event: MouseEvent<HTMLButtonElement>) => {
       const button = event.currentTarget;
       const rect = button.getBoundingClientRect();
@@ -158,9 +152,9 @@ const RippleButton = React.forwardRef<HTMLButtonElement, RippleButtonProps>(
   }
 );
 
-const variants: Record<ColorVariant, string> = {
-  primary: "bg-ssw-red hover:bg-sswDarkRed text-white",
-  secondary:
+const variants: Record<ButtonColors, string> = {
+  "Red": "bg-sswRed hover:bg-sswDarkRed text-white",
+  "Transparent":
     "bg-transparent outline -outline-1.5 outline-white -outline-offset-1.5 hover:outline-gray-200 hover:text-gray-200 text-white",
 };
 

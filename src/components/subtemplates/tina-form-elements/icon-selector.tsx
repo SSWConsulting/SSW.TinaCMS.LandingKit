@@ -4,7 +4,7 @@ import React from "react";
 import { BiChevronRight } from "react-icons/bi";
 import { GoCircleSlash } from "react-icons/go";
 import { Button, wrapFieldsWithMeta } from "tinacms";
-import { Icon, IconOptions } from "./icon";
+import { Icon } from "./icon";
 
 const parseIconName = (name: string) => {
   const splitName = name.split(/(?=[A-Z])/);
@@ -15,7 +15,9 @@ const parseIconName = (name: string) => {
   }
 };
 
-export const IconPickerInput = wrapFieldsWithMeta(({ input }) => {
+
+export const IconPickerInput = (iconOptions)=> wrapFieldsWithMeta(({ input }) => {
+  const IconOptions = {...iconOptions}
   const [filter, setFilter] = React.useState("");
   const filteredBlocks = React.useMemo(() => {
     return Object.keys(IconOptions).filter((name) => {
@@ -114,10 +116,9 @@ export const IconPickerInput = wrapFieldsWithMeta(({ input }) => {
                                 }}
                               >
                                 <Icon
+                                  icons={iconOptions}
                                   data={{
                                     name: name,
-                                    size: "custom",
-                                    color: "blue",
                                   }}
                                   className="h-auto w-7"
                                 />

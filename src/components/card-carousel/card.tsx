@@ -1,19 +1,22 @@
 import Image from "next/image";
 import { useState } from "react";
 import { tinaField } from "tinacms/dist/react";
+import { useCarouselContext } from "../../component-providers";
+import { cn } from "../../internal/shadcn/utils";
 import { YouTubeEmbed } from "../../internal/youtube-embed";
 import { ListItem } from "../subtemplates/list-item";
 import { PillGroup } from "../subtemplates/pill-group";
-
+import { Icon } from "../subtemplates/tina-form-elements/icon";
 
 export type CardData = {
   guid: string;
   embed: string;
+  cardStyle: CardOptions;
   chips: string[];
   description: string;
   heading: string;
   contain : boolean;
-  Icon?: React.ElementType;
+  icon?: string;
   altText: string; 
   image: string;
   cardOption: CardOptions;
@@ -21,21 +24,21 @@ export type CardData = {
     features: string[];
   }
   embeddedButton: { 
-    buttonText: string;
-    buttonLink: string;
-    Icon? : React.ElementType;
+    buttonText?: string | null;
+    buttonLink?: string | null;
+    icon? : string | null;
 },
 };
 type CardProps = {
   data: CardData;
-  placeholder: boolean;
+  showPlaceholder: boolean;
 }
 
-const Card = ({ data, placeholder }: CardProps) => {
-  //If image fails to load, use placeholder (Piers)
+const Card = ({ data, showPlaceholder }: CardProps) => {
+  //If image fails to load, use placeholder provided
+  const { placeholderImage, iconColor, icons} = useCarouselContext();
   const [usePlaceholder, setUsePlaceholder] = useState(false);
-  const placeholderImage = "/images/videoPlaceholder.png";
-  const Icon = data.Icon;
+  //const placeholderImage = "/images/videoPlaceholder.png";
   return (
     <div
       className={`flex w-90 shrink flex-col rounded-md text-start ${
@@ -45,7 +48,7 @@ const Card = ({ data, placeholder }: CardProps) => {
       {data.embed ? (
         <YouTubeEmbed className="mb-2 min-h-36 w-full" id={data.embed} />
       ) : (
-        (data.image || placeholder) && (
+        (data.image || (placeholderImage && usePlaceholder)) && (
           <div
             className="relative mb-2 min-h-36 w-full overflow-hidden rounded-md"
             data-tina-field={tinaField(data, "image")}
@@ -64,7 +67,7 @@ const Card = ({ data, placeholder }: CardProps) => {
           </div>
         )
       )}
-      {/* <Icon data={{ name: data.icon }} className="size-6 text-sswRed" /> */}
+      <Icon icons={icons} data={{ name: data.icon }} className="size-6 text-sswRed" />
       {data.chips && <PillGroup data={data.chips} />}
       <h3
         className="pb-2 text-xl font-semibold leading-6 dark:text-gray-200"
@@ -81,7 +84,7 @@ const Card = ({ data, placeholder }: CardProps) => {
         </p>
       )}
       {data.featureList?.features?.map((item, index) => {
-        return <ListItem key={index} data={item} />;
+        return <ListItem key={index} icons={icons} data={{description: item}} />;
       })}
       {data.embeddedButton && (
         <div className="flex h-full flex-col-reverse justify-between">
@@ -89,14 +92,12 @@ const Card = ({ data, placeholder }: CardProps) => {
             href={data.embeddedButton.buttonLink}
             className="pt-2 font-semibold text-white !decoration-gray-400 !decoration-1 hover:!decoration-sswRed"
           >
-            {data.embeddedButton.buttonText}
-            {/* 
-            
-            // TODO pass in icons
+            {data.embeddedButton.buttonText}            
             <Icon
-              data={{ name: data.embeddedButton.Icon }}
-              className="inline size-4"
-            /> */}
+              icons={icons}
+              data={{ name: data.embeddedButton.icon }}
+              className={cn(iconColor,"inline size-4")}
+            />
           </a>
         </div>
       )}
@@ -109,10 +110,7 @@ export type CardOption = {
   classes: string;
 }
 
-
-
 export type CardOptions = "Glass" | "Transparent";
-
 export const cardOptions: Record<string, CardOption>= 
 {
   "Glass": {

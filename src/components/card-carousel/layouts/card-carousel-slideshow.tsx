@@ -1,52 +1,16 @@
-// import {
-//   Carousel,
-//   CarouselContent,
-//   CarouselItem,
-//   CarouselPickItem,
-//   useCarousel,
-// } from "@/components/ui/carousel";
-// import {
-//   Consultingv2BlocksCardCarouselCards as CarouselCard,
-//   Consultingv2BlocksCardCarouselCategoryGroup,
-// } from "@/tina/types";
 
 import { useEffect, useState } from "react";
 import { Carousel, CarouselContent, CarouselItem, CarouselPickItem, useCarousel } from "../../../internal/shadcn/carousel";
 import { Card, CardData, CardOptions } from "../card";
 
-type Chip = {
-  filledChipText: string,
-  clearChipText: string
-
-}
-
-type ActiveCategory = { 
-  categoryName: string,
-  cardGuidList: {
-    guid: string
-    cardGuidList: string[]
-  }
-
-}
-
-type CarouselCard = { 
-  Heading: string
-  guid: string,
-  mediaType: string,
-  youtubeUrl: string,
-  image: string,
-  altText: string,
-  chips: Chip[],
-}
-
-
+import { CategoryGroup } from "../card-carousel";
 type CardSlideshowProps = {
   data: {
     cards: CardData[];
     cardStyle: CardOptions;
   };
   hasImages: boolean;
-  activeCategory: ActiveCategory;
+  activeCategory: CategoryGroup;
 };
 
 const CardList = ({ activeCategory, data, hasImages }: CardSlideshowProps) => {
@@ -93,7 +57,7 @@ const CardList = ({ activeCategory, data, hasImages }: CardSlideshowProps) => {
                   key={`card-carousel-${index}`}
                 >
                   <Card
-                    placeholder={hasImages}
+                    showPlaceholder={hasImages}
                     data={{ ...cardData, cardOption: data.cardStyle }}
                   />
                 </CarouselItem>

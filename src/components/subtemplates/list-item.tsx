@@ -1,13 +1,22 @@
 "use client";
+import { HtmlHTMLAttributes } from "react";
 import { tinaField } from "tinacms/dist/react";
 import { Icon } from "./tina-form-elements/icon";
 
-export const ListItem = ({ data }) => {
+
+type ListItemData = { 
+  icon?: string | null;
+  heading?: string | null;
+  description?: string | null;
+}
+export const ListItem = ({ data, icons }: {data: ListItemData,
+  icons: { [key: string]: React.FC<HtmlHTMLAttributes<HTMLBaseElement>> };}) => {
   return (
     <div className={"flex gap-1 align-top"}>
       {data.icon && (
         <div className="h-full p-1">
           <Icon
+            icons={icons}
             data={{ name: data.icon }}
             tinaField={tinaField(data, "icon")}
             className="size-6 text-white"

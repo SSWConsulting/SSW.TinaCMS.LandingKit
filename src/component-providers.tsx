@@ -10,41 +10,45 @@ export type BreadcrumbProps = {
     separatorSize?: `size-${number}`
 }
 
-
 export type LinkComponentType = React.FC<AnchorHTMLAttributes<HTMLAnchorElement>>;
-  
-export type CarouselProps = { 
-    LinkComponent : LinkComponentType
+
+type CallbackFunctions = { 
+    [key: string]: ()=> void;
 }
 
+export type CardCarouselProps = { 
+    LinkComponent : LinkComponentType
+    placeholderImage? : string;
+    callbackFunctions?: CallbackFunctions | null;
+    iconColor?: `text-${string}`;
+    icons?: { [key: string]: React.FC}
+}
 
 const BreadcrumbContext = React.createContext<BreadcrumbProps>(null)
 
-
-
-const CarouselContext = React.createContext<CarouselProps>({LinkComponent: ({href, className, children})=> <a href={href} className={className}>{children}</a>})
+const CardCarouselContext = React.createContext<CardCarouselProps>(null)
 
 function BuildProvider<Type> ({context, children, value}: { context: React.Context<Type>, children: React.ReactNode, value: Type})  {
     return <context.Provider value={value}>{children}</context.Provider>
 }
 
-function useStyleContext<Type>(context : React.Context<Type>) {
+function createTypedContext<Type>(context : React.Context<Type>) {
     return React.useContext<Type>(context)
 }
 
 function useBreadcrumbStyleContext() {
-    return useStyleContext<BreadcrumbProps>(BreadcrumbContext)
+    return createTypedContext<BreadcrumbProps>(BreadcrumbContext)
 }
 
 const BreadcrumbStyleProvider = ({children, value}: {children: React.ReactNode, value: BreadcrumbProps}) => {
     return BuildProvider<BreadcrumbProps>({context: BreadcrumbContext, children, value})
 }
 const useCarouselContext = () => {
-    return useStyleContext<CarouselProps>(CarouselContext)
+    return createTypedContext<CardCarouselProps>(CardCarouselContext)
 }
 
-const CardCarouselProvider = ({children, value}: {children: React.ReactNode, value: CarouselProps}) => {
-    return BuildProvider<CarouselProps>({context: CarouselContext, children, value})
+const CardCarouselProvider = ({children, value}: {children: React.ReactNode, value: CardCarouselProps}) => {
+    return BuildProvider<CardCarouselProps>({context: CardCarouselContext, children, value})
 }
 
 export { BreadcrumbStyleProvider, CardCarouselProvider, useBreadcrumbStyleContext, useCarouselContext };

@@ -6,27 +6,13 @@ import { useEffect, useRef, useState } from "react";
 import { tinaField } from "tinacms/dist/react";
 import { useResizeObserver } from "usehooks-ts";
 
-// type CategoryGroup = CardCarousel["categoryGroup"];
+import { CategoryGroup } from "../card-carousel";
 
 
-// type CardGuidList = {
-//   guid: string;
-//   cardGuidList: string[];
-// }
 
-type Category = {
-  categoryName: string;
-  cardGuidList: {
-    guid: string;
-    cardGuidList: string[];
-  }
-}
-
-
-type CategoryGroup = Category[];
 
 export type TabsProps = {
-  categoryGroup: CategoryGroup;
+  categoryGroup: CategoryGroup[];
   tabsData: {
     buttonRefs: React.MutableRefObject<(HTMLButtonElement | null)[]>;
     tabWrapperRef: React.MutableRefObject<HTMLDivElement>;
@@ -41,11 +27,11 @@ export type TabsProps = {
   };
 };
 
-type Background ={
-  backgroundColour: number;
-  backgroundImage: string;
-  bleed: boolean;
-}
+// type Background ={
+//   backgroundColour: number;
+//   backgroundImage: string;
+//   bleed: boolean;
+// }
 
 //type CardCarousel = Consultingv2BlocksCardCarousel
 
@@ -62,7 +48,7 @@ type Background ={
 //   background: Background//todo deprecate
 // }
 
-const useTabCarousel = ({ categoryGroup }: {categoryGroup: CategoryGroup}) => {
+const useTabCarousel = ({ categoryGroup }: {categoryGroup: CategoryGroup[]}) => {
   const [selectedIndex, setSelectedIndex] = useState<number>(0);
   const [containerDimensions, setContainerDimensions] = useState({
     width: 0,
@@ -152,6 +138,7 @@ const Tabs = ({ categoryGroup, tabsData }: TabsProps) => {
       </span>
       {/* Actual buttons */}
       {categoryGroup?.map((category, index) => {
+        console.log("category", category); 
         return (
           <>
             <button
