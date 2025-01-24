@@ -125,8 +125,8 @@ const Breadcrumbs: FC<{
       }
     }, [window]);
   const [links, setLinks] = React.useState<React.ReactNode[]>([]);
-  const textColor = props?.textColor ?? "text-gray-300";
-  const separatorColor = props?.separatorColor ?? "stroke-gray-300";
+  const textColor = props?.textColor ?? "text-[#cccccc]";
+  const separatorColor = props?.separatorColor ?? "stroke-[#cccccc]";
   const hoverColor = props?.hoverColor ?? "hover:text-white";
   const textSize = props?.textSize ?? "text-xs";
   const separatorSize = props?.separatorSize ?? "size-4";
