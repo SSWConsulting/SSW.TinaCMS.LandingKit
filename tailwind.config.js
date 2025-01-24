@@ -14,6 +14,12 @@ export default {
       backgroundImage: {
         glass: "linear-gradient(152.97deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%)",
       },
+      outlineWidth: {
+        "-1.5": "1.5px",
+      },
+      outlineOffset: {
+        "-1.5": "-1.5px",
+      },
       height: {
         '17': '4.25rem',
         '22': '5.5rem',
