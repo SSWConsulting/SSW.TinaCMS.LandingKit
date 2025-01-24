@@ -131,3 +131,7 @@ MIT License
 #### Troubleshooting
 - Q: 'tailwindcss' is not recognized as an internal or external command
   - A: you need to have tailwind installed on your machine. You can fix this by running npm i --global tailwindcss
+
+
+### Known Issues
+- The "cardGuidList" for the CardCarousel schema must have a default configured or you will not be able to add new queries without erros.
