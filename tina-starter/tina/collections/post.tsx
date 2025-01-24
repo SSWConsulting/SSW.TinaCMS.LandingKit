@@ -1,125 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import { Template, wrapFieldsWithMeta } from 'tinacms';
-import { Checkbox } from '../../../dist';
+import React from 'react';
+import * as AntIcons from 'react-icons/ai';
+import { Template } from 'tinacms';
+import { CarouselCardPicker, IconPickerInput } from '../../../dist';
 
 const component = () => <React.Fragment></React.Fragment>;
 //example path: "blocks.0.categoryGroup.0.cardGuidList.cardGuidList"
 //example object: {blocks: [{categoryGroup: [{cardGuidList: {cardGuidList: []}}]}]}
-function setNestedValue(obj: object, path: string, newValue: any) : void {
-  const keys = path.split('.');
-  let current = obj;
-  for (let i = 0; i < keys.length - 1; i++) {
-    const key = isNaN(Number(keys[i])) ? keys[i] : Number(keys[i]);
-    if (!current[key]) {
-      throw new Error(`unable to find key ${key} in ${JSON.stringify(obj)}`);
-    }
-    current = current[key];
-  }
-  const finalKey = isNaN(Number(keys[keys.length - 1])) ? keys[keys.length - 1] : Number(keys[keys.length - 1]);
-  current[finalKey] = newValue;
-}
-
-function getNestedValue(obj: object, path: string) : any {
-  const keys = path.split('.');
-  let current = obj;
-  for (let i = 0; i < keys.length; i++) {
-    const key = isNaN(Number(keys[i])) ? keys[i] : Number(keys[i]);
-    if (!current[key]) {
-      throw new Error(`unable to find key ${key} in ${JSON.stringify(obj)}`);
-    }
-    current = current[key];
-  }
-  return current;
-}
-
-const CarouselCardPicker = ({outerBlocksFieldName}: {outerBlocksFieldName: string} )=> {
-  return wrapFieldsWithMeta(({ form, input, field }) => {
-    // Gets the card carousel within the block list
-    const blockComponentRegex = new RegExp(`^${outerBlocksFieldName.replaceAll(".", "\\.")}\\.(\\d+)`);
-    //index of the current block
-    const blockIndex = input.name.match(blockComponentRegex)[1];
-    const carouselField = getNestedValue(form.getState().values, outerBlocksFieldName);
-    const f = carouselField[parseInt(blockIndex)]
-    console.log(f)
-    console.log("block index", blockIndex)
-    console.log("block field", carouselField) 
-    console.log("field from index", f)
-
-    const formState = form.getState();
-    const values = formState.values;
-    const [fieldValues, setFieldValues] = useState(
-      input.value?.cardGuidList ?? []
-    );
-    const [options, setOptions] = useState([]);
-    useEffect(() => {
-      if (!input.value?.guid) {
-        input.onChange({
-          guid: GUIDFunction(),
-          cardGuidList: [],
-        });
-      }
-      setOptions(f.cards)
-      const cards = values.blocks[blockIndex].cards;
-      let cardListClone = JSON.parse(JSON.stringify(cards));
-      let missingGuidFound = false;
-      for(let i in values.blocks[blockIndex].cards)
-      {
-        if(values.blocks[blockIndex].cards[i].guid === null)
-        {
-          cardListClone[i].guid = GUIDFunction();
-          missingGuidFound = true;
-        }
-        if(missingGuidFound)
-        {
-          values.blocks[blockIndex].cards = cardListClone;
-        }
-      }
-    });
-    return (
-      <div>
-        <div className="flex flex-col gap-4">
-          {options.length === 0 && <p>No cards found.</p>}
-          {options?.map((item, index) => {
-            return (
-              <div
-                key={`${index}-${item}`}
-                className="flex flex-wrap gap-2"
-              >
-                <Checkbox
-                  disabled={!item.guid}
-                  checked={fieldValues.includes(item.guid)}
-                  onCheckedChange={(checked) => {
-                    const newFieldValues = checked
-                      ? [...fieldValues, item.guid]
-                      : fieldValues.filter(
-                          (value) => value !== item.guid
-                        );
-                    const newObjectValue = {
-                      ...input.value,
-                      cardGuidList: newFieldValues,
-                    };
-                    setFieldValues(newFieldValues);
-                    return input.onChange(newObjectValue);
-                  }}
-                />
-                <label
-                  className={`${!item.guid ? "text-gray-600" : ""} text-wrap`}
-                >
-                  {item.heading ||
-                    item.altText ||
-                    `Unlabeled – ${item.guid}`}
-                </label>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    );
-  })
-}
 
 const defaultCardItem = {
-  guid: null,
+  guid: null ,
   altText: "Lorem Ipsum",
   chips: {
     chips: [
@@ -214,41 +103,22 @@ const logoCarouselBlock : Template = {
   },
 ]}
 
-
-
-const GUIDFunction = () => Math.random().toString(36).substring(7);
-
-
 const defaultCardBlock = { 
   defaultItem: {
     buttons: [
       {
         buttonText: "Lorem",
-        colour: 0,
+        color: "Primary",
       },
       {
         buttonText: "Ipsum",
-        colour: 1,
+        color: "Secondary",
       },
     ],
     isStacked: false,
     heading: "Lorem Ipsum",
     isH1: false,
     body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    categoryGroup: [
-      {
-        categoryName: "Lorem",
-        cardGuidList: {
-          cardGuidList: [],
-        },
-      },
-      {
-        categoryName: "Dolor",
-        cardGuidList: {
-          cardGuidList: [],
-        },
-      },
-    ],
     buttonRow: [
       {
         buttonText: "Lorem",
@@ -267,21 +137,6 @@ const defaultCardBlock = {
   },
 }
 
-
-
-// Example usage
-// const obj = {
-//   blocks: [
-//     {
-//       categoryGroup: [
-//         {
-//           cardGuidList: 'oldValue'
-//         }
-//       ]
-//     }
-//   ]
-// };
-
 const cardCarouselBlock : Template = {
   label: "Card Carousel",
   ui: defaultCardBlock,
@@ -293,6 +148,15 @@ const cardCarouselBlock : Template = {
       name: "categoryGroup",
       list: true,
       description: "The category that cards fit into",
+      ui: {
+        defaultItem: {
+          categoryName: "Lorem",
+          cardGuidList: {
+            guid: null,
+            cardGuidList: [],
+          },
+        }
+      },
       fields: [
         {
           type: "string",
@@ -304,6 +168,7 @@ const cardCarouselBlock : Template = {
         //We can get all form values from the custom component, but still need to identify the correct block
         //The hidden GUIDs let us find the correct block, category, and card list to use.
         {
+          
           type: "object",
           label: "Attached Cards",
           name: "cardGuidList",
@@ -317,10 +182,12 @@ const cardCarouselBlock : Template = {
               type: "string",
               label: "Card GUID List",
               name: "cardGuidList",
+              required: false,
               list: true,
             },
           ],
           ui: {
+            // @ts-expect-error – component is not being recognized
             component: CarouselCardPicker({outerBlocksFieldName: "blocks"}),
           },
         },
@@ -343,7 +210,6 @@ const cardCarouselBlock : Template = {
       type: "object",
       list: true,
       fields: [
-
         {
           label: "Button Text",
           name: "buttonText",
@@ -355,7 +221,17 @@ const cardCarouselBlock : Template = {
           type: "string",
         },
         {
+          name: "color",
+          label: "Button Style",
+          type: "string",
+          options: ["Primary", "Secondary"]
+        },
+        {
           name: "icon",
+          ui: {
+            // @ts-expect-error – Tina doen't reconize imported fields
+            component: IconPickerInput(AntIcons),
+          },
           type: "string",
           label: "Icon",
         },
@@ -380,11 +256,25 @@ const cardCarouselBlock : Template = {
           type: "string",
           label: "guid",
           name: "guid",
-          // ui: {
-          //   component: ()=> <></>
-          // },
+          ui: {
+            component: "hidden",
+          }
         },
-
+        {
+          type: "string",
+          label: "Icon",
+          name: "icon",
+          ui: {
+            // @ts-expect-error – component is not being recognized
+            component: IconPickerInput(AntIcons),
+          },
+        },
+        {
+          name: "heading",
+          type: "string",
+          label: "Heading",
+          description: "The heading for the card.",
+        },
         {
           type: "image",
           label: "Image",
@@ -425,15 +315,7 @@ const cardCarouselBlock : Template = {
         //   //@ts-expect-error – fields are not being recognized
         //   fields: pillGroupSchema,
         // },
-        // {
-        //   type: "string",
-        //   label: "Icon",
-        //   name: "icon",
-        //   ui: {
-        //     // @ts-expect-error – component is not being recognized
-        //     component: IconPickerInput,
-        //   },
-        // },
+
         // {
         //   type: "string",
         //   label: "Heading",

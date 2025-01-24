@@ -1,7 +1,10 @@
 "use client";
-import { Breadcrumbs, LogoCarousel } from "ssw-tinacms-landingkit/dist/";
+import Link from "next/link";
+import * as AntIcons from "react-icons/ai";
+import { Breadcrumbs, CardCarousel, LogoCarousel } from "ssw-tinacms-landingkit/dist/";
 import { useTina } from "tinacms/dist/react";
 import type { PostBlocks, PostQuery } from "../../../../tina/__generated__/types";
+
 
 interface ClientPageProps {
   query: string;
@@ -40,9 +43,6 @@ const Blocks = ({ blocks }: BlocksProps) => {
     switch(block.__typename) {
       case "PostBlocksBreadcrumbs":
         return  <Breadcrumbs 
-        hoverColor="hover:text-blue-500"
-        separatorColor="stroke-black"
-        textColor="text-black"
         data={
           {
           ...block,
@@ -54,8 +54,12 @@ const Blocks = ({ blocks }: BlocksProps) => {
         }}  />
       case "PostBlocksLogoCarousel":
         return <LogoCarousel repeat={10} data={block} /> 
-      }
-    })}
+      case "PostBlocksCardCarousel":
+        return <CardCarousel 
+        icons={AntIcons}
+        LinkComponent={(props)=>{return <Link href={props.href || ""}>{props.children}</Link>
+        }} data={block} /> 
+    }
+  })}
     </>
-
 }
