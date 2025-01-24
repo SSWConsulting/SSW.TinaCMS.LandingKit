@@ -29,7 +29,7 @@ export default function LogoCarousel(props: {
   const { data } = props;
   const textSize = props.textSize ?? "text-xl";
   const mediumTextSize = props.mediumTextSize ?? "md:text-2xl";
-  const textColor = props.textColor ?? "text-black";
+  const textColor = props.textColor ?? "text-white";
   const textPadding = props.textPadding ?? "p-2";
   return (
         <div className={cn("flex w-full flex-col items-center justify-center pb-14", props.className)}>
