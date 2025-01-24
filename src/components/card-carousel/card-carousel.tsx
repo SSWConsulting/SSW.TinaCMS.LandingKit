@@ -70,21 +70,21 @@ const CardCarouselContents = ({ data }: {data :CardCarouselData}) => {
           {data.isH1 ? (
             <h1
               data-tina-field={tinaField(data, "heading")}
-              className="my-0 mx-auto py-2 text-3xl font-bold lg:text-4xl dark:text-gray-200"
+              className="my-0 mx-auto py-2 text-3xl font-bold lg:text-4xl text-gray-200"
             >
               {data.heading}
             </h1>
           ) : (
             <h2
               data-tina-field={tinaField(data, "heading")}
-              className="my-0 py-2 mx-auto text-2xl font-semibold lg:text-3xl dark:text-gray-200"
+              className="my-0 py-2 mx-auto text-2xl font-semibold lg:text-3xl text-gray-200"
             >
               {data.heading}
             </h2>
           )}
           {data.body && (
             <p
-              className="m-auto max-w-4xl py-2 text-base font-light dark:text-gray-300"
+              className="m-auto max-w-4xl py-2 text-base font-light text-gray-300"
               data-tina-field={tinaField(data, "body")}
             >
               {data.body}
@@ -152,7 +152,7 @@ export const CardCarousel = (props: {data: CardCarouselData} & CardCarouselProps
   const iconColor = props.iconColor ?? "text-sswRed";
   const callbackFunctions = props.callbackFunctions ?? {};
   return (
-    <CardCarouselProvider value={{ LinkComponent, iconColor, callbackFunctions, icons}}>
+    <CardCarouselProvider value={{LinkComponent, iconColor, callbackFunctions, icons}}>
       <CardCarouselContents data={data} />
     </CardCarouselProvider>
   )
