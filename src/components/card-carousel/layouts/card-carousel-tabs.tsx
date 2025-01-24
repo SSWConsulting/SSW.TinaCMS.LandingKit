@@ -80,6 +80,9 @@ const useTabCarousel = ({ categoryGroup }: {categoryGroup: CategoryGroup[]}) => 
       setContainerDimensions({ width: clientWidth, height: clientHeight });
     },
   });
+  useEffect(()=>{
+    setActiveCategory(categoryGroup?.at(selectedIndex) ?? null);
+  }, [categoryGroup])
   useEffect(() => {
     const tabIndex = categoryGroup?.indexOf(activeCategory);
     setSelectedIndex(tabIndex ?? 0);
@@ -138,7 +141,6 @@ const Tabs = ({ categoryGroup, tabsData }: TabsProps) => {
       </span>
       {/* Actual buttons */}
       {categoryGroup?.map((category, index) => {
-        console.log("category", category); 
         return (
           <>
             <button

@@ -56,7 +56,7 @@ const CardCarouselContents = ({ data }: {data :CardCarouselData}) => {
         )
       );
     }
-  }, [activeCategory, data.cards]);
+  }, [activeCategory, data.categoryGroup, categoryGroup]);
 
   useEffect(() => {
     setHasImages(data.cards?.some((card) => card.image));
@@ -93,9 +93,6 @@ const CardCarouselContents = ({ data }: {data :CardCarouselData}) => {
           {data.buttons?.length > 0 && (
             <div className={"mb-4 mt-2 flex justify-center gap-3"}>
               {data.buttons?.map((button, index) => {
-
-                console.log("button", button);
-                console.log("icons", icons);
                 const iconInfo = button.icon ? { icon: () => <Icon icons={icons} data={{ name: button.icon }} /> } : { icon: undefined };
                 const buttonElement = (
                   <Button
