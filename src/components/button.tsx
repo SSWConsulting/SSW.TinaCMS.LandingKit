@@ -1,11 +1,18 @@
-import React, { HtmlHTMLAttributes, MouseEvent, useEffect, useState } from "react";
-import { tinaField } from "tinacms/dist/react";
-import { cn } from "../internal/shadcn/utils";
+import { ButtonProps } from '@headlessui/react';
+import React, {
+  HtmlHTMLAttributes,
+  MouseEvent,
+  useEffect,
+  useState,
+} from 'react';
+import { tinaField } from 'tinacms/dist/react';
+import { cn } from '../internal/shadcn/utils';
+import { ColorPickerOptions } from './subtemplates/tina-form-elements/color-selector';
 
-export type ButtonColors = "Red" | "Transparent" | string;
+export type ButtonColors = 'Primary' | 'Secondary' | string;
 export interface TemplateButtonOptions extends ButtonTinaFields {
   buttonText?: string;
-  colour?: ButtonColors;
+  color?: ButtonColors;
   iconFirst?: boolean;
   icon?: React.FC<HtmlHTMLAttributes<HTMLBaseElement>>;
   showLeadCaptureForm?: boolean;
@@ -17,39 +24,29 @@ export const Button = ({
 }: {
   className: string;
   data: TemplateButtonOptions;
-}) => {
-//   const [open, setOpen] = useState(false);
+} & ButtonProps) => {
   const Icon = data?.icon;
-  // const variants: ButtonColors[] = ["Red", "Transparent"];
-  const { iconFirst, buttonText, colour } = data;
+  const { iconFirst, buttonText } = data;
+  const color = data.color ?? 'Primary';
   return (
     <>
       <RippleButton
         onClick={data.onClick}
-        textTinaField={tinaField(data, "buttonText")}
+        textTinaField={tinaField(data, 'buttonText')}
         className={className}
         fontClassName={cn(
-          "gap-0.5",
-          iconFirst ? "flex-row" : "flex-row-reverse"
+          'gap-0.5',
+          iconFirst ? 'flex-row' : 'flex-row-reverse'
         )}
-        variant={colour}
-      >
-
-        {Icon && <Icon/>}
-        {/* <Icon
-          tinaField={tinaField(data, "icon")}
-          className="size-6"
-          data={{
-            name: data.icon,
-          }}
-        /> */}
+        variant={color}>
+        {Icon && <Icon />}
         {buttonText}
       </RippleButton>
     </>
   );
 };
 
-export type ColorVariant = "primary" | "secondary";
+export type ColorVariant = 'primary' | 'secondary';
 
 export interface ButtonTinaFields {
   textTinaField?: string;
@@ -69,12 +66,12 @@ interface RippleButtonProps
 const RippleButton = React.forwardRef<HTMLButtonElement, RippleButtonProps>(
   (
     {
-      variant = "Red",
+      variant = 'Primary',
       className,
       fontClassName,
       children,
-      rippleColor = "rgba(0, 0, 0, 0.25)",
-      duration = "600ms",
+      rippleColor = 'rgba(0, 0, 0, 0.25)',
+      duration = '600ms',
       textTinaField,
       onClick = () => {},
       ...props
@@ -85,7 +82,7 @@ const RippleButton = React.forwardRef<HTMLButtonElement, RippleButtonProps>(
       Array<{ x: number; y: number; size: number; key: number }>
     >([]);
 
-    const isPrimary = variant === "Red";
+    const isPrimary = variant === 'Primary';
     const createRipple = (event: MouseEvent<HTMLButtonElement>) => {
       const button = event.currentTarget;
       const rect = button.getBoundingClientRect();
@@ -113,28 +110,26 @@ const RippleButton = React.forwardRef<HTMLButtonElement, RippleButtonProps>(
       <button
         onClick={(e) => onClick(e)}
         className={cn(
-          "text-primary relative cursor-pointer items-center justify-center overflow-hidden rounded-md px-6 py-3 text-center",
-          "",
-          variants[variant],
+          'text-primary relative cursor-pointer items-center justify-center overflow-hidden rounded-md px-6 py-3 text-center',
+          '',
+          buttonColors[variant].classes,
           className
         )}
         onMouseEnter={isPrimary ? createRipple : undefined}
         ref={ref}
-        {...props}
-      >
+        {...props}>
         <div
           data-tina-field={textTinaField}
           className={cn(
-            "relative z-10 flex items-center gap-2",
+            'relative z-10 flex items-center gap-2',
             fontClassName
-          )}
-        >
+          )}>
           {children}
         </div>
-        <span className="pointer-events-none absolute inset-0">
+        <span className='pointer-events-none absolute inset-0'>
           {buttonRipples.map((ripple) => (
             <span
-              className={"absolute animate-rippling rounded-full opacity-30"}
+              className={'absolute animate-rippling rounded-full opacity-30'}
               key={ripple.key}
               style={{
                 width: `${ripple.size}px`,
@@ -142,7 +137,7 @@ const RippleButton = React.forwardRef<HTMLButtonElement, RippleButtonProps>(
                 top: `${ripple.y}px`,
                 left: `${ripple.x}px`,
                 backgroundColor: rippleColor,
-                transform: "scale(0)",
+                transform: 'scale(0)',
               }}
             />
           ))}
@@ -151,17 +146,16 @@ const RippleButton = React.forwardRef<HTMLButtonElement, RippleButtonProps>(
     );
   }
 );
-
-const variants: Record<ButtonColors, string> = {
-  "Red": "bg-sswRed hover:bg-sswDarkRed text-white",
-  "Transparent":
-    "bg-transparent outline -outline-1.5 outline-white -outline-offset-1.5 hover:outline-gray-200 hover:text-gray-200 text-white",
+export const buttonColors: ColorPickerOptions = {
+  Primary: {
+    classes: `bg-sswRed hover:bg-sswDarkRed text-white`,
+    editorClasses: 'bg-[#cc4141] text-white',
+  },
+  Secondary: {
+    classes:
+      'bg-transparent outline -outline-1.5 outline-white -outline-offset-1.5 hover:outline-gray-200 hover:text-gray-200 text-white',
+    editorClasses: 'bg-transparent text-gray-700',
+  },
 };
 
-RippleButton.displayName = "RippleButton";
-
 export default RippleButton;
-
-// function useEffect(arg0: () => () => void, arg1: any[]) {
-//     throw new Error("Function not implemented.");
-// }

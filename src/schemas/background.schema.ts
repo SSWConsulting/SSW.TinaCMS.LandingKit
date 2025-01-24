@@ -1,7 +1,5 @@
-import { ColorPickerOptions } from "../interfaces/color-options";
-import { ColorPickerInput } from "../internal/color-selector";
-
-export function backgroundSchema(backgroundOptions: ColorPickerOptions[]) {
+import { ColorPickerInput, ColorPickerOptions } from "../components/subtemplates/tina-form-elements/color-selector";
+export function backgroundSchema(backgroundOptions: ColorPickerOptions) {
     return {
       type: "object",
       label: "Background",

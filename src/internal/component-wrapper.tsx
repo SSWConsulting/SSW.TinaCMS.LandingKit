@@ -4,7 +4,7 @@ import Image from "next/image";
 
 import { UseInViewOptions } from "framer-motion";
 import React, { useEffect, useRef } from "react";
-import { ColorPickerOptions } from "../interfaces/color-options";
+import { ColorPickerOptions } from "../components/subtemplates/tina-form-elements/color-selector";
 
 export type BackgroundData = {
   background?: {
@@ -25,7 +25,7 @@ const ComponentWrapper = ({
   children: React.ReactNode;
   fadeInMargin?: UseInViewOptions["margin"];
   className?: string;
-  backgroundOptions: ColorPickerOptions[];
+  backgroundOptions: ColorPickerOptions;
 }) => {
   //Bleed effect setup
   const bleed = useRef(null);
@@ -56,10 +56,7 @@ const ComponentWrapper = ({
   return (
     <section
       className={`
-        ${backgroundOptions.find((value) => {
-          return value.reference === data.background?.backgroundColor;
-        })?.classes}
-        w-full relative overflow-visible
+        ${backgroundOptions[data.background.backgroundColor].classes} w-full relative overflow-visible
         ${className}`
       }
     >

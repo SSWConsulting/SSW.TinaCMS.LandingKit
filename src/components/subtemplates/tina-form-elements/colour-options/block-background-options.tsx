@@ -1,40 +1,26 @@
-import { ColorPickerOptions } from "../colour-selector";
+import { ColorPickerOptions } from '../color-selector';
 
-export const backgroundOptions: ColorPickerOptions[] = [
-  {
-    name: "Soft Left Gradient",
-    classes: "bg-gradient-to-l from-gray-900 to-[#121212] text-white",
-    reference: 0,
+export const backgroundOptions: ColorPickerOptions = {
+  'Soft Left Gradient': {
+    classes: 'bg-gradient-to-l from-gray-900 to-[#121212] text-white',
   },
-  {
-    name: "Soft Right Gradient",
-    classes: "bg-gradient-to-r from-gray-900 to-[#121212] text-white",
-    reference: 1,
+  'Soft Right Gradient': {
+    classes: 'bg-gradient-to-r from-gray-900 to-[#121212] text-white',
   },
-  {
-    name: "Sheer Top Gradient",
-    classes: "bg-gradient-to-t from-gray-900 to-black text-white",
-    reference: 2,
+  'Sheer Top Gradient': {
+    classes: 'bg-gradient-to-t from-gray-900 to-black text-white',
   },
-  {
-    name: "Sheer Bottom Gradient",
-    classes: "bg-gradient-to-b from-gray-900 to-black text-white",
-    reference: 3,
+  'Sheer Bottom Gradient': {
+    classes: 'bg-gradient-to-b from-gray-900 to-black text-white',
   },
-  {
-    name: "Dark Gray",
-    classes: "bg-gray-950 text-white",
-    reference: 4,
-    editorClasses: "bg-[#222222] text-white",
+  'Dark Gray': {
+    classes: 'bg-gray-950 text-white',
+    editorClasses: 'bg-[#222222] text-white',
   },
-  {
-    name: "Gray",
-    classes: "bg-gray-900 text-white",
-    reference: 5,
+  Gray: {
+    classes: 'bg-gray-900 text-white',
   },
-  {
-    name: "Black",
-    classes: "bg-black text-white",
-    reference: 6,
+  Black: {
+    classes: 'bg-black text-white',
   },
-];
+};

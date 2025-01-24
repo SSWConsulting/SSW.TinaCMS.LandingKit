@@ -1,40 +1,29 @@
-import { ColorPickerOptions } from "../../interfaces/color-options";
+import { ColorPickerOptions } from "../../components/subtemplates/tina-form-elements/color-selector"
 
-export const defaultBackgroundOptions: ColorPickerOptions[] = [
+export const defaultBackgroundOptions: ColorPickerOptions= 
   {
-    name: "Soft Left Gradient",
+  "Soft Left Gradient" : {
     classes: "bg-gradient-to-l from-gray-900 to-[#121212] text-white",
-    reference: 0,
   },
-  {
-    name: "Soft Right Gradient",
+  "Soft Right Gradient": {
     classes: "bg-gradient-to-r from-gray-900 to-[#121212] text-white",
-    reference: 1,
   },
-  {
-    name: "Sheer Top Gradient",
+  
+    "Sheer Top Gradient": {
     classes: "bg-gradient-to-t from-gray-900 to-black text-white",
-    reference: 2,
   },
-  {
-    name: "Sheer Bottom Gradient",
+    "Sheer Bottom Gradient": { 
     classes: "bg-gradient-to-b from-gray-900 to-black text-white",
-    reference: 3,
-  },
-  {
-    name: "Dark Gray",
+    },
+    "Dark Gray": { 
     classes: "bg-gray-950 text-white",
-    reference: 4,
     editorClasses: "bg-[#222222] text-white",
   },
-  {
-    name: "Gray",
+  "Gray": {
     classes: "bg-gray-900 text-white",
-    reference: 5,
   },
+  "Transparent":
   {
-    name: "Transparent",
     classes: "bg-transparent text-black",
-    reference: 6,
   },
-];
+}

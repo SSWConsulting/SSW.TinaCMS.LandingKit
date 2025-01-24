@@ -1,9 +1,9 @@
 import { Template } from "tinacms";
-import { backgroundSchema } from "./background.schema";
-import { ColorPickerOptions } from "../interfaces/color-options";
+import { ColorPickerOptions } from "../components/subtemplates/tina-form-elements/color-selector";
 import { defaultBackgroundOptions } from "../internal/default-config/default-bg-options";
+import { backgroundSchema } from "./background.schema";
 
-const LogoCarouselSchemaGenerator: (options?: {backgroundColors?: ColorPickerOptions[], previewSrc?: string}) => Template = (options = {}) => {
+const LogoCarouselSchemaGenerator: (options?: {backgroundColors?: ColorPickerOptions, previewSrc?: string}) => Template = (options = {}) => {
     return {
         name: "logoCarousel",
         label: "<SSW> Logo Carousel",
