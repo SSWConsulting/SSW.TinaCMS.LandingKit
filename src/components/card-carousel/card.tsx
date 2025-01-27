@@ -7,6 +7,12 @@ import { ListItem } from '../subtemplates/list-item';
 import { PillGroup } from '../subtemplates/pill-group';
 import { ColorPickerOptions } from '../subtemplates/tina-form-elements/color-selector';
 import { Icon } from '../subtemplates/tina-form-elements/icon';
+
+type Feature = {
+  description?: string | null;
+  icon?: string | null;
+  heading?: string | null;
+};
 export type CardData = {
   guid: string;
   embed: string;
@@ -21,7 +27,7 @@ export type CardData = {
   image: string;
   cardOption: CardOptions;
   featureList: {
-    features: string[];
+    features: Feature[];
   };
   embeddedButton: {
     buttonText?: string | null;
@@ -93,9 +99,7 @@ const Card = ({ data, showPlaceholder }: CardProps) => {
         </p>
       )}
       {data.featureList?.features?.map((item, index) => {
-        return (
-          <ListItem key={index} icons={icons} data={{ description: item }} />
-        );
+        return <ListItem key={`feature-${index}`} icons={icons} data={item} />;
       })}
       {data.embeddedButton && (
         <div className='flex h-full flex-col-reverse justify-between'>

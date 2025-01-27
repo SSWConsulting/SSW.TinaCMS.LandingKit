@@ -1,8 +1,10 @@
+import * as AntIcons from "react-icons/ai";
 import { Template, TinaField } from "tinacms";
 import {
   cardColors,
   CarouselCardPicker,
   ColorPickerInput,
+  IconPickerInput,
 } from "../../../dist";
 
 const mediaTypeField = {
@@ -20,6 +22,27 @@ export const youtubeEmbedField = {
   description:
     "Enter the YouTube video URL (only used if Media Type is set to youtube)",
 };
+
+export const listItemSchema = [
+  {
+    type: "string",
+    label: "Heading",
+    name: "heading",
+  },
+  {
+    type: "string",
+    label: "Description",
+    name: "description",
+  },
+  {
+    type: "string",
+    label: "Icon",
+    name: "icon",
+    ui: {
+      component: IconPickerInput(AntIcons),
+    },
+  },
+];
 
 const categoryGroupField = {
   type: "object",
@@ -43,9 +66,6 @@ const categoryGroupField = {
       name: "categoryName",
       description: "Text to include on the tab.",
     },
-    //This is a little convoluted, due to the way Tina limits data passing between components
-    //We can get all form values from the custom component, but still need to identify the correct block
-    //The hidden GUIDs let us find the correct block, category, and card list to use.
     {
       type: "object",
       label: "Attached Cards",
@@ -272,13 +292,25 @@ const cardCarouselBlock: Template = {
             component: "hidden",
           },
         },
+        // @ts-expect-error – Tina doen't reconize imported fields
         mediaTypeField,
+        // @ts-expect-error – Tina doen't reconize imported fields
         youtubeEmbedField,
         {
           name: "heading",
           type: "string",
           label: "Heading",
           description: "The heading for the card.",
+        },
+
+        {
+          type: "string",
+          label: "Icon",
+          name: "icon",
+          ui: {
+            // @ts-expect-error – component is not being recognized
+            component: IconPickerInput(AntIcons),
+          },
         },
         {
           type: "image",
@@ -292,7 +324,6 @@ const cardCarouselBlock: Template = {
           name: "altText",
           description: "Alternative text for the card.",
         },
-
         {
           type: "string",
           label: "Description",
@@ -300,6 +331,31 @@ const cardCarouselBlock: Template = {
           ui: {
             component: "textarea",
           },
+        },
+        {
+          name: "featureList",
+          label: "Feature List",
+          description:
+            "A list of text-icon entries to go under the description.",
+          type: "object",
+          fields: [
+            {
+              list: true,
+              type: "object",
+              label: "Features",
+              name: "features",
+              description: "Add an item to the the feature columns.",
+              //@ts-expect-error – fields are not being recognized
+              fields: listItemSchema,
+              ui: {
+                defaultItem: {
+                  heading: "Lorem Ipsum",
+                  description:
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                },
+              },
+            },
+          ],
         },
       ],
     },
@@ -382,25 +438,4 @@ export const pillGroupSchema = [
     name: "clearChipText",
     description: "Text for the clear chip.",
   },
-];
-
-export const listItemSchema = [
-  {
-    type: "string",
-    label: "Heading",
-    name: "heading",
-  },
-  {
-    type: "string",
-    label: "Description",
-    name: "description",
-  },
-  // {
-  //   type: "string",
-  //   label: "Icon",
-  //   name: "icon",
-  //   ui: {
-  //     component: IconPickerInput,
-  //   },
-  // },
 ];
