@@ -29,12 +29,12 @@ export const ListItem = ({
       )}
       <div className='flex flex-col'>
         <h6
-          className='w-full p-1 text-base font-semibold dark:text-white'
+          className='w-full p-1 text-base font-semibold text-white'
           data-tina-field={tinaField(data, 'heading')}>
           {data.heading}
         </h6>
         <p
-          className='w-full p-1 text-sm font-light dark:text-gray-200'
+          className='w-full p-1 text-sm font-light text-gray-200'
           data-tina-field={tinaField(data, 'description')}>
           {data.description}
         </p>
