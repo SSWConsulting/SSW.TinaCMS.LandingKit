@@ -100,12 +100,13 @@ blocks:
               description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
               icon: AiOutlineCheck
     _template: cardCarousel
-  - heading: This is a title
+  - heading: Lorem Ipsum
+    maskImages: true
     logos:
       - logo: /uploads/microsoft.png
         altText: Microsoft
     _template: logoCarousel
-  - finalBreadcrumb: Final Breadcrumb
+  - finalBreadcrumb: Lorem Ipsum
     _template: breadcrumbs
 ---
 
