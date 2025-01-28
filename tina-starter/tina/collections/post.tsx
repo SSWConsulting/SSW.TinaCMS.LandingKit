@@ -413,37 +413,6 @@ const cardCarouselBlock: Template = {
   ],
 };
 
-// {
-//   type: "object",
-//   label: "Embedded Button",
-//   name: "embeddedButton",
-//   description: "The link appearing at the bottom of each card.",
-//   fields: [
-//     {
-//       type: "string",
-//       label: "Button Text",
-//       name: "buttonText",
-//       description: "Text to appear on the button.",
-//     },
-//     {
-//       type: "string",
-//       label: "Button Link",
-//       name: "buttonLink",
-//       description: "Link to the page the button will navigate to.",
-//     },
-// {
-//   type: "string",
-//   label: "Icon",
-//   name: "icon",
-//   ui: {
-//     // @ts-expect-error – component is not being recognized
-//     component: IconPickerInput,
-//   },
-// },
-//     ],
-//   },
-// },
-
 const blogPosts = {
   label: "Blog Posts",
   name: "post",
