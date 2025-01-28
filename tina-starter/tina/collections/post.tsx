@@ -85,7 +85,6 @@ const categoryGroupField = {
         },
       ],
       ui: {
-        // @ts-expect-error – component is not being recognized
         component: CarouselCardPicker({ outerBlocksFieldName: "blocks" }),
       },
     },
