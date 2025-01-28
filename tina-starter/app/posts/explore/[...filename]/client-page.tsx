@@ -1,10 +1,15 @@
 "use client";
-import Link from "next/link";
 import * as AntIcons from "react-icons/ai";
-import { Breadcrumbs, CardCarousel, LogoCarousel } from "ssw-tinacms-landingkit/dist/";
+import {
+  Breadcrumbs,
+  CardCarousel,
+  LogoCarousel,
+} from "ssw-tinacms-landingkit/dist/";
 import { useTina } from "tinacms/dist/react";
-import type { PostBlocks, PostQuery } from "../../../../tina/__generated__/types";
-
+import type {
+  PostBlocks,
+  PostQuery,
+} from "../../../../tina/__generated__/types";
 
 interface ClientPageProps {
   query: string;
@@ -34,32 +39,36 @@ interface BlocksProps {
 }
 
 const Blocks = ({ blocks }: BlocksProps) => {
-  if(!blocks) return <></>
-  return <>{blocks.map((block) => { 
-    if(!block) 
-    {
-      return <></>
-    }
-    switch(block.__typename) {
-      case "PostBlocksBreadcrumbs":
-        return  <Breadcrumbs 
-        data={
-          {
-          ...block,
-          //URL segment mapping is configured outside of the schema
-          breadcrumbReplacements: [{
-            from: "explore", to: "Explore"
-          }],
-          firstBreadcrumb: "Home",
-        }}  />
-      case "PostBlocksLogoCarousel":
-        return <LogoCarousel repeat={10} data={block} /> 
-      case "PostBlocksCardCarousel":
-        return <CardCarousel 
-        icons={AntIcons}
-        LinkComponent={(props)=>{return <Link href={props.href || ""}>{props.children}</Link>
-        }} data={block} /> 
-    }
-  })}
+  if (!blocks) return <></>;
+  return (
+    <>
+      {blocks.map((block) => {
+        if (!block) {
+          return <></>;
+        }
+        switch (block.__typename) {
+          case "PostBlocksBreadcrumbs":
+            return (
+              <Breadcrumbs
+                data={{
+                  ...block,
+                  //URL segment mapping is configured outside of the schema
+                  breadcrumbReplacements: [
+                    {
+                      from: "explore",
+                      to: "Explore",
+                    },
+                  ],
+                  firstBreadcrumb: "Home",
+                }}
+              />
+            );
+          case "PostBlocksLogoCarousel":
+            return <LogoCarousel repeat={10} data={block} />;
+          case "PostBlocksCardCarousel":
+            return <CardCarousel icons={AntIcons} data={block} />;
+        }
+      })}
     </>
-}
+  );
+};

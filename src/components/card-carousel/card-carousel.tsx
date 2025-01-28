@@ -1,10 +1,10 @@
 'use client';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { tinaField } from 'tinacms/dist/react';
 import {
   CardCarouselProps,
   CardCarouselProvider,
-  LinkComponentType,
   useCarouselContext,
 } from '../../component-providers';
 import { Button, ButtonColors } from '../button';
@@ -33,7 +33,6 @@ type Button = {
 };
 
 type CardCarouselData = {
-  linkComponent?: LinkComponentType;
   isStacked?: boolean | null;
   heading?: string | null;
   body?: string | null;
@@ -45,7 +44,7 @@ type CardCarouselData = {
 };
 
 const CardCarouselContents = ({ data }: { data: CardCarouselData }) => {
-  const { LinkComponent, icons } = useCarouselContext();
+  const { icons } = useCarouselContext();
   //Check if any images are used in cards (adds a placeholder to the other cards)
   const [hasImages, setHasImages] = useState(false);
   const { tabsData, activeCategory, categoryGroup } = useTabCarousel({
@@ -111,11 +110,9 @@ const CardCarouselContents = ({ data }: { data: CardCarouselData }) => {
               );
 
               return button.buttonLink ? (
-                <LinkComponent
-                  href={button.buttonLink}
-                  key={`link-wrapper-${index}`}>
+                <Link href={button.buttonLink} key={`link-wrapper-${index}`}>
                   {buttonElement}
-                </LinkComponent>
+                </Link>
               ) : (
                 <>{buttonElement}</>
               );
@@ -155,23 +152,15 @@ const CardCarouselContents = ({ data }: { data: CardCarouselData }) => {
   );
 };
 
-const defaultLinkComponent = ({ href, className, children }) => (
-  <a href={href} className={className}>
-    {children}
-  </a>
-);
-
 export const CardCarousel = (
   props: { data: CardCarouselData } & CardCarouselProps
 ) => {
   const icons = props.icons ?? {};
   const data = props.data;
-  const LinkComponent = props.LinkComponent ?? defaultLinkComponent;
   const iconColor = props.iconColor ?? 'text-sswRed';
   const callbackFunctions = props.callbackFunctions ?? {};
   return (
-    <CardCarouselProvider
-      value={{ LinkComponent, iconColor, callbackFunctions, icons }}>
+    <CardCarouselProvider value={{ iconColor, callbackFunctions, icons }}>
       <CardCarouselContents data={data} />
     </CardCarouselProvider>
   );
