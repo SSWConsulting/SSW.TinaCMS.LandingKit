@@ -424,17 +424,6 @@ const blogPosts = {
   path: "content/post",
   fields: [
     {
-      type: "string",
-      label: "Title",
-      name: "title",
-    },
-    {
-      type: "rich-text",
-      label: "Blog Post Body",
-      name: "body",
-      isBody: true,
-    },
-    {
       type: "object",
       list: true,
       label: "Sections",
