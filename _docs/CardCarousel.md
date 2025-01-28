@@ -143,7 +143,7 @@ import * as Icons from 'react-icons/<library>';
         - `filledChipText`:
         - `clearChipText`
       - `mediaType`: a string indicating the type of media that will be shown in the card ("image" or "youtube")
-      - `youtubeUrl`: 'https://www.youtube.com/watch?v=<video-id>',
+      - `youtubeUrl`: The name of the youtube video to embed at the top of the card (e.g. `https://www.youtube.com/watch?v=9bZkp7q19f0`)
       - `heading`: The heading at the top of the card
       - `description`: The flavor text for the card,
       - `featureList`: an object containing information
