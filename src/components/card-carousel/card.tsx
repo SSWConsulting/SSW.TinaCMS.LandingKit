@@ -105,12 +105,12 @@ const Card = ({ data, showPlaceholder }: CardProps) => {
         <div className='flex h-full flex-col-reverse justify-between'>
           <a
             href={data.embeddedButton.buttonLink}
-            className='pt-2 font-semibold text-white !decoration-gray-400 !decoration-1 hover:!decoration-sswRed'>
+            className='pt-2 font-semibold text-white !decoration-gray-400 !decoration-1 underline transition-colors hover:text-sswRed hover:!decoration-sswRed'>
             {data.embeddedButton.buttonText}
             <Icon
               icons={icons}
               data={{ name: data.embeddedButton.icon }}
-              className={cn(iconColor, 'inline size-4')}
+              className={cn('inline size-4')}
             />
           </a>
         </div>
@@ -124,7 +124,7 @@ export type CardOption = {
   classes: string;
 };
 
-export type CardOptions = 'Glass' | 'Transparent';
+export type CardOptions = 'Glass' | 'Transparent' | string;
 
 export const cardColors: ColorPickerOptions = {
   Glass: {

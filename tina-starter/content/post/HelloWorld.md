@@ -17,6 +17,9 @@ blocks:
         icon: AiFillAppstore
         image: /uploads/tina.jpeg
         altText: Lorem Ipsum
+        chips:
+          filledChipText: Lorem
+          clearChipText: Ipsum
         description: >-
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -37,6 +40,9 @@ blocks:
         icon: AiFillAppstore
         image: ''
         altText: Lorem Ipsum
+        chips:
+          filledChipText: Lorem
+          clearChipText: Ipsum
         description: >-
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -57,6 +63,9 @@ blocks:
         icon: AiFillAppstore
         image: /uploads/tina.jpeg
         altText: Lorem Ipsum
+        chips:
+          filledChipText: Lorem
+          clearChipText: Ipsum
         description: >-
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -76,6 +85,9 @@ blocks:
         heading: Lorem Ipsum
         icon: AiFillAppstore
         altText: Lorem Ipsum
+        chips:
+          filledChipText: Lorem
+          clearChipText: Ipsum
         description: >-
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua.

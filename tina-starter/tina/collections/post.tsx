@@ -7,6 +7,21 @@ import {
   IconPickerInput,
 } from "../../../dist";
 
+export const pillGroupSchema = [
+  {
+    type: "string",
+    label: "Filled Chip",
+    name: "filledChipText",
+    description: "Text for the filled chip.",
+  },
+  {
+    type: "string",
+    label: "Clear Chip",
+    name: "clearChipText",
+    description: "Text for the clear chip.",
+  },
+];
+
 const mediaTypeField = {
   type: "string",
   label: "Media Type",
@@ -324,6 +339,14 @@ const cardCarouselBlock: Template = {
           description: "Alternative text for the card.",
         },
         {
+          name: "chips",
+          label: "Chips",
+          type: "object",
+          description: "Add chips to the bottom of the media text block.",
+          //@ts-expect-error – fields are not being recognized
+          fields: pillGroupSchema,
+        },
+        {
           type: "string",
           label: "Description",
           name: "description",
@@ -352,6 +375,35 @@ const cardCarouselBlock: Template = {
                   description:
                     "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
                 },
+              },
+            },
+          ],
+        },
+        {
+          type: "object",
+          label: "Embedded Button",
+          name: "embeddedButton",
+          description: "The link appearing at the bottom of each card.",
+          fields: [
+            {
+              type: "string",
+              label: "Button Text",
+              name: "buttonText",
+              description: "Text to appear on the button.",
+            },
+            {
+              type: "string",
+              label: "Button Link",
+              name: "buttonLink",
+              description: "Link to the page the button will navigate to.",
+            },
+            {
+              type: "string",
+              label: "Icon",
+              name: "icon",
+              ui: {
+                // @ts-expect-error – component is not being recognized
+                component: IconPickerInput(AntIcons),
               },
             },
           ],
@@ -423,18 +475,3 @@ const blogPosts = {
   },
 };
 export default blogPosts;
-
-export const pillGroupSchema = [
-  {
-    type: "string",
-    label: "Filled Chip",
-    name: "filledChipText",
-    description: "Text for the filled chip.",
-  },
-  {
-    type: "string",
-    label: "Clear Chip",
-    name: "clearChipText",
-    description: "Text for the clear chip.",
-  },
-];
