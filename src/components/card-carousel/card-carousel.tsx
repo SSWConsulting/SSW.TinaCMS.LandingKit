@@ -143,13 +143,13 @@ const CardCarouselContents = ({ data }: { data: CardCarouselData }) => {
         )}
       </div>
       {data.cards && !data.isStacked && (
-        // <Container size="custom" padding="sm:px-8" className="py-4">
-        <CardList
-          activeCategory={activeCategory}
-          data={{ cards: cardSet, cardStyle: data.cardStyle ?? 'Glass' }}
-          hasImages={hasImages}
-        />
-        // </Container>
+        <div className='py-4'>
+          <CardList
+            activeCategory={activeCategory}
+            data={{ cards: cardSet, cardStyle: data.cardStyle ?? 'Glass' }}
+            hasImages={hasImages}
+          />
+        </div>
       )}
     </>
   );
