@@ -27,12 +27,14 @@ type Button = {
   buttonText?: string | null;
   //TODO: add field for callback functions
   buttonLink?: string | null;
+  callbackFunction?: string | null;
   icon?: string | null;
   iconFirst?: boolean | null;
   color?: ButtonColors | null;
 };
 
 type CardCarouselData = {
+  callbackFunctions?: Record<string, () => void>;
   isStacked?: boolean | null;
   heading?: string | null;
   body?: string | null;
@@ -44,7 +46,7 @@ type CardCarouselData = {
 };
 
 const CardCarouselContents = ({ data }: { data: CardCarouselData }) => {
-  const { icons } = useCarouselContext();
+  const { icons, callbackFunctions } = useCarouselContext();
   //Check if any images are used in cards (adds a placeholder to the other cards)
   const [hasImages, setHasImages] = useState(false);
   const { tabsData, activeCategory, categoryGroup } = useTabCarousel({
@@ -94,6 +96,12 @@ const CardCarouselContents = ({ data }: { data: CardCarouselData }) => {
         {data.buttons?.length > 0 && (
           <div className={'mb-4 mt-2 flex justify-center gap-3'}>
             {data.buttons?.map((button, index) => {
+              const onClick =
+                button.callbackFunction &&
+                callbackFunctions &&
+                callbackFunctions[button.callbackFunction]
+                  ? { onClick: callbackFunctions[button.callbackFunction] }
+                  : {};
               const iconInfo = button.icon
                 ? {
                     icon: () => (
@@ -105,7 +113,7 @@ const CardCarouselContents = ({ data }: { data: CardCarouselData }) => {
                 <Button
                   className='text-base font-semibold'
                   key={`image-text-button-${index}`}
-                  data={{ ...button, ...iconInfo }}
+                  data={{ ...button, ...iconInfo, ...onClick }}
                 />
               );
 

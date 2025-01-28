@@ -66,7 +66,17 @@ const Blocks = ({ blocks }: BlocksProps) => {
           case "PostBlocksLogoCarousel":
             return <LogoCarousel repeat={10} data={block} />;
           case "PostBlocksCardCarousel":
-            return <CardCarousel icons={AntIcons} data={block} />;
+            return (
+              <CardCarousel
+                icons={AntIcons}
+                callbackFunctions={{
+                  Placeholder: () => {
+                    alert("Replace this with your own callback function");
+                  },
+                }}
+                data={block}
+              />
+            );
         }
       })}
     </>
