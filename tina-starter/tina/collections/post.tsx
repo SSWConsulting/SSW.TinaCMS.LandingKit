@@ -1,12 +1,12 @@
 import * as AntIcons from "react-icons/ai";
-import { Template, TinaField } from "tinacms";
 import {
   buttonColors,
   cardColors,
   CarouselCardPicker,
   ColorPickerInput,
   IconPickerInput,
-} from "../../../dist";
+} from "ssw-tinacms-landingkit/dist";
+import { Template, TinaField } from "tinacms";
 
 export const buttonSchema = [
   {
@@ -380,7 +380,6 @@ const cardCarouselBlock: Template = {
           label: "Icon",
           name: "icon",
           ui: {
-            // @ts-expect-error – component is not being recognized
             component: IconPickerInput(AntIcons),
           },
         },
