@@ -183,6 +183,7 @@ const logoCarouselBlock: Template = {
     {
       name: "heading",
       type: "string",
+      label: "Heading",
     },
 
     {
@@ -192,14 +193,18 @@ const logoCarouselBlock: Template = {
     },
     {
       name: "logos",
+      label: "Logos",
       type: "object",
       list: true,
       fields: [
         {
+          label: "Logo",
           name: "logo",
           type: "image",
         },
         {
+          label: "Logo Alt text",
+          description: "Alt text for the logo image.",
           name: "altText",
           type: "string",
         },
