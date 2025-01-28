@@ -7,6 +7,9 @@ export default {
         sswRed: '#cc4141',
         sswDarkRed: '#8e2c2c',
       },
+      width: {
+        90: '22.5rem',
+      },
       borderWidth: {
         1: '1px',
       },
