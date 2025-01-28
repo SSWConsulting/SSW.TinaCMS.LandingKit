@@ -13,30 +13,32 @@ type Feature = {
   icon?: string | null;
   heading?: string | null;
 };
+
+type Chips = {
+  filledChipText?: string | null;
+  clearChipText?: string | null;
+};
 export type CardData = {
-  guid: string;
-  embed: string;
-  chips: string[];
-  mediaType: string;
-  youtubeUrl: string;
-  description: string;
-  heading: string;
-  contain: boolean;
-  icon?: string;
-  altText: string;
-  image: string;
-  cardOption: CardOptions;
-  featureList: {
-    features: Feature[];
-  };
-  embeddedButton: {
+  guid?: string | null;
+  chips?: Chips | null;
+  mediaType?: string | null;
+  youtubeUrl?: string | null;
+  description?: string | null;
+  heading?: string | null;
+  icon?: string | null;
+  altText?: string | null;
+  image?: string | null;
+  featureList?: {
+    features?: (Feature | null)[] | null;
+  } | null;
+  embeddedButton?: {
     buttonText?: string | null;
     buttonLink?: string | null;
     icon?: string | null;
-  };
+  } | null;
 };
 type CardProps = {
-  data: CardData;
+  data: CardData & { cardOption: CardOptions };
   showPlaceholder: boolean;
 };
 
@@ -75,7 +77,7 @@ const Card = ({ data, showPlaceholder }: CardProps) => {
               onError={() => setUsePlaceholder(true)}
               alt={data.altText ?? 'Card Image'}
               fill={true}
-              className={data.contain ? 'object-contain' : 'object-cover'}
+              className={'object-cover'}
             />
           </div>
         )
