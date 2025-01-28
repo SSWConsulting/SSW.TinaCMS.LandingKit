@@ -10,6 +10,14 @@ import * as Icons from 'react-icons/<library>';
 
 <CardCarousel
   icons={Icons}
+  callbackFunctions={{
+    '<callback-function-1>': () => {
+      //behaviour
+    },
+    '<callback-function-n>': () => {
+      //behaviour
+    },
+  }}
   data={
     {
       // ...<data from tina>}
@@ -21,6 +29,11 @@ import * as Icons from 'react-icons/<library>';
 
 <CardCarousel
   icons={AntIcons}
+  callbackFunctions={{
+    'Alert user': () => {
+      console.log('you clicked the button');
+    },
+  }}
   data={{
     categoryGroup: [
       {
@@ -43,13 +56,14 @@ import * as Icons from 'react-icons/<library>';
     buttons: [
       {
         buttonText: '<button-1>',
-        buttonLink: '/learn-more',
+        callbackFunction: 'Alert user',
         icon: '<icon-name>',
         color: 'Primary',
       },
       {
         buttonText: '<button-n>',
         buttonLink: '<url>',
+        callbackFunction: null,
         icon: '<icon-name>',
         color: 'Secondary',
       },
@@ -134,6 +148,7 @@ import * as Icons from 'react-icons/<library>';
     - `buttons`: an array of buttons that will display beneath the card list
       - `buttonText`: the text that will show inside of the button
       - `buttonLink`: an optional hyperlink to wrap the button with
+      - `callbackFunction`: the callback function that will fire when the button is clicked (passed in via `callbackFunctions`)
       - `icon`: the name of the icon component that will display next to the button
       - `color`: a string indicating the style of the button ("Primary" or "Secondary")
     - `cardStyle`: a string indicating the style for the cards ("Glass" or "Transparent")
@@ -143,7 +158,7 @@ import * as Icons from 'react-icons/<library>';
         - `filledChipText`:
         - `clearChipText`
       - `mediaType`: a string indicating the type of media that will be shown in the card ("image" or "youtube")
-      - `youtubeUrl`: The name of the youtube video to embed at the top of the card (e.g. `https://www.youtube.com/watch?v=9bZkp7q19f0`)
+      - `youtubeUrl`: https://www.youtube.com/watch?v=<video-id>,
       - `heading`: The heading at the top of the card
       - `description`: The flavor text for the card,
       - `featureList`: an object containing information
@@ -156,3 +171,4 @@ import * as Icons from 'react-icons/<library>';
         - `buttonLink`: The name of the icon from the `icons` field the button uses
         - `icon`: The name of the icon from the `icons` field the button uses
 - `icons`: a dictionary containing the icons the user can chose from as React components
+- `callbackFunctions`: A dictionary of callback functions the user can bind to any button in `buttons`
