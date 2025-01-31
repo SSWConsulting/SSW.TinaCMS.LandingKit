@@ -1,12 +1,12 @@
 import * as AntIcons from "react-icons/ai";
+import { Template, TinaField } from "tinacms";
 import {
   buttonColors,
   cardColors,
   CarouselCardPicker,
   ColorPickerInput,
   IconPickerInput,
-} from "ssw-tinacms-landingkit/dist";
-import { Template, TinaField } from "tinacms";
+} from "../../node_modules/ssw-tinacms-landingkit/dist";
 
 export const buttonSchema = [
   {
@@ -289,6 +289,12 @@ const defaultCardBlock = {
   },
 };
 
+const buttonBlock: Template = {
+  label: "Button Block",
+  name: "button",
+  fields: buttonSchema as TinaField[],
+};
+
 const cardCarouselBlock: Template = {
   label: "Card Carousel",
   ui: defaultCardBlock,
@@ -380,6 +386,7 @@ const cardCarouselBlock: Template = {
           label: "Icon",
           name: "icon",
           ui: {
+            // @ts-expect-error – component is not being recognized
             component: IconPickerInput(AntIcons),
           },
         },
@@ -480,7 +487,12 @@ const blogPosts = {
       list: true,
       label: "Sections",
       name: "blocks",
-      templates: [breadcrumbBlock, logoCarouselBlock, cardCarouselBlock],
+      templates: [
+        breadcrumbBlock,
+        logoCarouselBlock,
+        cardCarouselBlock,
+        buttonBlock,
+      ],
     },
   ],
   ui: {

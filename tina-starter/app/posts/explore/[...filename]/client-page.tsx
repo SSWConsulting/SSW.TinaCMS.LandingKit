@@ -2,6 +2,7 @@
 import * as AntIcons from "react-icons/ai";
 import {
   Breadcrumbs,
+  Button,
   CardCarousel,
   LogoCarousel,
 } from "ssw-tinacms-landingkit/dist/";
@@ -77,6 +78,8 @@ const Blocks = ({ blocks }: BlocksProps) => {
                 data={block}
               />
             );
+          case "PostBlocksButton":
+            return <Button icons={AntIcons} data={block} />;
         }
       })}
     </>
