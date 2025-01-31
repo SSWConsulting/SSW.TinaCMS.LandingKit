@@ -22,7 +22,7 @@ export const Button = ({
   icons,
 }: {
   icons: IconDictionary;
-  className: string;
+  className?: string;
   data: TemplateButtonOptions;
 } & ButtonProps) => {
   const { iconFirst, buttonText, icon } = data;
