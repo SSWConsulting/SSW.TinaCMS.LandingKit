@@ -80,20 +80,15 @@ export default function RootLayout({
 
 ## Components
 
-| Component Name                | Preview Image                                                  |
-| ----------------------------- | -------------------------------------------------------------- |
-| LogoCarousel                  | ![Logo Carousel](_docs/images/LogoCarousel.jpg)                |
-| Breadcrumbs                   | ![Breadcrumbs](_docs/images/Breadcrumbs.jpg)                   |
-| CardCarousel                  | ![Card Carousel](_docs/images/CardCarousel.jpg)                |
-| CardCarousel (stacked layout) | ![Card Carousel Stacked](_docs/images/CardCarouselStacked.jpg) |
-| Button                        | ![Button](_docs/images/Button.png)                             |
-
-### Documentation
-
-- [Breadcrumbs](_docs/Breadcrumbs.md)
-- [Logo Carousel](_docs/LogoCarousel.md)
-- [Card Carousel](_docs/CardCarousel.md)
-- [Button](_docs/Button.md)
+| Component Name                                         | Preview Image                                                  |
+| ------------------------------------------------------ | -------------------------------------------------------------- |
+| [Logo Carousel](_docs/LogoCarousel.md)                 | ![Logo Carousel](_docs/images/LogoCarousel.jpg)                |
+| [Breadcrumbs](_docs/Breadcrumbs.md)                    | ![Breadcrumbs](_docs/images/Breadcrumbs.jpg)                   |
+| [CardCarousel](_docs/CardCarousel.md)                  | ![Card Carousel](_docs/images/CardCarousel.jpg)                |
+| [CardCarousel (stacked layout)](_docs/CardCarousel.md) | ![Card Carousel Stacked](_docs/images/CardCarouselStacked.jpg) |
+| [Button](_docs/Button.md)                              | ![Button](_docs/images/Button.png)                             |
+| [Icon Picker Input](_docs/IconPickerInput.md)          | ![Icon Picker Input](_docs/images//IconPickerInput.png)        |
+| **TODO**: Color Picker Input                           | ![Color Picker Input](_docs/images/ColorPickerInput.jpg)       |
 
 ### Styling
 
