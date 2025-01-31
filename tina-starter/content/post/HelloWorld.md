@@ -3,6 +3,10 @@ breadcrumbs:
   finalBreadcrumb: This is Configureable
 title: 'Hello, World!!'
 blocks:
+  - buttonText: Lorem Ipsum
+    callbackFunction: Placeholder
+    color: Primary
+    _template: button
   - isStacked: false
     heading: Lorem Ipsum
     isH1: false
@@ -11,6 +15,7 @@ blocks:
       tempor incididunt ut labore et dolore magna aliqua.
     buttons:
       - buttonText: Hello
+        callbackFunction: Placeholder
       - buttonText: Ipsum
     cards:
       - guid: null
