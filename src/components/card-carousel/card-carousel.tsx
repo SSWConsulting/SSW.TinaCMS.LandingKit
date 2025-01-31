@@ -8,7 +8,6 @@ import {
   useCarouselContext,
 } from '../../component-providers';
 import { Button, ButtonColors } from '../button';
-import { Icon } from '../subtemplates/tina-form-elements/icon';
 import { Card, CardData, CardOptions } from './card';
 import { CardList } from './layouts/card-carousel-slideshow';
 import { Tabs, useTabCarousel } from './layouts/card-carousel-tabs';
@@ -102,18 +101,12 @@ const CardCarouselContents = ({ data }: { data: CardCarouselData }) => {
                 callbackFunctions[button.callbackFunction]
                   ? { onClick: callbackFunctions[button.callbackFunction] }
                   : {};
-              const iconInfo = button.icon
-                ? {
-                    icon: () => (
-                      <Icon icons={icons} data={{ name: button.icon }} />
-                    ),
-                  }
-                : { icon: undefined };
               const buttonElement = (
                 <Button
                   className='text-base font-semibold'
                   key={`image-text-button-${index}`}
-                  data={{ ...button, ...iconInfo, ...onClick }}
+                  icons={icons}
+                  data={{ ...button, ...onClick }}
                 />
               );
 

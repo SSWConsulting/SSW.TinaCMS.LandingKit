@@ -1,47 +1,46 @@
 import { ButtonProps } from '@headlessui/react';
-import React, {
-  HtmlHTMLAttributes,
-  MouseEvent,
-  useEffect,
-  useState,
-} from 'react';
+import Link from 'next/link';
+import React, { MouseEvent, useEffect, useState } from 'react';
 import { tinaField } from 'tinacms/dist/react';
 import { cn } from '../internal/shadcn/utils';
 import { ColorPickerOptions } from './subtemplates/tina-form-elements/color-selector';
+import { Icon, IconDictionary } from './subtemplates/tina-form-elements/icon';
 
 export type ButtonColors = 'Primary' | 'Secondary' | string;
 export interface TemplateButtonOptions extends ButtonTinaFields {
-  buttonText?: string;
-  color?: ButtonColors;
-  iconFirst?: boolean;
-  icon?: React.FC<HtmlHTMLAttributes<HTMLBaseElement>>;
-  showLeadCaptureForm?: boolean;
-  onClick?: () => void;
+  buttonText?: string | null;
+  color?: ButtonColors | null;
+  iconFirst?: boolean | null;
+  buttonLink?: string | null;
+  icon?: string | null;
+  showLeadCaptureForm?: boolean | null;
+  onClick?: null | (() => void);
 }
 export const Button = ({
   className,
   data,
+  icons,
 }: {
+  icons: IconDictionary;
   className: string;
   data: TemplateButtonOptions;
 } & ButtonProps) => {
-  const Icon = data?.icon;
-  const { iconFirst, buttonText } = data;
+  const { iconFirst, buttonText, icon } = data;
   const color = data.color ?? 'Primary';
+  const button = (
+    <RippleButton
+      onClick={data.onClick}
+      textTinaField={tinaField(data)}
+      className={className}
+      fontClassName={cn('gap-0.5', iconFirst ? 'flex-row' : 'flex-row-reverse')}
+      variant={color}>
+      <Icon icons={icons} data={{ name: icon }} />
+      {buttonText}
+    </RippleButton>
+  );
   return (
     <>
-      <RippleButton
-        onClick={data.onClick}
-        textTinaField={tinaField(data, 'buttonText')}
-        className={className}
-        fontClassName={cn(
-          'gap-0.5',
-          iconFirst ? 'flex-row' : 'flex-row-reverse'
-        )}
-        variant={color}>
-        {Icon && <Icon />}
-        {buttonText}
-      </RippleButton>
+      {data.buttonLink ? <Link href={data.buttonLink}>{button}</Link> : button}
     </>
   );
 };
