@@ -62,17 +62,17 @@ import {
 const buttonSchema = [
   {
     type: 'string',
-    label: 'Button Text',
+    label: '<button-text-field-label>',
     name: 'buttonText',
   },
   {
     type: 'string',
-    label: 'Button Link',
+    label: '<button-link-field-label>',
     name: 'buttonLink',
   },
   {
     type: 'string',
-    label: 'Icon',
+    label: '<button-icon-field-label>',
     name: 'icon',
     ui: {
       component: IconPickerInput(AntIcons),
@@ -80,19 +80,19 @@ const buttonSchema = [
   },
   {
     type: 'string',
-    label: 'Callback Function',
+    label: '<callback-function-dropdown-label>',
     name: 'callbackFunction',
-    options: ['Placeholder'],
+    options: ['<keys-in-your-callback-function-dictionary>'],
   },
   {
     type: 'boolean',
-    label: 'Icon First',
+    label: '<icon-first-field-label>',
     name: 'iconFirst',
-    description: 'Place the icon to the left of the button text.',
+    description: '<icon-first-field-description>',
   },
   {
     type: 'string',
-    label: 'Color',
+    label: '<color-field-label>',
     name: 'color',
     ui: {
       component: ColorPickerInput(buttonColors),
