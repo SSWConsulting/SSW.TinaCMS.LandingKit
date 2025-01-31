@@ -20,6 +20,12 @@ interface ClientPageProps {
   data: PostQuery;
 }
 
+const callbackFunctions = {
+  Placeholder: () => {
+    alert("Replace this with your own callback function");
+  },
+};
+
 export default function Post(props: ClientPageProps) {
   // data passes though in production mode and data is updated to the sidebar data in edit-mode
   const { data } = useTina({
@@ -70,16 +76,18 @@ const Blocks = ({ blocks }: BlocksProps) => {
             return (
               <CardCarousel
                 icons={AntIcons}
-                callbackFunctions={{
-                  Placeholder: () => {
-                    alert("Replace this with your own callback function");
-                  },
-                }}
+                callbackFunctions={callbackFunctions}
                 data={block}
               />
             );
           case "PostBlocksButton":
-            return <Button icons={AntIcons} data={block} />;
+            return (
+              <Button
+                icons={AntIcons}
+                callbackFunctions={callbackFunctions}
+                data={block}
+              />
+            );
         }
       })}
     </>
