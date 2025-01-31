@@ -80,18 +80,20 @@ export default function RootLayout({
 
 ## Components
 
-| Component Name                | Preview Image                                                 |
-| ----------------------------- | ------------------------------------------------------------- |
-| LogoCarousel                  | ![Logo Carousel](_docs/images/LogoCarousel.jpg)               |
-| Breadcrumbs                   | ![Breadcrumbs](_docs/images/Breadcrumbs.jpg)                  |
-| CardCarousel                  | ![Card Carousel](_docs/images/CardCarousel.jpg)               |
-| CardCarousel (stacked layout) | [Card Carousel Stacked](_docs/images/CardCarouselStacked.jpg) |
+| Component Name                | Preview Image                                                  |
+| ----------------------------- | -------------------------------------------------------------- |
+| LogoCarousel                  | ![Logo Carousel](_docs/images/LogoCarousel.jpg)                |
+| Breadcrumbs                   | ![Breadcrumbs](_docs/images/Breadcrumbs.jpg)                   |
+| CardCarousel                  | ![Card Carousel](_docs/images/CardCarousel.jpg)                |
+| CardCarousel (stacked layout) | ![Card Carousel Stacked](_docs/images/CardCarouselStacked.jpg) |
+| Button                        | ![Button](_docs/images/Button.png)                             |
 
 ### Documentation
 
 - [Breadcrumbs](_docs/Breadcrumbs.md)
 - [Logo Carousel](_docs/LogoCarousel.md)
 - [Card Carousel](_docs/CardCarousel.md)
+- [Button](_docs/Button.md)
 
 ### Styling
 
