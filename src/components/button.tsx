@@ -2,34 +2,41 @@ import { ButtonProps } from '@headlessui/react';
 import Link from 'next/link';
 import React, { MouseEvent, useEffect, useState } from 'react';
 import { tinaField } from 'tinacms/dist/react';
+import { CallbackFunctions } from '../component-providers';
 import { cn } from '../internal/shadcn/utils';
 import { ColorPickerOptions } from './subtemplates/tina-form-elements/color-selector';
 import { Icon, IconDictionary } from './subtemplates/tina-form-elements/icon';
-
 export type ButtonColors = 'Primary' | 'Secondary' | string;
 export interface TemplateButtonOptions extends ButtonTinaFields {
   buttonText?: string | null;
   color?: ButtonColors | null;
   iconFirst?: boolean | null;
+  callbackFunction?: string | null;
   buttonLink?: string | null;
   icon?: string | null;
   showLeadCaptureForm?: boolean | null;
-  onClick?: null | (() => void);
 }
 export const Button = ({
   className,
   data,
+  callbackFunctions,
   icons,
 }: {
-  icons: IconDictionary;
+  icons?: IconDictionary;
   className?: string;
+  callbackFunctions?: CallbackFunctions | null;
   data: TemplateButtonOptions;
 } & ButtonProps) => {
   const { iconFirst, buttonText, icon } = data;
   const color = data.color ?? 'Primary';
   const button = (
     <RippleButton
-      onClick={data.onClick}
+      onClick={(e) => {
+        if (!data.callbackFunction) return;
+        if (!callbackFunctions) return;
+        if (!callbackFunctions[data.callbackFunction]) return;
+        callbackFunctions[data.callbackFunction]();
+      }}
       textTinaField={tinaField(data)}
       className={className}
       fontClassName={cn('gap-0.5', iconFirst ? 'flex-row' : 'flex-row-reverse')}
@@ -109,7 +116,7 @@ const RippleButton = React.forwardRef<HTMLButtonElement, RippleButtonProps>(
       <button
         onClick={(e) => onClick(e)}
         className={cn(
-          'text-primary relative cursor-pointer items-center justify-center overflow-hidden rounded-md px-6 py-3 text-center',
+          'text-primary font-semibold relative cursor-pointer items-center justify-center overflow-hidden rounded-md px-6 py-3 text-center',
           '',
           buttonColors[variant].classes,
           className

@@ -10,7 +10,7 @@ export type BreadcrumbProps = {
   separatorSize?: `size-${number}`;
 };
 
-type CallbackFunctions = {
+export type CallbackFunctions = {
   [key: string]: () => void;
 };
 

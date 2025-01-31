@@ -103,10 +103,11 @@ const CardCarouselContents = ({ data }: { data: CardCarouselData }) => {
                   : {};
               const buttonElement = (
                 <Button
-                  className='text-base font-semibold'
+                  className='text-base'
                   key={`image-text-button-${index}`}
                   icons={icons}
-                  data={{ ...button, ...onClick }}
+                  callbackFunctions={callbackFunctions}
+                  data={button}
                 />
               );
 
