@@ -22,7 +22,7 @@ const callbackFunctions = {
         data={block}
       />
 
-// manual setup through
+// manual setup
   <Button
     icons={AntIcons}
     callbackFunctions={callbackFunctions}
