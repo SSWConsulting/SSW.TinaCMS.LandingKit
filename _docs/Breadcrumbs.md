@@ -1,4 +1,3 @@
-
 #### Breadcrumbs
 
 A navigation component that shows the current page's location within the navigational hierarchy.
@@ -6,7 +5,7 @@ A navigation component that shows the current page's location within the navigat
 ```tsx
 // using with TinaCMS
 import { Breadcrumbs } from "ssw-tinacms-landingkit/dist/";
-<Breadcrumbs 
+<Breadcrumbs
   data={{
     // ...<data from tina>
     firstBreadcrumb: "<first breadcrumb title>"
@@ -17,7 +16,7 @@ import { Breadcrumbs } from "ssw-tinacms-landingkit/dist/";
 />
 
 // using with out TinaCMS
-<Breadcrumbs 
+<Breadcrumbs
   data={{
     finalBreadcrumb: "<custom final breadcrumb title>"
     firstBreadcrumb: "<first breadcrumb title>",
@@ -28,16 +27,19 @@ import { Breadcrumbs } from "ssw-tinacms-landingkit/dist/";
 />
 
 ```
+
 ##### Props
+
 - `data`: Object containing the breadcrumb content
   - `finalBreadcrumb`: Text for the current page (supports contextual editing when returned from TinaCMS)
   - `firstBreadcrumb`: Text for the first breadcrumb item
   - `breadcrumbReplacements`: a dictionary containing the title mapping for each url segment
- 
+
 ###### Optional
+
 - `hoverColor`: the color links will glow when hovered by the user
   - **example prop**: `hover:text-<color>`
-- `separatorSize`: the size of the breadcrumb separator 
+- `separatorSize`: the size of the breadcrumb separator
   - **example prop**: `size-<size>`
 - `textSize`: The size of links and the final breadcrumb text
   - **example prop**: `text-<size>`
@@ -45,3 +47,28 @@ import { Breadcrumbs } from "ssw-tinacms-landingkit/dist/";
   - **example prop**: `text-<color>`
 - `textUnderlineOffset`: The spacing between the underline and text for breadcrumb links
   - **example prop**: `underline-offset-<number>`
+
+###### Example Schema Configuration
+
+```tsx
+import { Template } from 'tinacms';
+
+export const breadcrumbBlock: Template = {
+  label: 'Breadcrumbs',
+  name: 'breadcrumbs',
+  ui: {
+    defaultItem: () => {
+      return {
+        finalBreadcrumb: 'Final Breadcrumb',
+      };
+    },
+  },
+  fields: [
+    {
+      name: 'finalBreadcrumb',
+      type: 'string',
+      label: 'Final Breadcrumb',
+    },
+  ],
+};
+```
