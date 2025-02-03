@@ -148,8 +148,9 @@ import * as Icons from 'react-icons/<library>';
     - `buttons`: an array of buttons that will display beneath the card list
       - `buttonText`: the text that will show inside of the button
       - `buttonLink`: an optional hyperlink to wrap the button with
-      - `callbackFunction`: the callback function that will fire when the button is clicked (passed in via `callbackFunctions`)
+      - `callbackFunction`: a string matching the key of the callback function that fires on click (passed in via `callbackFunctions`)
       - `icon`: the name of the icon component that will display next to the button
+      - `iconFirst`: a boolean indicating whether the embedded icon (if present) will display before or after the button text
       - `color`: a string indicating the style of the button ("Primary" or "Secondary")
     - `cardStyle`: a string indicating the style for the cards ("Glass" or "Transparent")
     - `cards`:
