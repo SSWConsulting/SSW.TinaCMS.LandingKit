@@ -155,8 +155,8 @@ import * as Icons from 'react-icons/<library>';
     - `cards`:
       - `guid`: an ID representing the card (used in the categoryGroup field)
       - `chips`: an object containing the text for the pills below the button image
-        - `filledChipText`:
-        - `clearChipText`
+        - `filledChipText`: the text in the left-hand filled chip
+        - `clearChipText`: the text in the right-hand clear chip
       - `mediaType`: a string indicating the type of media that will be shown in the card ("image" or "youtube")
       - `youtubeUrl`: https://www.youtube.com/watch?v=<video-id>,
       - `heading`: The heading at the top of the card
