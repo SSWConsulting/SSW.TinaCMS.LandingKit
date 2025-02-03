@@ -3,6 +3,8 @@ breadcrumbs:
   finalBreadcrumb: This is Configureable
 title: 'Hello, World!!'
 blocks:
+  - finalBreadcrumb: Lorem Ipsum
+    _template: breadcrumbs
   - topLabel:
       labelText: Lorem Ipsum
     heading: Lorem Ipsum
@@ -146,7 +148,5 @@ blocks:
       - logo: /uploads/microsoft.png
         altText: Microsoft
     _template: logoCarousel
-  - finalBreadcrumb: Lorem Ipsum
-    _template: breadcrumbs
 ---
 
