@@ -3,6 +3,37 @@ breadcrumbs:
   finalBreadcrumb: This is Configureable
 title: 'Hello, World!!'
 blocks:
+  - topLabel:
+      labelText: Lorem Ipsum
+    heading: Lorem Ipsum
+    isH1: false
+    description: >
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua.
+    chips:
+      filledChipText: Lorem
+      clearChipText: Ipsum
+    featureColumns:
+      twoColumns: true
+      features:
+        - heading: Lorem
+          description: 'Ipsum dolor sit amet, consectetur adipiscing elit.'
+          icon: AiFillAppstore
+        - heading: Ipsum
+          description: 'Lorem dolor sit amet, consectetur adipiscing elit.'
+          icon: AiFillAppstore
+    buttons:
+      - buttonText: Lorem Ipsum
+      - buttonText: Dolor Sit
+    mediaConfiguration:
+      mediaType: image
+      placement: Right
+      verticalPlacement: Centered
+      mobilePlacement: Above
+      imageSource: /uploads/tina.jpeg
+      youtubeUrl: 'https://youtu.be/ocbPkNROnlc'
+      altText: llama
+    _template: imageTextBlock
   - buttonText: Lorem Ipsum
     callbackFunction: Placeholder
     color: Primary
@@ -17,6 +48,7 @@ blocks:
       - buttonText: Hello
         callbackFunction: Placeholder
       - buttonText: Ipsum
+    cardStyle: Transparent
     cards:
       - guid: null
         mediaType: image
