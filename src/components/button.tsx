@@ -4,8 +4,8 @@ import React, { MouseEvent, useEffect, useState } from 'react';
 import { tinaField } from 'tinacms/dist/react';
 import { CallbackFunctions } from '../component-providers';
 import { cn } from '../internal/shadcn/utils';
-import { ColorPickerOptions } from './subtemplates/tina-form-elements/color-selector';
-import { Icon, IconDictionary } from './subtemplates/tina-form-elements/icon';
+import { ColorPickerOptions } from './sub-templates/tina-form-elements/color-selector';
+import { Icon, IconDictionary } from './sub-templates/tina-form-elements/icon';
 export type ButtonColors = 'Primary' | 'Secondary' | string;
 export interface TemplateButtonOptions extends ButtonTinaFields {
   buttonText?: string | null;

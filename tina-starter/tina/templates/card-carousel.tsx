@@ -7,50 +7,10 @@ import {
   IconPickerInput,
 } from "../../node_modules/ssw-tinacms-landingkit/dist";
 import { buttonSchema } from "./button";
+import listItemSchema from "./subtemplates/list-item";
+import mediaTypeField from "./subtemplates/media-type";
+import pillGroupSchema from "./subtemplates/pill-group";
 
-export const pillGroupSchema = [
-  {
-    type: "string",
-    label: "Filled Chip",
-    name: "filledChipText",
-    description: "Text for the filled chip.",
-  },
-  {
-    type: "string",
-    label: "Clear Chip",
-    name: "clearChipText",
-    description: "Text for the clear chip.",
-  },
-];
-
-export const listItemSchema = [
-  {
-    type: "string",
-    label: "Heading",
-    name: "heading",
-  },
-  {
-    type: "string",
-    label: "Description",
-    name: "description",
-  },
-  {
-    type: "string",
-    label: "Icon",
-    name: "icon",
-    ui: {
-      component: IconPickerInput(AntIcons),
-    },
-  },
-];
-
-const mediaTypeField = {
-  type: "string",
-  label: "Media Type",
-  name: "mediaType",
-  description: "Choose between image or YouTube video",
-  options: ["image", "youtube"],
-};
 export const youtubeEmbedField: TinaField = {
   type: "string",
   label: "YouTube URL",

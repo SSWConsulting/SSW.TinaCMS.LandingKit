@@ -1,10 +1,10 @@
-"use client";
-import { useInView } from "framer-motion";
-import Image from "next/image";
+'use client';
+import { useInView } from 'framer-motion';
+import Image from 'next/image';
 
-import { UseInViewOptions } from "framer-motion";
-import React, { useEffect, useRef } from "react";
-import { ColorPickerOptions } from "../components/subtemplates/tina-form-elements/color-selector";
+import { UseInViewOptions } from 'framer-motion';
+import React, { useEffect, useRef } from 'react';
+import { ColorPickerOptions } from '../components/sub-templates/tina-form-elements/color-selector';
 
 export type BackgroundData = {
   background?: {
@@ -17,13 +17,13 @@ export type BackgroundData = {
 const ComponentWrapper = ({
   data,
   children,
-  fadeInMargin = "-100px",
+  fadeInMargin = '-100px',
   className,
   backgroundOptions,
 }: {
   data: BackgroundData;
   children: React.ReactNode;
-  fadeInMargin?: UseInViewOptions["margin"];
+  fadeInMargin?: UseInViewOptions['margin'];
   className?: string;
   backgroundOptions: ColorPickerOptions;
 }) => {
@@ -39,9 +39,9 @@ const ComponentWrapper = ({
       }
     };
     updateWidth();
-    window.addEventListener("resize", updateWidth);
+    window.addEventListener('resize', updateWidth);
     return () => {
-      window.removeEventListener("resize", updateWidth);
+      window.removeEventListener('resize', updateWidth);
     };
   }, []);
 
@@ -57,15 +57,13 @@ const ComponentWrapper = ({
     <section
       className={`
         ${backgroundOptions[data.background.backgroundColor].classes} w-full relative overflow-visible
-        ${className}`
-      }
-    >
+        ${className}`}>
       {data.background?.bleed && data.background?.backgroundImage ? (
         <Image
           ref={bleed}
           src={data.background?.backgroundImage}
-          className="absolute w-full z-0 overflow-visible grid inset-0 place-items-center"
-          alt="background image"
+          className='absolute w-full z-0 overflow-visible grid inset-0 place-items-center'
+          alt='background image'
           width={
             (elementWidth || bleed.current?.getBoundingClientRect()?.width) ?? 0
           }
@@ -88,18 +86,17 @@ const ComponentWrapper = ({
       )}
       <section
         ref={ref}
-        className={`relative transition-opacity duration-300 z-30 ${isInInitialViewport === false ? "opacity-0" : ""} ${!isInInitialViewport && isInView ? "opacity-100" : ""}`}
+        className={`relative transition-opacity duration-300 z-30 ${isInInitialViewport === false ? 'opacity-0' : ''} ${!isInInitialViewport && isInView ? 'opacity-100' : ''}`}
         style={
           data.background?.bleed
             ? {}
             : {
                 backgroundImage: `url(${data.background?.backgroundImage})`,
-                backgroundSize: "cover",
-                backgroundRepeat: "no-repeat",
-                backgroundPosition: "center",
+                backgroundSize: 'cover',
+                backgroundRepeat: 'no-repeat',
+                backgroundPosition: 'center',
               }
-        }
-      >
+        }>
         {children}
       </section>
     </section>

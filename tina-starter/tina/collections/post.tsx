@@ -1,6 +1,7 @@
 import { breadcrumbBlock } from "../templates/breadcrumbs";
 import { buttonBlock } from "../templates/button";
 import { cardCarouselBlock } from "../templates/card-carousel";
+import { imageTextBlockSchema } from "../templates/image-text-block";
 import { logoCarouselBlock } from "../templates/logo-carousel";
 
 const blogPosts = {
@@ -18,6 +19,7 @@ const blogPosts = {
         logoCarouselBlock,
         cardCarouselBlock,
         buttonBlock,
+        imageTextBlockSchema,
       ],
     },
   ],

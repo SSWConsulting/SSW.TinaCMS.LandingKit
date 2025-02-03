@@ -4,8 +4,9 @@ import {
   Breadcrumbs,
   Button,
   CardCarousel,
+  ImageTextBlock,
   LogoCarousel,
-} from "ssw-tinacms-landingkit/dist/";
+} from "ssw-tinacms-landingkit";
 import { useTina } from "tinacms/dist/react";
 import type {
   PostBlocks,
@@ -87,6 +88,14 @@ const Blocks = ({ blocks }: BlocksProps) => {
                 callbackFunctions={callbackFunctions}
                 data={block}
               />
+            );
+          case "PostBlocksImageTextBlock":
+            return (
+              <ImageTextBlock
+                icons={AntIcons}
+                callbackFunctions={callbackFunctions}
+                data={block}
+              ></ImageTextBlock>
             );
         }
       })}

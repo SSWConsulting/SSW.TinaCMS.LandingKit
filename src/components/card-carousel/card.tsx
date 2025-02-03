@@ -3,10 +3,10 @@ import { useState } from 'react';
 import { tinaField } from 'tinacms/dist/react';
 import { useCarouselContext } from '../../component-providers';
 import { cn } from '../../internal/shadcn/utils';
-import { ListItem } from '../subtemplates/list-item';
-import { PillGroup } from '../subtemplates/pill-group';
-import { ColorPickerOptions } from '../subtemplates/tina-form-elements/color-selector';
-import { Icon } from '../subtemplates/tina-form-elements/icon';
+import { ListItem } from '../sub-templates/list-item';
+import { PillGroup } from '../sub-templates/pill-group';
+import { ColorPickerOptions } from '../sub-templates/tina-form-elements/color-selector';
+import { Icon } from '../sub-templates/tina-form-elements/icon';
 
 type Feature = {
   description?: string | null;
@@ -14,7 +14,7 @@ type Feature = {
   heading?: string | null;
 };
 
-type Chips = {
+export type Chips = {
   filledChipText?: string | null;
   clearChipText?: string | null;
 };
