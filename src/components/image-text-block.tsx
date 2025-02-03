@@ -30,21 +30,23 @@ type ImageTextBlockProps = {
       labelText?: string | null;
     } | null;
     isH1?: boolean | null;
-    chips: Chips;
+    chips?: Chips | null;
     featureColumns?: {
       twoColumns?: boolean | null;
       features?:
         | ({
             heading?: string | null;
-            description: string;
-            icon: string;
+            description?: string | null;
+            icon?: string | null;
           } | null)[]
         | null;
-    };
-    buttons: ({
-      buttonText?: string | null;
-      buttonLink?: string | null;
-    } | null)[];
+    } | null;
+    buttons?:
+      | ({
+          buttonText?: string | null;
+          buttonLink?: string | null;
+        } | null)[]
+      | null;
   };
   icons?: IconDictionary;
   callbackFunctions?: CallbackFunctions;

@@ -1,7 +1,7 @@
 {
   "type": "module",
   "name": "ssw-tinacms-landingkit",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "A set of high quality react components, and compatible TinaCMS schema definitions.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
