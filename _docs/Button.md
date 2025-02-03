@@ -40,7 +40,7 @@ const callbackFunctions = {
 
 - `data`: Object containing the breadcrumb content
   - `callbackFunction`: The name of the callback function from the dictionary the button will invoke on click
-  - `color`: the variant of the button (Primary | Secondary)
+  - `color`: the variant of the button ("Primary" | "Secondary")
   - `breadcrumbReplacements`: a dictionary containing the title mapping for each url segment
   - `buttonText`: The text that will show in the centre of the button
   - `callbackFunction`: The function (supplied in the callbackFunctions prop) that will be invoked when the button is clicked
