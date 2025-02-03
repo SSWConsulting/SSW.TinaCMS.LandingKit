@@ -28,7 +28,7 @@ export const Container = ({
   children,
   size = 'default',
   width = 'default',
-  padding = 'px-8',
+  padding = '',
   className = '',
   ...props
 }: ContainerProps) => {
