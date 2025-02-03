@@ -55,9 +55,10 @@ export const ImageTextBlock = ({
   callbackFunctions,
 }: ImageTextBlockProps) => {
   const headingClasses = 'my-0 py-2 text-gray-200';
-  const noImageCenter = data.mediaConfiguration?.imageSource
-    ? ''
-    : 'justify-center';
+  const noImageCenter =
+    data.mediaConfiguration?.imageSource || data.mediaConfiguration?.youtubeUrl
+      ? ''
+      : 'justify-center';
   return (
     <ImageComponentLayout data={data}>
       {data.topLabel && <IconLabel icons={icons} data={data.topLabel} />}
