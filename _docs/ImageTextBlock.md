@@ -9,6 +9,8 @@ A component that displays a series of list items, buttons, and a heading adjacen
 import * as AntIcons from 'react-icons/ai'
 
 
+// for coniguring the outer blocks component see tina documentation https://tina.io/docs/editing/blocks#rendering-our-blocks
+
 const callbackFunctions = {
   "<your-callback-function>"
   : ()=> {
