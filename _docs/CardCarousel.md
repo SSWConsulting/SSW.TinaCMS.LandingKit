@@ -1,7 +1,9 @@
-#### Card Carousel
+# Card Carousel
 
 A component that displays a list of cards, either in a slideshow or adjacent to one another.
 
+
+## Code Example
 ```tsx
 // using with TinaCMS
 import { Breadcrumbs } from 'ssw-tinacms-landingkit/dist/';
@@ -136,7 +138,7 @@ import * as Icons from 'react-icons/<library>';
 />;
 ```
 
-##### Props
+## Props
 
 - `data`: Object containing the breadcrumb content
   - `categoryGroup`:
@@ -174,7 +176,7 @@ import * as Icons from 'react-icons/<library>';
 - `icons`: a dictionary containing the icons the user can chose from as React components
 - `callbackFunctions`: A dictionary of callback functions the user can bind to any button in `buttons`
 
-###### Example Schema Configuration
+## Example Schema Configuration
 
 ```tsx
 import * as AntIcons from 'react-icons/ai';

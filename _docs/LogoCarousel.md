@@ -1,7 +1,7 @@
-### Logo Carousel
+# Logo Carousel
 
 A responsive carousel component for displaying a collection of logos with smooth animation.
-
+## Code Example
 ```tsx
 import { LogoCarousel } from 'ssw-consulting-component-lib/dist/';
 
@@ -21,7 +21,7 @@ return <LogoCarousel data={/*<data from tina>*/} />
           }} />
 ```
 
-#### Props
+## Props
 
 `data`: Object containing the carousel content
 
@@ -30,7 +30,7 @@ return <LogoCarousel data={/*<data from tina>*/} />
   **example prop**: [{logo: "/images/placeholder1.png", altText: "image1"}, {{logo: "/images/placeholder2.png", altText: "image2"}}]
 - `isWhiteImages`: Boolean to enable the white mask for images
 
-###### Optional
+### Optional
 
 - `repeat`: The number of times the logos will repeat in the carousel
   - this can be used to fix pop in issues that occur when the logo carousel length is smaller than the viewport
@@ -44,7 +44,7 @@ return <LogoCarousel data={/*<data from tina>*/} />
 - `textColor`: a tailwind class to override the color of the heading
   - **example prop**: `text-<color>`
 
-###### Example Schema Configuration
+## Example Schema Configuration
 
 ```tsx
 const logoCarouselBlock: Template = {

@@ -1,9 +1,9 @@
-#### Image Text Block
+# Image Text Block
 
 A component that displays a series of list items, buttons, and a heading adjacent to an image or youtube embed.
 
 **Note**: It's not recommended to use this component without TinaCMS because it uses the rich text field to display the description.
-
+## Code Example
 ```tsx
 // swap this with your icon library of choice
 import * as AntIcons from 'react-icons/ai'
@@ -24,7 +24,7 @@ const callbackFunctions = {
   data={block}></ImageTextBlock>
 ```
 
-##### Props
+## Props
 
 - `data`:
   - `heading`
@@ -59,7 +59,7 @@ const callbackFunctions = {
 - `icons`: a dictionary containing the icons used in the component with React components as values
 - `callbackFunctions`: a dictionary of callback functions that can be invoked when the button is clicked
 
-###### Example Schema Configuration
+## Example Schema Configuration
 
 ```tsx
 // replace with your preferred icon library

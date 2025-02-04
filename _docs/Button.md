@@ -1,7 +1,7 @@
-#### Button
+# Button
 
-A rippling button wih custom inputs from tina
-
+A rippling button with custom inputs from Tina. This component also accepts a list of callback functions that can potentially be invoked when the button is clicked if configured to.
+## Code Example
 ```tsx
 // import a library of your choosing from react icons
 import * as AntIcons from 'react-icons/ai';
@@ -36,7 +36,7 @@ const callbackFunctions = {
   />
 ```
 
-##### Props
+## Props
 
 - `data`: Object containing the breadcrumb content
   - `callbackFunction`: The name of the callback function from the dictionary the button will invoke on click
@@ -47,7 +47,7 @@ const callbackFunctions = {
   - `iconFirst`: A boolean that controls whether the icon displays before r after the text
 - `callbackFunctions`: A dictionary of callback functions that can be invoked when the button is clicked
 
-##### Example Schema configuration
+## Example Schema configuration
 
 ```tsx
 import * as AntIcons from 'react-icons/ai';

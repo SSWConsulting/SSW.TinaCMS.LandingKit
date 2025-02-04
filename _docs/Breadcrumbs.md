@@ -1,9 +1,10 @@
-#### Breadcrumbs
+# Breadcrumbs
 
 A navigation component that shows the current page's location within the navigational hierarchy.
 
 **Note**: You will encounter type errors if "finalNode" is not configured as a required field
 
+## Code Example
 ```tsx
 // using with TinaCMS
 import { Breadcrumbs } from "ssw-tinacms-landingkit/dist/";
@@ -30,14 +31,14 @@ import { Breadcrumbs } from "ssw-tinacms-landingkit/dist/";
 
 ```
 
-##### Props
+## Props
 
 - `data`: Object containing the breadcrumb content
   - `finalBreadcrumb`: Text for the current page (supports contextual editing when returned from TinaCMS)
   - `firstBreadcrumb`: Text for the first breadcrumb item
   - `breadcrumbReplacements`: a dictionary containing the title mapping for each url segment
 
-###### Optional
+### Optional
 
 - `hoverColor`: the color links will glow when hovered by the user
   - **example prop**: `hover:text-<color>`
@@ -50,7 +51,7 @@ import { Breadcrumbs } from "ssw-tinacms-landingkit/dist/";
 - `textUnderlineOffset`: The spacing between the underline and text for breadcrumb links
   - **example prop**: `underline-offset-<number>`
 
-###### Example Schema Configuration
+## Example Schema Configuration
 
 ```tsx
 import { Template } from 'tinacms';
