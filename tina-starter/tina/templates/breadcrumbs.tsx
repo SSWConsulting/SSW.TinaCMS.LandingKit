@@ -12,6 +12,7 @@ export const breadcrumbBlock: Template = {
   },
   fields: [
     {
+      required: true,
       name: "finalBreadcrumb",
       type: "string",
       label: "Final Breadcrumb",
