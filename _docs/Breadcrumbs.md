@@ -4,6 +4,7 @@ A navigation component that shows the current page's location within the navigat
 
 **Note**: You will encounter type errors if "finalNode" is not configured as a required field
 
+## Code Example
 ```tsx
 // using with TinaCMS
 import { Breadcrumbs } from "ssw-tinacms-landingkit/dist/";
