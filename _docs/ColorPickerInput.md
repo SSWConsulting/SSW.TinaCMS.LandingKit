@@ -69,6 +69,6 @@ const component = ({
 }) => {
   const color = colors[color] || colors['red'];
 
-  return <div className={color}>{children}</div>;
+  return <div className={color.classes}>{children}</div>;
 };
 ```
