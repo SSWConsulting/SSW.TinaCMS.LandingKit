@@ -33,7 +33,7 @@ const exampleSchema: Template = {
 
 ```tsx
 export interface ColorPickerOptions {
-  //key is emitted as the value when the corresponding color is clicked
+  // key is emitted as the value when the corresponding color is clicked
   [key: string]: {
     /* classes can be used within your desired
        component to apply the color corresponding to the key
@@ -46,9 +46,10 @@ export interface ColorPickerOptions {
   };
 }
 
-//example color applications
+// EXAMPLE
 
-const colors = {
+// pass this as a value for the ColorPickerInput in your schema configuration
+export const colors = {
   red: {
     classes: 'bg-red-500',
     editorClasses: 'bg-linear-to-br from-red-500 to-black',
