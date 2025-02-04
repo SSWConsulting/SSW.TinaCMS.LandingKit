@@ -15,7 +15,7 @@ const callbackFunctions = {
     //stub
   }
 }
-// usage with tina with tina
+// usage with tina
 <ImageTextBlock
   icons={AntIcons}
   callbackFunctions={callbackFunctions}
