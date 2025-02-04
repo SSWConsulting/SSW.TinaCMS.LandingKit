@@ -2,6 +2,8 @@
 
 A navigation component that shows the current page's location within the navigational hierarchy.
 
+**Note**: You will encounter type errors if "finalNode" is not configured as a required field
+
 ```tsx
 // using with TinaCMS
 import { Breadcrumbs } from "ssw-tinacms-landingkit/dist/";
@@ -65,6 +67,7 @@ export const breadcrumbBlock: Template = {
   },
   fields: [
     {
+      required: true,
       name: 'finalBreadcrumb',
       type: 'string',
       label: 'Final Breadcrumb',
