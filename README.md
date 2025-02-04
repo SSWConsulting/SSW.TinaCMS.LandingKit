@@ -88,7 +88,7 @@ export default function RootLayout({
 | [CardCarousel (stacked layout)](_docs/CardCarousel.md) | ![Card Carousel Stacked](_docs/images/CardCarouselStacked.jpg) |
 | [Button](_docs/Button.md)                              | ![Button](_docs/images/Button.png)                             |
 | [Icon Picker Input](_docs/IconPickerInput.md)          | ![Icon Picker Input](_docs/images//IconPickerInput.png)        |
-| **TODO**: Color Picker Input                           | ![Color Picker Input](_docs/images/ColorPickerInput.jpg)       |
+| [Color Picker Input](_docs/ColorPickerInput.md)        | ![Color Picker Input](_docs/images/ColorPickerInput.jpg)       |
 | [Image Text Block](_docs/ImageTextBlock.md)            | ![Image Text Block](_docs/images/ImageTextBlock.png)           |
 
 ### Styling
