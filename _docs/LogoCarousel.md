@@ -1,7 +1,7 @@
 # Logo Carousel
 
 A responsive carousel component for displaying a collection of logos with smooth animation.
-
+## Code Example
 ```tsx
 import { LogoCarousel } from 'ssw-consulting-component-lib/dist/';
 
