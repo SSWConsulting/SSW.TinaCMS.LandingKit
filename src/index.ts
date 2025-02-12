@@ -8,6 +8,7 @@ import CarouselCardPicker from './components/sub-templates/tina-form-elements/ca
 import { ColorPickerInput } from './components/sub-templates/tina-form-elements/color-selector';
 import { IconPickerInput } from './components/sub-templates/tina-form-elements/icon-selector';
 import BreadcrumbTemplate from './schemas/breadcrumbs.schema';
+import { imageTextBlock } from './schemas/image-text-block.schema';
 
 import LogoCarouselSchemaGenerator from './schemas/logo-carousel.schema';
 export {
@@ -20,6 +21,7 @@ export {
   CarouselCardPicker,
   ColorPickerInput,
   IconPickerInput,
+  imageTextBlock,
   ImageTextBlock,
   LogoCarousel,
   LogoCarouselSchemaGenerator as LogoCarouselSchema,
