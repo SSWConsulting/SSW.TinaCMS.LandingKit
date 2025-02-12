@@ -7,12 +7,12 @@ import LogoCarousel from './components/logo-carousel';
 import CarouselCardPicker from './components/sub-templates/tina-form-elements/card-picker';
 import { ColorPickerInput } from './components/sub-templates/tina-form-elements/color-selector';
 import { IconPickerInput } from './components/sub-templates/tina-form-elements/icon-selector';
-import BreadcrumbSchema from './schemas/breadcrumbs.schema';
+import BreadcrumbTemplate from './schemas/breadcrumbs.schema';
 
 import LogoCarouselSchemaGenerator from './schemas/logo-carousel.schema';
 export {
   Breadcrumbs,
-  BreadcrumbSchema,
+  BreadcrumbTemplate,
   Button,
   buttonColors,
   CardCarousel,

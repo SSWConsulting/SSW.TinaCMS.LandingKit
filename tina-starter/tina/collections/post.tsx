@@ -1,4 +1,4 @@
-import { breadcrumbBlock } from "../templates/breadcrumbs";
+import { BreadcrumbTemplate } from "ssw-tinacms-landingkit";
 import { buttonBlock } from "../templates/button";
 import { cardCarouselBlock } from "../templates/card-carousel";
 import { imageTextBlockSchema } from "../templates/image-text-block";
@@ -14,8 +14,11 @@ const blogPosts = {
       list: true,
       label: "Sections",
       name: "blocks",
+      ui: {
+        visualSelector: true,
+      },
       templates: [
-        breadcrumbBlock,
+        BreadcrumbTemplate("/tina/previews/breadcrumbs.jpg"),
         logoCarouselBlock,
         cardCarouselBlock,
         buttonBlock,
