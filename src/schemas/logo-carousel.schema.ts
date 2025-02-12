@@ -1,70 +1,53 @@
-import { Template } from 'tinacms';
-import { ColorPickerOptions } from '../components/sub-templates/tina-form-elements/color-selector';
-import { defaultBackgroundOptions } from '../internal/default-config/default-bg-options';
-import { backgroundSchema } from './background.schema';
-
-const LogoCarouselSchemaGenerator: (options?: {
-  backgroundColors?: ColorPickerOptions;
-  previewSrc?: string;
-}) => Template = (options = {}) => {
+const logoCarouselBlock = (previewSrc: string) => {
   return {
+    label: 'Logo Carousel',
     name: 'logoCarousel',
-    label: '<SSW> Logo Carousel',
     ui: {
-      defaultItem: {
-        heading: 'Lorem Ipsum',
-        logos: [
-          {
-            logo: '',
-            altText: 'Logo',
-          },
-        ],
+      previewSrc,
+      defaultItem: () => {
+        return {
+          heading: 'Lorem Ipsum',
+          logos: [
+            {
+              altText: 'Microsoft',
+            },
+          ],
+        };
       },
-      ...(options?.previewSrc ? { previewSrc: options.previewSrc } : {}),
     },
     fields: [
-      backgroundSchema(options?.backgroundColors ?? defaultBackgroundOptions),
       {
+        name: 'heading',
         type: 'string',
         label: 'Heading',
-        name: 'heading',
-        description: 'Heading text for the logo carousel.',
       },
+
       {
+        name: 'maskImages',
         type: 'boolean',
-        label: 'Mask Images and Whiten',
-        name: 'isWhiteImages',
-        description: 'Completely saturates images so they appear white.',
+        label: 'Mask Images',
       },
       {
-        type: 'object',
-        label: 'Logos',
         name: 'logos',
-        description: 'Individual logos in the carousel.',
+        label: 'Logos',
+        type: 'object',
         list: true,
-        ui: {
-          itemProps: (item) => {
-            return { label: item?.altText ?? 'Logo' };
-          },
-        },
         fields: [
           {
-            type: 'image',
-            label: 'Logo Source',
+            label: 'Logo',
             name: 'logo',
-            description: 'The image to display in the carousel.',
+            type: 'image',
           },
           {
-            type: 'string',
-            label: 'Alt Text',
+            label: 'Logo Alt text',
+            description: 'Alt text for the logo image.',
             name: 'altText',
-            description:
-              "Alt text for the logo image. Deafults to 'Logo' under the hood.",
+            type: 'string',
           },
         ],
       },
     ],
-  } as Template;
+  };
 };
 
-export default LogoCarouselSchemaGenerator;
+export { logoCarouselBlock };
