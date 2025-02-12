@@ -1,7 +1,10 @@
 import * as AntIcons from "react-icons/ai";
-import { BreadcrumbTemplate, imageTextBlock } from "ssw-tinacms-landingkit";
+import {
+  BreadcrumbTemplate,
+  cardCarouselBlock,
+  imageTextBlock,
+} from "ssw-tinacms-landingkit";
 import { buttonBlock } from "../templates/button";
-import { cardCarouselBlock } from "../templates/card-carousel";
 import { logoCarouselBlock } from "../templates/logo-carousel";
 
 const blogPosts = {
@@ -20,7 +23,10 @@ const blogPosts = {
       templates: [
         BreadcrumbTemplate("/tina/previews/breadcrumbs.jpg"),
         logoCarouselBlock,
-        cardCarouselBlock,
+        cardCarouselBlock({
+          icons: AntIcons,
+          previewSrc: "/tina/previews/card-carousel.jpg",
+        }),
         buttonBlock,
         imageTextBlock({
           icons: AntIcons,
