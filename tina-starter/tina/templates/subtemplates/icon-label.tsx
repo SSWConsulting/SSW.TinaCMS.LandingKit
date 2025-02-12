@@ -1,7 +1,7 @@
-import * as AntIcons from "react-icons/ai";
+import { IconDictionary } from "../../../../dist/components/sub-templates/tina-form-elements/icon";
 import { IconPickerInput } from "../../../node_modules/ssw-tinacms-landingkit/dist";
 
-const iconLabelSchema = [
+const iconLabelSchema = (icons: IconDictionary) => [
   {
     type: "string",
     label: "Label Text",
@@ -14,7 +14,7 @@ const iconLabelSchema = [
     name: "icon",
     description: "Icon to proceed the label.",
     ui: {
-      component: IconPickerInput(AntIcons),
+      component: IconPickerInput(icons),
     },
   },
 ];

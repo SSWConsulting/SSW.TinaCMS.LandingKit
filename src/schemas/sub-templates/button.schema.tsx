@@ -45,8 +45,17 @@ const buttonSchema = (icons: IconDictionary) => [
   },
 ];
 
-const buttonBlock = (icons: IconDictionary): Template => {
+const buttonBlock = ({
+  icons,
+  previewSrc,
+}: {
+  icons: IconDictionary;
+  previewSrc: string;
+}): Template => {
   return {
+    ui: {
+      previewSrc,
+    },
     label: 'Button Block',
     name: 'button',
     fields: buttonSchema(icons) as TinaField[],

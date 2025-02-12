@@ -11,11 +11,13 @@ import BreadcrumbTemplate from './schemas/breadcrumbs.schema';
 import { cardCarouselBlock } from './schemas/card-carousel.schema';
 import { imageTextBlock } from './schemas/image-text-block.schema';
 import { logoCarouselBlock } from './schemas/logo-carousel.schema';
+import { buttonBlock } from './schemas/sub-templates/button.schema';
 
 export {
   Breadcrumbs,
   BreadcrumbTemplate,
   Button,
+  buttonBlock,
   buttonColors,
   CardCarousel,
   cardCarouselBlock,
