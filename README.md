@@ -1,11 +1,3 @@
-<!-- TODO: Create instructions for linking the tailwind config with the dependent's tailwind config -->
-
-<!-- TODO: Add instructions for importing the minified tailwind classes from this project -->
-
-<!-- TODO: Add instructions for importing style.css into your layout.tsx for app routing -->
-
-<!-- TODO: DON'T CROSS THE STREAMS! be careful not to include conflicting classes in your tailwind configration -->
-
 # SSW Consulting Component Library
 
 A React component library built with TypeScript, Next.js, and Shadcn/UI, providing customizable UI components for web applications.
@@ -18,8 +10,101 @@ A React component library built with TypeScript, Next.js, and Shadcn/UI, providi
 npm install ssw-tinacms-landingkit
 ```
 
-- add an import at the top of `app/layout.tsx` `import "ssw-tinacms-launchkit/dist/style.css";`
-- for example usage of the components visit: `tina-starter\app\posts\explore\[...filename]\client-page.tsx`
+- import and use any of the templates into your `tina/config.ts` file
+
+```diff
+
++ //replace with the React icons you want to use
++ import * as AntIcons from "../../node_modules/react-icons/ai";
++ import {
++   breadcrumbBlock,
++   buttonBlock,
++   cardCarouselBlock,
++   imageTextBlock,
++   logoCarouselBlock,
++
++   // replace this with a relative path node modules directory (See known issues)
++ } from "../../node_modules/ssw-tinacms-landingkit/dist";
+
+
+export default defineConfig({
+  // ...
+  schema: {
+    collections: [
+      {
+        label: '<your-collection-label>',
+        name: '<post>',
+        path: '<your-path>',
+        fields: [
+          // ... other fields
+          {
+            //...
+            fields: [
+              {
+                type: 'object',
+                list: true,
+                label: '<your label>',
+                name: 'blocks',
+                ui: {
+                  visualSelector: true,
+                },
+                templates: [
++                  // include the schema definitions for the components you want to use
++                  breadcrumbBlock('/tina/previews/breadcrumbs.jpg'),
++                  logoCarouselBlock('/tina/previews/logo-carousel.png'),
++                  buttonBlock({
++                    icons: AntIcons,
++                    previewSrc: '/tina/previews/button.png',
++                  }),
++                  cardCarouselBlock({
++                    icons: AntIcons,
++                    previewSrc: '/tina/previews/card-carousel.jpg',
++                  }),
++                  imageTextBlock({
++                    icons: AntIcons,
++                    previewSrc: '/tina/previews/image-text-block.png',
++                  }),
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+});
+```
+
+- import the component styling into your `app/layout.tsx` file
+
+```tsx
+import 'ssw-tinacms-launchkit/dist/style.css';
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html>
+      <body>{children}</body>
+    </html>
+  );
+}
+```
+
+- refer to the documentation
+
+### Components
+
+- [Logo Carousel](_docs/components/LogoCarousel.md)
+- [Breadcrumbs](_docs/components/Breadcrumbs.md)
+- [CardCarousel](_docs/components/CardCarousel.md)
+- [CardCarousel (stacked layout)](_docs/components/CardCarousel.md)
+- [Button](_docs/components/Button.md)
+- [Icon Picker Input](_docs/components/IconPickerInput.md)
+- [Color Picker Input](_docs/components/ColorPickerInput.md)
+- [Image Text Block](_docs/components/ImageTextBlock.md)
 
 #### Schema configuration
 
@@ -77,19 +162,20 @@ export default function RootLayout({
 <!-- remove this from the requirements? -->
 - Next.js 13 or higher
 - TypeScript 4.5 or higher
+- React Icons 5.0 or higher
 
 ## Components
 
-| Component Name                                                    | Preview Image                                                  |
-| ----------------------------------------------------------------- | -------------------------------------------------------------- |
-| [Logo Carousel](_docs/components/LogoCarousel.md)                 | ![Logo Carousel](_docs/images/LogoCarousel.jpg)                |
-| [Breadcrumbs](_docs/components/Breadcrumbs.md)                    | ![Breadcrumbs](_docs/images/Breadcrumbs.jpg)                   |
-| [CardCarousel](_docs/components/CardCarousel.md)                  | ![Card Carousel](_docs/images/CardCarousel.jpg)                |
-| [CardCarousel (stacked layout)](_docs/components/CardCarousel.md) | ![Card Carousel Stacked](_docs/images/CardCarouselStacked.jpg) |
-| [Button](_docs/components/Button.md)                              | ![Button](_docs/images/Button.png)                             |
-| [Icon Picker Input](_docs/components/IconPickerInput.md)          | ![Icon Picker Input](_docs/images//IconPickerInput.png)        |
-| [Color Picker Input](_docs/components/ColorPickerInput.md)        | ![Color Picker Input](_docs/images/ColorPickerInput.jpg)       |
-| [Image Text Block](_docs/components/ImageTextBlock.md)            | ![Image Text Block](_docs/images/ImageTextBlock.png)           |
+| Component Name                | Preview Image                                                  |
+| ----------------------------- | -------------------------------------------------------------- |
+| Logo Carousel                 | ![Logo Carousel](_docs/images/LogoCarousel.jpg)                |
+| Breadcrumbs                   | ![Breadcrumbs](_docs/images/Breadcrumbs.jpg)                   |
+| CardCarousel                  | ![Card Carousel](_docs/images/CardCarousel.jpg)                |
+| CardCarousel (stacked layout) | ![Card Carousel Stacked](_docs/images/CardCarouselStacked.jpg) |
+| Button                        | ![Button](_docs/images/Button.png)                             |
+| Icon Picker Input             | ![Icon Picker Input](_docs/images//IconPickerInput.png)        |
+| Color Picker Input            | ![Color Picker Input](_docs/images/ColorPickerInput.jpg)       |
+| Image Text Block              | ![Image Text Block](_docs/images/ImageTextBlock.png)           |
 
 ### Styling
 
@@ -137,3 +223,5 @@ MIT License
 ### Known Issues
 
 - The "cardGuidList" for the CardCarousel schema must have a default configured or you will not be able to add new queries without erros.
+- The schema definitions only work when using relative imports
+- When using custom tailwind classes in your project they may conflict with the classes used in the component library
