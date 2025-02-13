@@ -22,7 +22,7 @@ const blogPosts = {
       },
       templates: [
         BreadcrumbTemplate("/tina/previews/breadcrumbs.jpg"),
-        logoCarouselBlock("/tina/previews/logo-carousel.jpg"),
+        logoCarouselBlock("/tina/previews/logo-carousel.png"),
         buttonBlock({
           icons: AntIcons,
           previewSrc: "/tina/previews/button.png",
