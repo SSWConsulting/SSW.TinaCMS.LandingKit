@@ -93,9 +93,79 @@ export default function RootLayout({
 }
 ```
 
-- refer to the documentation
+- Define and use a blocks component in your page
+- For more information refer to the TinaCMS documentation on [block based editing](https://tina.io/docs/editing/blocks)
+
+```tsx
+import React from 'react';
+import type { Pages } from '../tina/__generated__/types';
+import { Content } from './blocks/content';
+import { Features } from './blocks/features';
+import { Hero } from './blocks/hero';
+import { Testimonial } from './blocks/testimonial';
+
+export const Blocks = (props: Pages) => {
+  return (
+    <>
+      {props.blocks ? (
+        props.blocks.map(function (block, i) {
+          switch (block.__typename) {
+            case '<outer-schema>BlocksLogoCarousel':
+              return <LogoCarousel repeat={10} data={block} />;
+            case '<outer-schema>BlocksBreadcrumbs':
+              return (
+                <Breadcrumbs
+                  data={{
+                    ...block,
+                    //URL segment mapping is configured outside of the schema
+                    breadcrumbReplacements: [
+                      {
+                        from: 'explore',
+                        to: 'Explore',
+                      },
+                    ],
+                    firstBreadcrumb: 'Home',
+                  }}
+                />
+              );
+            case '<outer-schema>BlocksCardCarousel':
+              return (
+                <CardCarousel
+                  icons={AntIcons}
+                  callbackFunctions={callbackFunctions}
+                  data={block}
+                />
+              );
+            case '<outer-schema>BlocksButton':
+              return (
+                <Button
+                  icons={AntIcons}
+                  callbackFunctions={callbackFunctions}
+                  data={block}
+                />
+              );
+            case '<outer-schema>BlocksImageTextBlock':
+              return (
+                <ImageTextBlock
+                  icons={AntIcons}
+                  callbackFunctions={callbackFunctions}
+                  data={block}></ImageTextBlock>
+              );
+            default:
+              return <></>;
+          }
+        })
+      ) : (
+        <></>
+      )}
+    </>
+  );
+};
+```
 
 ### Components
+
+For more information on how to use the components see the following links:
 
 - [Logo Carousel](_docs/components/LogoCarousel.md)
 - [Breadcrumbs](_docs/components/Breadcrumbs.md)
