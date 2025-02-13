@@ -5,7 +5,8 @@ import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 import { useResizeObserver } from "usehooks-ts";
 import { Button } from "./button";
-const ButtonRow = ({ className, data }) => {
+
+const ButtonRow = ({ className, callbackFunctions, data }) => {
   const buttonContainer = useRef<HTMLDivElement>(null);
   const buttonRefs = useRef<HTMLButtonElement[]>([]);
   const [buttonContainerWidth, setButtonContainerWidth] = React.useState(0);
@@ -71,6 +72,7 @@ const ButtonRow = ({ className, data }) => {
                     "w-full sm:w-auto"
                 )}
                 key={`image-text-button-${index}`}
+                callbackFunctions={callbackFunctions}
                 data={button}
               />
             );

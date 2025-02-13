@@ -12,7 +12,7 @@ import {
   AccordionTrigger,
 } from "../internal/shadcn/accordion";
 
-const AccordionBlock = ({ data }) => {
+const AccordionBlock = ({ callbackFunctions, data }) => {
   const headingClasses = "my-0 py-2 text-gray-200";
   const isYouTube = data.mediaConfiguration?.mediaType === "youtube";
   const isImage =
@@ -56,6 +56,7 @@ const AccordionBlock = ({ data }) => {
       </section>
       <ButtonRow
         data={data}
+        callbackFunctions={callbackFunctions}
         className={cn(
           "mt-5 flex-wrap",
           data.tabletTextAlignment === "Center" && "justify-center",

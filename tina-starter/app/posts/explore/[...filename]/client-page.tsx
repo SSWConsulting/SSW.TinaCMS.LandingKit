@@ -99,7 +99,12 @@ const Blocks = ({ blocks }: BlocksProps) => {
               ></ImageTextBlock>
             );
           case "PostBlocksAccordionBlock":
-            return <AccordionBlock data={block}></AccordionBlock>;
+            return (
+              <AccordionBlock
+                callbackFunctions={callbackFunctions}
+                data={block}
+              ></AccordionBlock>
+            );
         }
       })}
     </>
