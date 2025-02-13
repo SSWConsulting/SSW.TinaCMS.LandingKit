@@ -4,13 +4,13 @@ A React component library built with TypeScript, Next.js, and Shadcn/UI, providi
 
 ## Installation
 
-- run the following command to install the npm package
+1. run the following command to install the npm package
 
 ```bash
 npm install ssw-tinacms-landingkit
 ```
 
-- import and use any of the templates into your `tina/config.ts` file
+2. import and use any of the templates into your `tina/config.ts` file
 
 ```diff
 
@@ -75,10 +75,10 @@ export default defineConfig({
 });
 ```
 
-- import the component styling into your `app/layout.tsx` file
+3. import the component styling into your `app/layout.tsx` file
 
 ```tsx
-import 'ssw-tinacms-launchkit/dist/style.css';
++ import 'ssw-tinacms-launchkit/dist/style.css';
 
 export default function RootLayout({
   children,
@@ -93,16 +93,21 @@ export default function RootLayout({
 }
 ```
 
-- Define and use a blocks component in your page
+4. Define and use a blocks component in your page
+
 - For more information refer to the TinaCMS documentation on [block based editing](https://tina.io/docs/editing/blocks)
 
-```tsx
+```diff
 import React from 'react';
-import type { Pages } from '../tina/__generated__/types';
-import { Content } from './blocks/content';
-import { Features } from './blocks/features';
-import { Hero } from './blocks/hero';
-import { Testimonial } from './blocks/testimonial';
++ // replaced with the react-icons you want to use
++ import * as AntIcons from "react-icons/ai";
++ import {
++   Breadcrumbs,
++   Button,
++   CardCarousel,
++   ImageTextBlock,
++   LogoCarousel,
++ } from "ssw-tinacms-landingkit";
 
 export const Blocks = (props: Pages) => {
   return (
