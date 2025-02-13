@@ -1,17 +1,14 @@
-const logoCarouselBlock = (previewSrc: string) => {
+import { Template } from 'tinacms';
+
+const logoCarouselBlock = (previewSrc: string): Template => {
   return {
     label: 'Logo Carousel',
     name: 'logoCarousel',
     ui: {
-      previewSrc,
       defaultItem: () => {
         return {
           heading: 'Lorem Ipsum',
-          logos: [
-            {
-              altText: 'Microsoft',
-            },
-          ],
+          logos: [{}],
         };
       },
     },
@@ -50,4 +47,4 @@ const logoCarouselBlock = (previewSrc: string) => {
   };
 };
 
-export { logoCarouselBlock };
+export default logoCarouselBlock;

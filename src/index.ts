@@ -10,7 +10,7 @@ import { IconPickerInput } from './components/sub-templates/tina-form-elements/i
 import BreadcrumbTemplate from './schemas/breadcrumbs.schema';
 import { cardCarouselBlock } from './schemas/card-carousel.schema';
 import { imageTextBlock } from './schemas/image-text-block.schema';
-import { logoCarouselBlock } from './schemas/logo-carousel.schema';
+import logoCarouselBlock from './schemas/logo-carousel.schema';
 import { buttonBlock } from './schemas/sub-templates/button.schema';
 
 export {
