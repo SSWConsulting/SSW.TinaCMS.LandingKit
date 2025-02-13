@@ -3,6 +3,24 @@ breadcrumbs:
   finalBreadcrumb: This is Configureable
 title: 'Hello, World!!'
 blocks:
+  - heading: Lorem Ipsum
+    body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+    tabletTextAlignment: Left
+    accordionItems:
+      - label: Lorem
+        content: |
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      - label: Ipsum
+        content: |
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    buttons:
+      - buttonText: Lorem Ipsum
+      - buttonText: Dolor Sit
+    mediaConfiguration:
+      mediaType: ''
+      imageSource: ''
+      altText: ''
+    _template: accordionBlock
   - finalBreadcrumb: Lorem Ipsum
     _template: breadcrumbs
   - topLabel:

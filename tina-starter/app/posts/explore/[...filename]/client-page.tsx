@@ -6,6 +6,7 @@ import {
   CardCarousel,
   ImageTextBlock,
   LogoCarousel,
+  AccordionBlock,
 } from "ssw-tinacms-landingkit";
 import { useTina } from "tinacms/dist/react";
 import type {
@@ -97,6 +98,8 @@ const Blocks = ({ blocks }: BlocksProps) => {
                 data={block}
               ></ImageTextBlock>
             );
+          case "PostBlocksAccordionBlock":
+            return <AccordionBlock data={block}></AccordionBlock>;
         }
       })}
     </>
