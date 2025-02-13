@@ -1,6 +1,6 @@
 import { Template } from 'tinacms';
 
-const logoCarouselBlock = (previewSrc: string): Template => {
+const logoCarouselBlock = (previewSrc?: string): Template => {
   return {
     label: 'Logo Carousel',
     name: 'logoCarousel',
@@ -11,6 +11,7 @@ const logoCarouselBlock = (previewSrc: string): Template => {
           logos: [{}],
         };
       },
+      previewSrc,
     },
     fields: [
       {
