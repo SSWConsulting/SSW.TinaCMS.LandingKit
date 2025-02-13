@@ -73,7 +73,7 @@ export default function RootLayout({
 ## Requirements
 
 - React 18 or higher
-- TailwindCSS
+- TailwindCSS 3.4.17
 <!-- remove this from the requirements? -->
 - Next.js 13 or higher
 - TypeScript 4.5 or higher
