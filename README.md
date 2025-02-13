@@ -90,6 +90,7 @@ export default function RootLayout({
 | [Icon Picker Input](_docs/IconPickerInput.md)          | ![Icon Picker Input](_docs/images//IconPickerInput.png)        |
 | [Color Picker Input](_docs/ColorPickerInput.md)        | ![Color Picker Input](_docs/images/ColorPickerInput.jpg)       |
 | [Image Text Block](_docs/ImageTextBlock.md)            | ![Image Text Block](_docs/images/ImageTextBlock.png)           |
+| [Accordion](_docs/Accordion.md)                        | ![Accordion](_docs/images/Accordion.png)                       |
 
 ### Styling
 
