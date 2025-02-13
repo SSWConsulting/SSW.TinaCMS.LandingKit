@@ -97,17 +97,17 @@ export default function RootLayout({
 
 - For more information refer to the TinaCMS documentation on [block based editing](https://tina.io/docs/editing/blocks)
 
-```diff
+```tsx
 import React from 'react';
-+ // replaced with the react-icons you want to use
-+ import * as AntIcons from "react-icons/ai";
-+ import {
-+   Breadcrumbs,
-+   Button,
-+   CardCarousel,
-+   ImageTextBlock,
-+   LogoCarousel,
-+ } from "ssw-tinacms-landingkit";
+// replaced with the react-icons you want to use
+import * as AntIcons from 'react-icons/ai';
+import {
+  Breadcrumbs,
+  Button,
+  CardCarousel,
+  ImageTextBlock,
+  LogoCarousel,
+} from 'ssw-tinacms-landingkit';
 
 export const Blocks = (props: Pages) => {
   return (
