@@ -1,9 +1,9 @@
-import tabletTextAlignmentField from "./subtemplates/tablet-text-alignment-field";
 import { Template, TinaField } from "tinacms";
-import { buttonSchema } from "./button";
-import imageComponentLayoutSchema from "./subtemplates/image-component-layout";
+import { ButtonSchema } from "./button-schema";
+import ImageComponentLayoutSchema from "./sub-schemas/image-component-layout-schema";
+import TabletTextAlignmentFieldSchema from "./sub-schemas/tablet-text-alignment-schema";
 
-export const accordionSchema: Template = {
+const AccordionSchema: Template = {
   name: "accordionBlock",
   label: "Accordion",
   ui: {
@@ -78,7 +78,7 @@ export const accordionSchema: Template = {
       name: "body",
       description: "Flavour text under the block title.",
     },
-    tabletTextAlignmentField as TinaField,
+    TabletTextAlignmentFieldSchema as TinaField,
     {
       type: "object",
       label: "Accordion",
@@ -127,9 +127,11 @@ export const accordionSchema: Template = {
           return { label: `${item.buttonText}` };
         },
       },
-      fields: buttonSchema as TinaField[],
+      fields: ButtonSchema as TinaField[],
     },
     //@ts-ignore
-    ...imageComponentLayoutSchema,
+    ...ImageComponentLayoutSchema,
   ],
 };
+
+export default AccordionSchema;

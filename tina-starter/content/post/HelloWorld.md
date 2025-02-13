@@ -3,24 +3,6 @@ breadcrumbs:
   finalBreadcrumb: This is Configureable
 title: 'Hello, World!!'
 blocks:
-  - heading: Lorem Ipsum
-    body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-    tabletTextAlignment: Left
-    accordionItems:
-      - label: Lorem
-        content: |
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      - label: Ipsum
-        content: |
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    buttons:
-      - buttonText: Lorem Ipsum
-      - buttonText: Dolor Sit
-    mediaConfiguration:
-      mediaType: ''
-      imageSource: ''
-      altText: ''
-    _template: accordionBlock
   - finalBreadcrumb: Lorem Ipsum
     _template: breadcrumbs
   - topLabel:
@@ -54,10 +36,19 @@ blocks:
       youtubeUrl: 'https://youtu.be/ocbPkNROnlc'
       altText: llama
     _template: imageTextBlock
-  - buttonText: Lorem Ipsum
-    callbackFunction: Placeholder
-    color: Primary
-    _template: button
+  - heading: Lorem Ipsum
+    body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+    accordionItems:
+      - label: Lorem
+        content: |
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      - label: Ipsum
+        content: |
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    buttons:
+      - buttonText: Lorem Ipsum
+      - buttonText: Dolor Sit
+    _template: accordionBlock
   - isStacked: false
     heading: Lorem Ipsum
     isH1: false
@@ -166,5 +157,9 @@ blocks:
       - logo: /uploads/microsoft.png
         altText: Microsoft
     _template: logoCarousel
+  - buttonText: Lorem Ipsum
+    callbackFunction: Placeholder
+    color: Primary
+    _template: button
 ---
 
