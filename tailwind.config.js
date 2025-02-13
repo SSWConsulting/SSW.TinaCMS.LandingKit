@@ -49,6 +49,14 @@ export default {
         'no-repeat': 'no-repeat',
       },
       keyframes: {
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
         marquee: {
           from: { transform: 'translateX(50%)' },
           to: { transform: 'translateX(calc(-50% - var(--gap)))' },
