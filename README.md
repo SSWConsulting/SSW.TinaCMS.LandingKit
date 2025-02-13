@@ -80,16 +80,16 @@ export default function RootLayout({
 
 ## Components
 
-| Component Name                                         | Preview Image                                                  |
-| ------------------------------------------------------ | -------------------------------------------------------------- |
-| [Logo Carousel](_docs/LogoCarousel.md)                 | ![Logo Carousel](_docs/images/LogoCarousel.jpg)                |
-| [Breadcrumbs](_docs/Breadcrumbs.md)                    | ![Breadcrumbs](_docs/images/Breadcrumbs.jpg)                   |
-| [CardCarousel](_docs/CardCarousel.md)                  | ![Card Carousel](_docs/images/CardCarousel.jpg)                |
-| [CardCarousel (stacked layout)](_docs/CardCarousel.md) | ![Card Carousel Stacked](_docs/images/CardCarouselStacked.jpg) |
-| [Button](_docs/Button.md)                              | ![Button](_docs/images/Button.png)                             |
-| [Icon Picker Input](_docs/IconPickerInput.md)          | ![Icon Picker Input](_docs/images//IconPickerInput.png)        |
-| [Color Picker Input](_docs/ColorPickerInput.md)        | ![Color Picker Input](_docs/images/ColorPickerInput.jpg)       |
-| [Image Text Block](_docs/ImageTextBlock.md)            | ![Image Text Block](_docs/images/ImageTextBlock.png)           |
+| Component Name                                                    | Preview Image                                                  |
+| ----------------------------------------------------------------- | -------------------------------------------------------------- |
+| [Logo Carousel](_docs/components/LogoCarousel.md)                 | ![Logo Carousel](_docs/images/LogoCarousel.jpg)                |
+| [Breadcrumbs](_docs/components/Breadcrumbs.md)                    | ![Breadcrumbs](_docs/images/Breadcrumbs.jpg)                   |
+| [CardCarousel](_docs/components/CardCarousel.md)                  | ![Card Carousel](_docs/images/CardCarousel.jpg)                |
+| [CardCarousel (stacked layout)](_docs/components/CardCarousel.md) | ![Card Carousel Stacked](_docs/images/CardCarouselStacked.jpg) |
+| [Button](_docs/components/Button.md)                              | ![Button](_docs/images/Button.png)                             |
+| [Icon Picker Input](_docs/components/IconPickerInput.md)          | ![Icon Picker Input](_docs/images//IconPickerInput.png)        |
+| [Color Picker Input](_docs/components/ColorPickerInput.md)        | ![Color Picker Input](_docs/images/ColorPickerInput.jpg)       |
+| [Image Text Block](_docs/components/ImageTextBlock.md)            | ![Image Text Block](_docs/images/ImageTextBlock.png)           |
 
 ### Styling
 
