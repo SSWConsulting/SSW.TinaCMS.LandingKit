@@ -1,6 +1,6 @@
 import * as AntIcons from "../../node_modules/react-icons/ai";
 import {
-  BreadcrumbTemplate,
+  breadcrumbBlock,
   buttonBlock,
   cardCarouselBlock,
   imageTextBlock,
@@ -21,7 +21,7 @@ const blogPosts = {
         visualSelector: true,
       },
       templates: [
-        BreadcrumbTemplate("/tina/previews/breadcrumbs.jpg"),
+        breadcrumbBlock("/tina/previews/breadcrumbs.jpg"),
         logoCarouselBlock("/tina/previews/logo-carousel.png"),
         buttonBlock({
           icons: AntIcons,

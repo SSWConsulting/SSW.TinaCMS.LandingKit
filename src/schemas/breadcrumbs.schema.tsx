@@ -1,6 +1,6 @@
 import { Template } from 'tinacms';
 
-export const BreadcrumbTemplate = (previewSrc?: string): Template => {
+export const breadcrumbBlock = (previewSrc?: string): Template => {
   return {
     label: 'Breadcrumbs',
     name: 'breadcrumbs',
@@ -22,4 +22,4 @@ export const BreadcrumbTemplate = (previewSrc?: string): Template => {
     ],
   };
 };
-export default BreadcrumbTemplate;
+export default breadcrumbBlock;

@@ -7,15 +7,15 @@ import LogoCarousel from './components/logo-carousel';
 import CarouselCardPicker from './components/sub-templates/tina-form-elements/card-picker';
 import { ColorPickerInput } from './components/sub-templates/tina-form-elements/color-selector';
 import { IconPickerInput } from './components/sub-templates/tina-form-elements/icon-selector';
-import BreadcrumbTemplate from './schemas/breadcrumbs.schema';
+import breadcrumbBlock from './schemas/breadcrumbs.schema';
 import { cardCarouselBlock } from './schemas/card-carousel.schema';
 import { imageTextBlock } from './schemas/image-text-block.schema';
 import logoCarouselBlock from './schemas/logo-carousel.schema';
 import { buttonBlock } from './schemas/sub-templates/button.schema';
 
 export {
+  breadcrumbBlock,
   Breadcrumbs,
-  BreadcrumbTemplate,
   Button,
   buttonBlock,
   buttonColors,
