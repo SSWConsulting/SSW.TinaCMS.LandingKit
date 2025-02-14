@@ -1,4 +1,4 @@
-const mediaTypeSchema = {
+const mediaTypeField = {
   type: "string",
   label: "Media Type",
   name: "mediaType",
@@ -6,4 +6,4 @@ const mediaTypeSchema = {
   options: ["image", "youtube"],
 };
 
-export default mediaTypeSchema;
+export default mediaTypeField;

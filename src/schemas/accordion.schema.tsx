@@ -1,9 +1,16 @@
 import { Template, TinaField } from "tinacms";
-import { ButtonSchema } from "./button.schema";
+import { IconDictionary } from "../components/sub-templates/tina-form-elements/icon";
+import { buttonSchema } from "./sub-schemas/button.schema";
 import imageComponentLayoutSchema from "./sub-schemas/image-component-layout.schema";
 import tabletTextAlignmentFieldSchema from "./sub-schemas/tablet-text-alignment.schema";
 
-const AccordionSchema = (previewSrc?: string): Template => {
+const accordionBlock = ({
+  icons,
+  previewSrc,
+}: {
+  icons: IconDictionary;
+  previewSrc?: string;
+}): Template => {
   return {
     name: "accordion",
     label: "Accordion",
@@ -128,7 +135,7 @@ const AccordionSchema = (previewSrc?: string): Template => {
             return { label: `${item.buttonText}` };
           },
         },
-        fields: ButtonSchema as TinaField[],
+        fields: buttonSchema(icons) as TinaField[],
       },
       //@ts-ignore
       ...imageComponentLayoutSchema,
@@ -136,4 +143,4 @@ const AccordionSchema = (previewSrc?: string): Template => {
   };
 };
 
-export default AccordionSchema;
+export default accordionBlock;

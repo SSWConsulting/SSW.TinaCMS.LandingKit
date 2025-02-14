@@ -1,14 +1,15 @@
 "use client";
+
 import * as AntIcons from "react-icons/ai";
+import { useTina } from "tinacms/dist/react";
 import {
+  Accordion,
   Breadcrumbs,
   Button,
   CardCarousel,
   ImageTextBlock,
   LogoCarousel,
-  AccordionBlock,
 } from "ssw-tinacms-landingkit";
-import { useTina } from "tinacms/dist/react";
 import type {
   PostBlocks,
   PostQuery,
@@ -100,10 +101,11 @@ const Blocks = ({ blocks }: BlocksProps) => {
             );
           case "PostBlocksAccordion":
             return (
-              <AccordionBlock
+              <Accordion
+                icons={AntIcons}
                 callbackFunctions={callbackFunctions}
                 data={block}
-              ></AccordionBlock>
+              ></Accordion>
             );
         }
       })}

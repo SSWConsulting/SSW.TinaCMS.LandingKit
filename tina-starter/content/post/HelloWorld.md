@@ -48,6 +48,7 @@ blocks:
     buttons:
       - buttonText: Lorem Ipsum
       - buttonText: Dolor Sit
+        color: Secondary
     _template: accordion
   - isStacked: false
     heading: Lorem Ipsum
@@ -158,7 +159,9 @@ blocks:
         altText: Microsoft
     _template: logoCarousel
   - buttonText: Lorem Ipsum
+    icon: AiFillDelete
     callbackFunction: Placeholder
+    iconFirst: true
     color: Primary
     _template: button
 ---

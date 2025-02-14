@@ -6,7 +6,7 @@ import * as React from "react";
 
 import { cn } from "./utils";
 
-const Accordion = AccordionPrimitive.Root;
+const AccordionRadix = AccordionPrimitive.Root;
 
 const AccordionItem = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Item>,
@@ -50,4 +50,4 @@ const AccordionContent = React.forwardRef<
 ));
 AccordionContent.displayName = AccordionPrimitive.Content.displayName;
 
-export { Accordion, AccordionContent, AccordionItem, AccordionTrigger };
+export { AccordionRadix, AccordionContent, AccordionItem, AccordionTrigger };

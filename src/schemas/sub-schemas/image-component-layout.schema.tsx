@@ -1,4 +1,4 @@
-import mediaTypeSchema from "./media-type.schema";
+import mediaTypeField from "./media-type.schema";
 
 const imageComponentLayoutSchema = [
   {
@@ -13,7 +13,7 @@ const imageComponentLayoutSchema = [
       },
     },
     fields: [
-      mediaTypeSchema,
+      mediaTypeField,
       {
         type: "string",
         label: "Media Placement",

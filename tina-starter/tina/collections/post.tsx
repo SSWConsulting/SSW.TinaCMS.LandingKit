@@ -5,8 +5,8 @@ import {
   cardCarouselBlock,
   imageTextBlock,
   logoCarouselBlock,
-  AccordionSchema,
-} from "ssw-tinacms-landingkit";
+  accordionBlock,
+} from "../../node_modules/ssw-tinacms-landingkit/dist";
 
 const blogPosts = {
   label: "Blog Posts",
@@ -24,7 +24,10 @@ const blogPosts = {
       templates: [
         breadcrumbBlock("/tina/previews/breadcrumbs.jpg"),
         logoCarouselBlock("/tina/previews/logo-carousel.png"),
-        AccordionSchema("/tina/previews/accordion.jpg"),
+        accordionBlock({
+          icons: AntIcons,
+          previewSrc: "/tina/previews/accordion.png",
+        }),
         buttonBlock({
           icons: AntIcons,
           previewSrc: "/tina/previews/button.png",

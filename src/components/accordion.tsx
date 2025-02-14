@@ -4,15 +4,15 @@ import { tinaField } from "tinacms/dist/react";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import { cn } from "../internal/shadcn/utils";
 import { ImageComponentLayout } from "./sub-templates/image-component-layout";
-import ButtonRow from "./button-row";
 import {
-  Accordion,
+  AccordionRadix,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "../internal/shadcn/accordion";
+} from "../internal/shadcn/accordion-radix";
+import { Button } from "./button";
 
-const AccordionBlock = ({ callbackFunctions, data }) => {
+const Accordion = ({ data, icons, callbackFunctions }) => {
   const headingClasses = "my-0 py-2 text-gray-200";
   const isYouTube = data.mediaConfiguration?.mediaType === "youtube";
   const isImage =
@@ -21,6 +21,7 @@ const AccordionBlock = ({ callbackFunctions, data }) => {
     data.mediaConfiguration?.imageWidth &&
     data.mediaConfiguration?.imageHeight;
   const hasMedia = isYouTube || isImage;
+
   return (
     <ImageComponentLayout data={data}>
       <section
@@ -54,17 +55,29 @@ const AccordionBlock = ({ callbackFunctions, data }) => {
           </p>
         )}
       </section>
-      <ButtonRow
-        data={data}
-        callbackFunctions={callbackFunctions}
-        className={cn(
-          "mt-5 flex-wrap",
-          data.tabletTextAlignment === "Center" && "justify-center",
-          hasMedia && "xl:justify-start"
-        )}
-      />
+      {data.buttons?.length > 0 && (
+        <div
+          className={cn(
+            "mt-5 flex flex-wrap gap-3",
+            data.tabletTextAlignment === "Center" && "justify-center",
+            hasMedia && "xl:justify-start"
+          )}
+        >
+          {data.buttons?.map((button, index) => {
+            return (
+              <Button
+                icons={icons}
+                className="text-base font-semibold"
+                key={`image-text-button-${index}`}
+                callbackFunctions={callbackFunctions}
+                data={button}
+              />
+            );
+          })}
+        </div>
+      )}
       {data.accordionItems && (
-        <Accordion
+        <AccordionRadix
           type={data.isMultipleOpen ? "multiple" : "single"}
           collapsible
           className="mt-14 w-full"
@@ -117,10 +130,10 @@ const AccordionBlock = ({ callbackFunctions, data }) => {
               </AccordionItem>
             );
           })}
-        </Accordion>
+        </AccordionRadix>
       )}
     </ImageComponentLayout>
   );
 };
 
-export default AccordionBlock;
+export default Accordion;
