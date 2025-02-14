@@ -160,7 +160,6 @@ blocks:
         altText: Microsoft
     _template: logoCarousel
   - buttonText: Lorem Ipsum
-    icon: AiFillDelete
     callbackFunction: Placeholder
     iconFirst: true
     color: Primary
