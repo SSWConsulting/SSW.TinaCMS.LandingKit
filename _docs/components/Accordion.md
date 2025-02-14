@@ -7,10 +7,11 @@ A component that displays an accordion with heading, description, buttons, media
 ## Code Example
 
 ```tsx
-<AccordionBlock
+<Accordion
+  icons={AntIcons}
   callbackFunctions={callbackFunctions}
   data={block}
-></AccordionBlock>
+></Accordion>
 ```
 
 ## Props
@@ -37,6 +38,3 @@ A component that displays an accordion with heading, description, buttons, media
     - `imageSource`: he url for the image in the image & text block (this will only be used when `mediaType` is set to `image`)
     - `youtubeUrl`: the full ul for the youtube video being embedded (this will only be used when `mediaType` is set to `youtube`)
 - `callbackFunctions`: a dictionary of callback functions that can be invoked when the button is clicked
-
-
-

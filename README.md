@@ -64,6 +64,10 @@ export default defineConfig({
 +                    icons: AntIcons,
 +                    previewSrc: '/tina/previews/image-text-block.png',
 +                  }),
++                  accordionBlock({
++                    icons: AntIcons,
++                    previewSrc: '/tina/previews/accordion.png',
++                  }),
                 ],
               },
             ],
@@ -156,6 +160,14 @@ export const Blocks = (props: Pages) => {
                   callbackFunctions={callbackFunctions}
                   data={block}
                 ></ImageTextBlock>
+              );
+            case "<outer-schema>BlocksAccordion":
+              return (
+                <Accordion
+                  icons={AntIcons}
+                  callbackFunctions={callbackFunctions}
+                  data={block}
+                ></Accordion>
               );
             default:
               return <></>;
