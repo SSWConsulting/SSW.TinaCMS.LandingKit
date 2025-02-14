@@ -13,7 +13,7 @@ import { IconPickerInput } from "./components/sub-templates/tina-form-elements/i
 import { cardCarouselBlock } from "./schemas/card-carousel.schema";
 import { imageTextBlock } from "./schemas/image-text-block.schema";
 import breadcrumbBlock from "./schemas/breadcrumbs.schema";
-import { buttonBlock } from "./schemas/sub-schemas/button.schema";
+import buttonBlock from "./schemas/button.schema";
 import logoCarouselBlock from "./schemas/logo-carousel.schema";
 import accordionBlock from "./schemas/accordion.schema";
 

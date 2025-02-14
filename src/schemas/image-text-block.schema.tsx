@@ -1,6 +1,6 @@
 import { Template, TinaField } from "tinacms";
 import { IconDictionary } from "../components/sub-templates/tina-form-elements/icon";
-import { buttonSchema } from "./sub-schemas/button.schema";
+import buttonFieldSchema from "./sub-schemas/button-field.schema";
 import iconLabelSchema from "./sub-schemas/icon-label.schema";
 import imageComponentLayoutSchema from "./sub-schemas/image-component-layout.schema";
 import listItemSchema from "./sub-schemas/list-item.schema";
@@ -134,7 +134,7 @@ export const imageTextBlock = ({
             return { label: `${item.buttonText}` };
           },
         },
-        fields: buttonSchema(icons) as TinaField[],
+        fields: buttonFieldSchema(icons) as TinaField[],
       },
       ...(imageComponentLayoutSchema as Template["fields"]),
     ],

@@ -38,6 +38,7 @@ blocks:
     _template: imageTextBlock
   - heading: Lorem Ipsum
     body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+    tabletTextAlignment: ''
     accordionItems:
       - label: Lorem
         content: |
