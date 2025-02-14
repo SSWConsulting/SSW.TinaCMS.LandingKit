@@ -5,6 +5,7 @@ A navigation component that shows the current page's location within the navigat
 **Note**: You will encounter type errors if "finalNode" is not configured as a required field
 
 ## Code Example
+
 ```tsx
 // using with TinaCMS
 import { Breadcrumbs } from "ssw-tinacms-landingkit/dist/";
@@ -50,29 +51,3 @@ import { Breadcrumbs } from "ssw-tinacms-landingkit/dist/";
   - **example prop**: `text-<color>`
 - `textUnderlineOffset`: The spacing between the underline and text for breadcrumb links
   - **example prop**: `underline-offset-<number>`
-
-## Example Schema Configuration
-
-```tsx
-import { Template } from 'tinacms';
-
-export const breadcrumbBlock: Template = {
-  label: 'Breadcrumbs',
-  name: 'breadcrumbs',
-  ui: {
-    defaultItem: () => {
-      return {
-        finalBreadcrumb: 'Final Breadcrumb',
-      };
-    },
-  },
-  fields: [
-    {
-      required: true,
-      name: 'finalBreadcrumb',
-      type: 'string',
-      label: 'Final Breadcrumb',
-    },
-  ],
-};
-```
