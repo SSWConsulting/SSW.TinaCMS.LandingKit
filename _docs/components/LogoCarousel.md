@@ -1,7 +1,9 @@
 # Logo Carousel
 
 A responsive carousel component for displaying a collection of logos with smooth animation.
+
 ## Code Example
+
 ```tsx
 import { LogoCarousel } from 'ssw-consulting-component-lib/dist/';
 
@@ -43,57 +45,3 @@ return <LogoCarousel data={/*<data from tina>*/} />
   - **example prop**: `md:text-<size>`
 - `textColor`: a tailwind class to override the color of the heading
   - **example prop**: `text-<color>`
-
-## Example Schema Configuration
-
-```tsx
-const logoCarouselBlock: Template = {
-  label: '<label-of-your-choice>',
-  name: 'logoCarousel',
-  ui: {
-    defaultItem: () => {
-      return {
-        heading: '<default-heading>',
-        logos: [
-          {
-            logo: '<logo-image>',
-            altText: '<alt-text>',
-          },
-        ],
-      };
-    },
-  },
-  fields: [
-    {
-      name: 'heading',
-      type: 'string',
-      label: '<heading-field-label>',
-    },
-
-    {
-      name: 'maskImages',
-      type: 'boolean',
-      label: '<mask-image-toggle-label>',
-    },
-    {
-      name: 'logos',
-      label: '<logos-field-label>',
-      type: 'object',
-      list: true,
-      fields: [
-        {
-          label: 'Logo',
-          name: 'logo',
-          type: 'image',
-        },
-        {
-          label: '<logo-alt-text-label>',
-          description: '<logos-alt-text-description>',
-          name: 'altText',
-          type: 'string',
-        },
-      ],
-    },
-  ],
-};
-```

@@ -1,16 +1,25 @@
+import { Template } from 'tinacms';
 
-const BreadcrumbSchema =  {
-      type: "object",
-      name: "breadcrumbs",
-      label: "Breadcrumbs",
-      fields: [
-        {
-          type: "string",
-          label: "Final Breadcrumb",
-          name: "finalBreadcrumb",
-          description: "The final breadcrumb in the list",
-        },
-      ],
+export const breadcrumbBlock = (previewSrc?: string): Template => {
+  return {
+    label: 'Breadcrumbs',
+    name: 'breadcrumbs',
+    ui: {
+      defaultItem: () => {
+        return {
+          finalBreadcrumb: 'Final Breadcrumb',
+        };
+      },
+      previewSrc: previewSrc,
+    },
+    fields: [
+      {
+        required: true,
+        name: 'finalBreadcrumb',
+        type: 'string',
+        label: 'Final Breadcrumb',
+      },
+    ],
+  };
 };
-
-export default BreadcrumbSchema;
+export default breadcrumbBlock;

@@ -1,7 +1,9 @@
 # Button
 
 A rippling button with custom inputs from Tina. This component also accepts a list of callback functions that can potentially be invoked when the button is clicked if configured to.
+
 ## Code Example
+
 ```tsx
 // import a library of your choosing from react icons
 import * as AntIcons from 'react-icons/ai';
@@ -46,65 +48,3 @@ const callbackFunctions = {
   - `callbackFunction`: The function (supplied in the callbackFunctions prop) that will be invoked when the button is clicked
   - `iconFirst`: A boolean that controls whether the icon displays before r after the text
 - `callbackFunctions`: A dictionary of callback functions that can be invoked when the button is clicked
-
-## Example Schema configuration
-
-```tsx
-import * as AntIcons from 'react-icons/ai';
-import { Template, TinaField } from 'tinacms';
-import {
-  buttonColors,
-  ColorPickerInput,
-  IconPickerInput,
-  //use a relative path to your own node_modules folder here
-} from './node_modules/ssw-tinacms-landingkit/dist';
-
-const buttonSchema = [
-  {
-    type: 'string',
-    label: '<button-text-field-label>',
-    name: 'buttonText',
-  },
-  {
-    type: 'string',
-    label: '<button-link-field-label>',
-    name: 'buttonLink',
-  },
-  {
-    type: 'string',
-    label: '<button-icon-field-label>',
-    name: 'icon',
-    ui: {
-      component: IconPickerInput(AntIcons),
-    },
-  },
-  {
-    type: 'string',
-    label: '<callback-function-dropdown-label>',
-    name: 'callbackFunction',
-    options: ['<keys-in-your-callback-function-dictionary>'],
-  },
-  {
-    type: 'boolean',
-    label: '<icon-first-field-label>',
-    name: 'iconFirst',
-    description: '<icon-first-field-description>',
-  },
-  {
-    type: 'string',
-    label: '<color-field-label>',
-    name: 'color',
-    ui: {
-      component: ColorPickerInput(buttonColors),
-    },
-  },
-];
-
-const buttonBlock: Template = {
-  label: 'Button Block',
-  name: 'button',
-  fields: buttonSchema as TinaField[],
-};
-
-export { buttonBlock, buttonSchema };
-```

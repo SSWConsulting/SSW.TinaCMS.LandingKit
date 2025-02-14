@@ -7,20 +7,26 @@ import LogoCarousel from './components/logo-carousel';
 import CarouselCardPicker from './components/sub-templates/tina-form-elements/card-picker';
 import { ColorPickerInput } from './components/sub-templates/tina-form-elements/color-selector';
 import { IconPickerInput } from './components/sub-templates/tina-form-elements/icon-selector';
-import BreadcrumbSchema from './schemas/breadcrumbs.schema';
+import breadcrumbBlock from './schemas/breadcrumbs.schema';
+import { cardCarouselBlock } from './schemas/card-carousel.schema';
+import { imageTextBlock } from './schemas/image-text-block.schema';
+import logoCarouselBlock from './schemas/logo-carousel.schema';
+import { buttonBlock } from './schemas/sub-templates/button.schema';
 
-import LogoCarouselSchemaGenerator from './schemas/logo-carousel.schema';
 export {
+  breadcrumbBlock,
   Breadcrumbs,
-  BreadcrumbSchema,
   Button,
+  buttonBlock,
   buttonColors,
   CardCarousel,
+  cardCarouselBlock,
   cardColors,
   CarouselCardPicker,
   ColorPickerInput,
   IconPickerInput,
+  imageTextBlock,
   ImageTextBlock,
   LogoCarousel,
-  LogoCarouselSchemaGenerator as LogoCarouselSchema,
+  logoCarouselBlock,
 };
