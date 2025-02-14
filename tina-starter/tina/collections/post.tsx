@@ -2,8 +2,7 @@ import { breadcrumbBlock } from "../templates/breadcrumbs";
 import { cardCarouselBlock } from "../templates/card-carousel";
 import { imageTextBlockSchema } from "../templates/image-text-block";
 import { logoCarouselBlock } from "../templates/logo-carousel";
-import { AccordionSchema } from "ssw-tinacms-landingkit";
-import { ButtonBlock } from "ssw-tinacms-landingkit";
+import { AccordionSchema, ButtonBlock } from "ssw-tinacms-landingkit";
 
 const blogPosts = {
   label: "Blog Posts",
@@ -20,7 +19,7 @@ const blogPosts = {
         logoCarouselBlock,
         cardCarouselBlock,
         imageTextBlockSchema,
-        AccordionSchema,
+        AccordionSchema("/tina/previews/accordion.jpg"),
         ButtonBlock,
       ],
     },

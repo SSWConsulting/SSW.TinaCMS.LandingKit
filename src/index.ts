@@ -1,5 +1,5 @@
 import AccordionBlock from "./components/accordion";
-import AccordionSchema from "./schemas/accordion-schema";
+import AccordionSchema from "./schemas/accordion.schema";
 import Breadcrumbs from "./components/breadcrumbs";
 import CarouselCardPicker from "./components/sub-templates/tina-form-elements/card-picker";
 import LogoCarousel from "./components/logo-carousel";
@@ -11,8 +11,8 @@ import { ColorPickerInput } from "./components/sub-templates/tina-form-elements/
 import { IconPickerInput } from "./components/sub-templates/tina-form-elements/icon-selector";
 import LogoCarouselSchemaGenerator from "./schemas/logo-carousel.schema";
 import BreadcrumbSchema from "./schemas/breadcrumbs.schema";
-import { ButtonSchema, ButtonBlock } from "./schemas/button-schema";
-import ImageComponentLayoutSchema from "./schemas/sub-schemas/image-component-layout-schema";
+import { ButtonBlock } from "./schemas/button.schema";
+import imageComponentLayoutSchema from "./schemas/sub-schemas/image-component-layout.schema";
 
 export {
   Breadcrumbs,
@@ -29,7 +29,6 @@ export {
   LogoCarouselSchemaGenerator as LogoCarouselSchema,
   AccordionBlock,
   AccordionSchema,
-  ButtonSchema,
   ButtonBlock,
-  ImageComponentLayoutSchema,
+  imageComponentLayoutSchema,
 };

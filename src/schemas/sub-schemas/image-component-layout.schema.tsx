@@ -1,6 +1,6 @@
-import MediaTypeFieldSchema from "./media-type-schema";
+import mediaTypeSchema from "./media-type.schema";
 
-const ImageComponentLayoutSchema = [
+const imageComponentLayoutSchema = [
   {
     type: "object",
     label: "Media",
@@ -13,7 +13,7 @@ const ImageComponentLayoutSchema = [
       },
     },
     fields: [
-      MediaTypeFieldSchema,
+      mediaTypeSchema,
       {
         type: "string",
         label: "Media Placement",
@@ -81,4 +81,4 @@ const ImageComponentLayoutSchema = [
   },
 ];
 
-export default ImageComponentLayoutSchema;
+export default imageComponentLayoutSchema;

@@ -48,8 +48,7 @@ blocks:
     buttons:
       - buttonText: Lorem Ipsum
       - buttonText: Dolor Sit
-        color: Secondary
-    _template: accordionBlock
+    _template: accordion
   - isStacked: false
     heading: Lorem Ipsum
     isH1: false

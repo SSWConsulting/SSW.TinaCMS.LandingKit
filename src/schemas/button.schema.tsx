@@ -4,7 +4,7 @@ import { IconPickerInput } from "../components/sub-templates/tina-form-elements/
 import { buttonColors } from "../components/button";
 import { Template, TinaField } from "tinacms";
 
-const ButtonSchema = [
+export const ButtonSchema = [
   {
     type: "string",
     label: "Button Text",
@@ -45,10 +45,8 @@ const ButtonSchema = [
   },
 ];
 
-const ButtonBlock: Template = {
+export const ButtonBlock: Template = {
   label: "Button Block",
   name: "button",
   fields: ButtonSchema as TinaField[],
 };
-
-export { ButtonBlock, ButtonSchema };
