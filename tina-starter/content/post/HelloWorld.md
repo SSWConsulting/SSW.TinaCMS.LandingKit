@@ -36,10 +36,21 @@ blocks:
       youtubeUrl: 'https://youtu.be/ocbPkNROnlc'
       altText: llama
     _template: imageTextBlock
-  - buttonText: Lorem Ipsum
-    callbackFunction: Placeholder
-    color: Primary
-    _template: button
+  - heading: Lorem Ipsum
+    body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+    tabletTextAlignment: ''
+    accordionItems:
+      - label: Lorem
+        content: |
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      - label: Ipsum
+        content: |
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    buttons:
+      - buttonText: Lorem Ipsum
+      - buttonText: Dolor Sit
+        color: Secondary
+    _template: accordion
   - isStacked: false
     heading: Lorem Ipsum
     isH1: false
@@ -148,5 +159,10 @@ blocks:
       - logo: /uploads/microsoft.png
         altText: Microsoft
     _template: logoCarousel
+  - buttonText: Lorem Ipsum
+    callbackFunction: Placeholder
+    iconFirst: true
+    color: Primary
+    _template: button
 ---
 

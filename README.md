@@ -64,6 +64,10 @@ export default defineConfig({
 +                    icons: AntIcons,
 +                    previewSrc: '/tina/previews/image-text-block.png',
 +                  }),
++                  accordionBlock({
++                    icons: AntIcons,
++                    previewSrc: '/tina/previews/accordion.png',
++                  }),
                 ],
               },
             ],
@@ -98,16 +102,16 @@ export default function RootLayout({
 - For more information refer to the TinaCMS documentation on [block based editing](https://tina.io/docs/editing/blocks)
 
 ```tsx
-import React from 'react';
+import React from "react";
 // replaced with the react-icons you want to use
-import * as AntIcons from 'react-icons/ai';
+import * as AntIcons from "react-icons/ai";
 import {
   Breadcrumbs,
   Button,
   CardCarousel,
   ImageTextBlock,
   LogoCarousel,
-} from 'ssw-tinacms-landingkit';
+} from "ssw-tinacms-landingkit";
 
 export const Blocks = (props: Pages) => {
   return (
@@ -115,9 +119,9 @@ export const Blocks = (props: Pages) => {
       {props.blocks ? (
         props.blocks.map(function (block, i) {
           switch (block.__typename) {
-            case '<outer-schema>BlocksLogoCarousel':
+            case "<outer-schema>BlocksLogoCarousel":
               return <LogoCarousel repeat={10} data={block} />;
-            case '<outer-schema>BlocksBreadcrumbs':
+            case "<outer-schema>BlocksBreadcrumbs":
               return (
                 <Breadcrumbs
                   data={{
@@ -125,15 +129,15 @@ export const Blocks = (props: Pages) => {
                     //URL segment mapping is configured outside of the schema
                     breadcrumbReplacements: [
                       {
-                        from: 'explore',
-                        to: 'Explore',
+                        from: "explore",
+                        to: "Explore",
                       },
                     ],
-                    firstBreadcrumb: 'Home',
+                    firstBreadcrumb: "Home",
                   }}
                 />
               );
-            case '<outer-schema>BlocksCardCarousel':
+            case "<outer-schema>BlocksCardCarousel":
               return (
                 <CardCarousel
                   icons={AntIcons}
@@ -141,7 +145,7 @@ export const Blocks = (props: Pages) => {
                   data={block}
                 />
               );
-            case '<outer-schema>BlocksButton':
+            case "<outer-schema>BlocksButton":
               return (
                 <Button
                   icons={AntIcons}
@@ -149,12 +153,21 @@ export const Blocks = (props: Pages) => {
                   data={block}
                 />
               );
-            case '<outer-schema>BlocksImageTextBlock':
+            case "<outer-schema>BlocksImageTextBlock":
               return (
                 <ImageTextBlock
                   icons={AntIcons}
                   callbackFunctions={callbackFunctions}
-                  data={block}></ImageTextBlock>
+                  data={block}
+                ></ImageTextBlock>
+              );
+            case "<outer-schema>BlocksAccordion":
+              return (
+                <Accordion
+                  icons={AntIcons}
+                  callbackFunctions={callbackFunctions}
+                  data={block}
+                ></Accordion>
               );
             default:
               return <></>;
@@ -180,6 +193,7 @@ For more information on how to use the components see the following links:
 - [Icon Picker Input](_docs/components/IconPickerInput.md)
 - [Color Picker Input](_docs/components/ColorPickerInput.md)
 - [Image Text Block](_docs/components/ImageTextBlock.md)
+- [Accordion Block](_docs/components/Accordion.md)
 
 #### Schema configuration
 
@@ -193,14 +207,14 @@ configuring the full application to use it inside of `app/layout.tsx`
 
 ```tsx
 //import inter fonts
-import { Inter } from 'next/font/google';
+import { Inter } from "next/font/google";
 
 //configure inter font variants
 const inter = Inter({
-  variable: '--inter-font',
-  subsets: ['latin'],
-  display: 'swap',
-  weight: ['200', '300', '400', '500', '600', '700'],
+  variable: "--inter-font",
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["200", "300", "400", "500", "600", "700"],
 });
 
 export default function RootLayout({
@@ -210,11 +224,12 @@ export default function RootLayout({
 }) {
   //apply inter fonts to full application
   return (
-    <html lang='en' className={`${inter.className}`}>
+    <html lang="en" className={`${inter.className}`}>
       <body
         style={{
-          margin: '3rem',
-        }}>
+          margin: "3rem",
+        }}
+      >
         <main>{children}</main>
       </body>
     </html>
@@ -233,7 +248,7 @@ export default function RootLayout({
 ## Requirements
 
 - React 18 or higher
-- TailwindCSS
+- TailwindCSS 3.4.17
 <!-- remove this from the requirements? -->
 - Next.js 13 or higher
 - TypeScript 4.5 or higher
@@ -251,6 +266,7 @@ export default function RootLayout({
 | Icon Picker Input             | ![Icon Picker Input](_docs/images//IconPickerInput.png)        |
 | Color Picker Input            | ![Color Picker Input](_docs/images/ColorPickerInput.jpg)       |
 | Image Text Block              | ![Image Text Block](_docs/images/ImageTextBlock.png)           |
+| Accordion                     | ![Accordion](_docs/images/Accordion.png)                       |
 
 ### Styling
 
