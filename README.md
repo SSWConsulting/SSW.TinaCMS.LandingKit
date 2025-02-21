@@ -287,7 +287,7 @@ config file.
 
 #### Previewing Components
 
-- build the project and install all dependencies at the root of the project by running `pnpm build` and then `pnpm i`
+- install all dependencies and build the project from the root by running `pnpm i` and then `pnpm build`
 - run the following at the root of the project `pnpm link --global`
 - navigate to the root of the test project `cd tina-starter`
 - link test project with the component package by running `pnpm link --global ssw-tinacms-landingkit`
