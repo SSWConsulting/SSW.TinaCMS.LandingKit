@@ -49,8 +49,7 @@ export default defineConfig({
                 },
                 templates: [
                   // include the schema definitions for the components you want to use
-                  breadcrumbBlock('https://github.com/SSWConsulting/SSW.TinaCMS.LandingKit/blob/master/tina-starter/public/tina/previews/breadcrumbs.jpg'),
-                  logoCarouselBlock('https://github.com/SSWConsulting/SSW.TinaCMS.LandingKit/blob/master/tina-starter/public/tina/previews/logo-carousel.png'),
+                  breadcrumbBlock('https://github.com/SSWConsulting/SSW.TinaCMS.LandingKit/blob/master/tina-starter/public/tina/previews/breadcrumbs.jpg'),logoCarouselBlock('https://github.com/SSWConsulting/SSW.TinaCMS.LandingKit/blob/master/tina-starter/public/tina/previews/logo-carousel.png'),
                   buttonBlock({
                     icons: AntIcons,
                     previewSrc: 'https://github.com/SSWConsulting/SSW.TinaCMS.LandingKit/blob/master/tina-starter/public/tina/previews/button.png',
