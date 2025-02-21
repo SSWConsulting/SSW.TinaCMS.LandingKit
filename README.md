@@ -12,62 +12,68 @@ npm install ssw-tinacms-landingkit
 
 2. import and use any of the templates into your `tina/config.ts` file
 
-```diff
+```tsx
+//replace with the React icons you want to use
+import * as AntIcons from "../../node_modules/react-icons/ai";
+import {
+  breadcrumbBlock,
+  buttonBlock,
+  cardCarouselBlock,
+  imageTextBlock,
+  logoCarouselBlock,
 
-+ //replace with the React icons you want to use
-+ import * as AntIcons from "../../node_modules/react-icons/ai";
-+ import {
-+   breadcrumbBlock,
-+   buttonBlock,
-+   cardCarouselBlock,
-+   imageTextBlock,
-+   logoCarouselBlock,
-+
-+   // replace this with a relative path node modules directory (See known issues)
-+ } from "../../node_modules/ssw-tinacms-landingkit/dist";
-
+  // replace this with a relative path node modules directory (See known issues)
+} from "../../node_modules/ssw-tinacms-landingkit/dist";
 
 export default defineConfig({
   // ...
   schema: {
     collections: [
       {
-        label: '<your-collection-label>',
-        name: '<post>',
-        path: '<your-path>',
+        label: "<your-collection-label>",
+        name: "<post>",
+        path: "<your-path>",
         fields: [
           // ... other fields
           {
             //...
             fields: [
               {
-                type: 'object',
+                type: "object",
                 list: true,
-                label: '<your label>',
-                name: 'blocks',
+                label: "<your label>",
+                name: "blocks",
                 ui: {
                   visualSelector: true,
                 },
                 templates: [
-+                  // include the schema definitions for the components you want to use
-+                  breadcrumbBlock('/tina/previews/breadcrumbs.jpg'),
-+                  logoCarouselBlock('/tina/previews/logo-carousel.png'),
-+                  buttonBlock({
-+                    icons: AntIcons,
-+                    previewSrc: '/tina/previews/button.png',
-+                  }),
-+                  cardCarouselBlock({
-+                    icons: AntIcons,
-+                    previewSrc: '/tina/previews/card-carousel.jpg',
-+                  }),
-+                  imageTextBlock({
-+                    icons: AntIcons,
-+                    previewSrc: '/tina/previews/image-text-block.png',
-+                  }),
-+                  accordionBlock({
-+                    icons: AntIcons,
-+                    previewSrc: '/tina/previews/accordion.png',
-+                  }),
+                  // include the schema definitions for the components you want to use
+                  breadcrumbBlock(
+                    "https://github.com/SSWConsulting/SSW.TinaCMS.LandingKit/blob/master/tina-starter/public/tina/previews/breadcrumbs.jpg?raw=true"
+                  ),
+                  logoCarouselBlock(
+                    "https://github.com/SSWConsulting/SSW.TinaCMS.LandingKit/blob/master/tina-starter/public/tina/previews/logo-carousel.png?raw=true?raw=true"
+                  ),
+                  buttonBlock({
+                    icons: AntIcons,
+                    previewSrc:
+                      "https://github.com/SSWConsulting/SSW.TinaCMS.LandingKit/blob/master/tina-starter/public/tina/previews/button.png?raw=true",
+                  }),
+                  cardCarouselBlock({
+                    icons: AntIcons,
+                    previewSrc:
+                      "https://github.com/SSWConsulting/SSW.TinaCMS.LandingKit/blob/master/tina-starter/public/tina/previews/card-carousel.jpg?raw=true",
+                  }),
+                  imageTextBlock({
+                    icons: AntIcons,
+                    previewSrc:
+                      "https://github.com/SSWConsulting/SSW.TinaCMS.LandingKit/blob/master/tina-starter/public/tina/previews/image-text-block.png?raw=true",
+                  }),
+                  accordionBlock({
+                    icons: AntIcons,
+                    previewSrc:
+                      "https://github.com/SSWConsulting/SSW.TinaCMS.LandingKit/blob/master/tina-starter/public/tina/previews/accordion.png?raw=true",
+                  }),
                 ],
               },
             ],
@@ -79,10 +85,10 @@ export default defineConfig({
 });
 ```
 
-3. import the component styling into your `app/layout.tsx` file
+3. import the component styling into your `app/layout.tsx` file (import component styling before app styling)
 
 ```tsx
-+ import 'ssw-tinacms-launchkit/dist/style.css';
+import "ssw-tinacms-landingkit/dist/style.css";
 
 export default function RootLayout({
   children,
@@ -281,6 +287,7 @@ config file.
 
 #### Previewing Components
 
+- install all dependencies and build the project from the root by running `pnpm i` and then `pnpm build`
 - run the following at the root of the project `pnpm link --global`
 - navigate to the root of the test project `cd tina-starter`
 - link test project with the component package by running `pnpm link --global ssw-tinacms-landingkit`
