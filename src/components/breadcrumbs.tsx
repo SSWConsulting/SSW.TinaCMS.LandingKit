@@ -118,13 +118,14 @@ const Breadcrumbs: FC<
   const { data } = props;
 
   useEffect(() => {
-    if (window?.location?.pathname) {
+    if (typeof window !== "undefined" && window.location.pathname) {
       const paths = window.location.pathname
-        .split('/')
-        .filter((path) => path !== '');
+        .split("/")
+        .filter((path) => path !== "");
+  
       const links = getLinks({
-        paths: paths,
-        data: data,
+        paths,
+        data,
         firstNode: data?.firstBreadcrumb,
         finalNode: data.finalBreadcrumb,
         finalNodePlaceholder: data.finalNodePlaceholder,
@@ -132,7 +133,7 @@ const Breadcrumbs: FC<
       });
       setLinks(links);
     }
-  }, [window, data]);
+  }, [data]);
   const [links, setLinks] = React.useState<React.ReactNode[]>([]);
   const textColor = props?.textColor ?? 'text-[#cccccc]';
   const separatorColor = props?.separatorColor ?? 'stroke-[#cccccc]';
