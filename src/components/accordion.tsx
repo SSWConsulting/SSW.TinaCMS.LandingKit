@@ -46,12 +46,12 @@ const Accordion = ({ data, icons, callbackFunctions }) => {
             {data.heading}
           </h2>
         )}
-        {data.body && (
+        {data.accordionBody && (
           <p
             className="py-2 text-base font-light text-gray-300"
-            data-tina-field={tinaField(data, "body")}
+            data-tina-field={tinaField(data, "accordionBody")}
           >
-            {data.body}
+            {data.accordionBody}
           </p>
         )}
       </section>
