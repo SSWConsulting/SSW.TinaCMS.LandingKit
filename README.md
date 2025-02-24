@@ -292,7 +292,7 @@ config file.
 - navigate to the root of the test project `cd tina-starter`
 - link test project with the component package by running `pnpm link --global ssw-tinacms-landingkit`
 - install all dependencies and run the project by running `pnpm i` and then `pnpm dev`
-- check you can view the components at `http://localhost:3000/admin/index.html#/~/posts/explore/HelloWorld`
+- check you can view the components at `http://localhost:3000/` or `http://localhost:3000/admin/index.html#/~/` 
 
 #### Testing Customizations
 
