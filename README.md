@@ -49,30 +49,30 @@ export default defineConfig({
                 templates: [
                   // include the schema definitions for the components you want to use
                   breadcrumbBlock(
-                    "https://github.com/SSWConsulting/SSW.TinaCMS.LandingKit/blob/master/tina-starter/public/tina/previews/breadcrumbs.jpg?raw=true"
+                    "https://github.com/SSWConsulting/SSW.TinaCMS.LandingKit/blob/main/tina-starter/public/tina/previews/breadcrumbs.jpg?raw=true"
                   ),
                   logoCarouselBlock(
-                    "https://github.com/SSWConsulting/SSW.TinaCMS.LandingKit/blob/master/tina-starter/public/tina/previews/logo-carousel.png?raw=true?raw=true"
+                    "https://github.com/SSWConsulting/SSW.TinaCMS.LandingKit/blob/main/tina-starter/public/tina/previews/logo-carousel.png?raw=true?raw=true"
                   ),
                   buttonBlock({
                     icons: AntIcons,
                     previewSrc:
-                      "https://github.com/SSWConsulting/SSW.TinaCMS.LandingKit/blob/master/tina-starter/public/tina/previews/button.png?raw=true",
+                      "https://github.com/SSWConsulting/SSW.TinaCMS.LandingKit/blob/main/tina-starter/public/tina/previews/button.png?raw=true",
                   }),
                   cardCarouselBlock({
                     icons: AntIcons,
                     previewSrc:
-                      "https://github.com/SSWConsulting/SSW.TinaCMS.LandingKit/blob/master/tina-starter/public/tina/previews/card-carousel.jpg?raw=true",
+                      "https://github.com/SSWConsulting/SSW.TinaCMS.LandingKit/blob/main/tina-starter/public/tina/previews/card-carousel.jpg?raw=true",
                   }),
                   imageTextBlock({
                     icons: AntIcons,
                     previewSrc:
-                      "https://github.com/SSWConsulting/SSW.TinaCMS.LandingKit/blob/master/tina-starter/public/tina/previews/image-text-block.png?raw=true",
+                      "https://github.com/SSWConsulting/SSW.TinaCMS.LandingKit/blob/main/tina-starter/public/tina/previews/image-text-block.png?raw=true",
                   }),
                   accordionBlock({
                     icons: AntIcons,
                     previewSrc:
-                      "https://github.com/SSWConsulting/SSW.TinaCMS.LandingKit/blob/master/tina-starter/public/tina/previews/accordion.png?raw=true",
+                      "https://github.com/SSWConsulting/SSW.TinaCMS.LandingKit/blob/main/tina-starter/public/tina/previews/accordion.png?raw=true",
                   }),
                 ],
               },
@@ -292,7 +292,7 @@ config file.
 - navigate to the root of the test project `cd tina-starter`
 - link test project with the component package by running `pnpm link --global ssw-tinacms-landingkit`
 - install all dependencies and run the project by running `pnpm i` and then `pnpm dev`
-- check you can view the components at `http://localhost:3000/admin/index.html#/~/posts/explore/HelloWorld`
+- check you can view the components at `http://localhost:3000/` or `http://localhost:3000/admin#/~` 
 
 #### Testing Customizations
 
@@ -303,11 +303,9 @@ config file.
 
 - Update the version number in `package.json` using [Semver](https://semver.org/)
   - This should indicate whether the change MAJOR, MINOR, or a PATCH
-- Merge any new changes into the `master` branch to prevent snowflake npm publications
+- Merge any new changes into the `main` branch to prevent snowflake npm publications
   - **Note**: you do not need to merge changes to `/dist` into main
-- rebuild the package with your changes by running `pnpm build`
-- run `npm publish --public`
-- when prompted to log into npm Navigate to **Keeper** and use the one time authentication code
+- Publish a GitHub release with the same version number as the one you incremented in the file package.json at https://github.com/SSWConsulting/SSW.TinaCMS.LandingKit/releases/new
 
 ## License
 

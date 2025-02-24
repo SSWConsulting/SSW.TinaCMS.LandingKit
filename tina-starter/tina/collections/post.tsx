@@ -45,7 +45,9 @@ const blogPosts = {
   ],
   ui: {
     router: ({ document }) => {
-      return `/posts/explore/${document._sys.filename}`;
+      if (document._sys.filename === "HelloWorld") {
+        return "/";
+      }
     },
   },
 };

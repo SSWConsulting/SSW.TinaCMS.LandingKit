@@ -36,7 +36,7 @@ type CardCarouselData = {
   callbackFunctions?: Record<string, () => void>;
   isStacked?: boolean | null;
   heading?: string | null;
-  body?: string | null;
+  cardBlockBody?: string | null;
   buttons?: (Button | null)[] | null;
   categoryGroup?: (CategoryGroup | null)[] | null;
   cardStyle?: CardOptions | null;
@@ -85,15 +85,15 @@ const CardCarouselContents = ({ data }: { data: CardCarouselData }) => {
             {data.heading}
           </h2>
         )}
-        {data.body && (
+        {data.cardBlockBody && (
           <p
             className='m-auto max-w-4xl py-2 text-base font-light text-gray-300'
-            data-tina-field={tinaField(data, 'body')}>
-            {data.body}
+            data-tina-field={tinaField(data, 'cardBlockBody')}>
+            {data.cardBlockBody}
           </p>
         )}
-        {data.buttons?.length > 0 && (
-          <div className={'mb-4 mt-2 flex justify-center gap-3'}>
+       {data.buttons?.length > 0 && (
+          <div className="mb-4 mt-2 flex justify-center gap-3">
             {data.buttons?.map((button, index) => {
               const onClick =
                 button.callbackFunction &&
@@ -103,8 +103,7 @@ const CardCarouselContents = ({ data }: { data: CardCarouselData }) => {
                   : {};
               const buttonElement = (
                 <Button
-                  className='text-base'
-                  key={`image-text-button-${index}`}
+                  className="text-base"
                   icons={icons}
                   callbackFunctions={callbackFunctions}
                   data={button}
@@ -116,7 +115,7 @@ const CardCarouselContents = ({ data }: { data: CardCarouselData }) => {
                   {buttonElement}
                 </Link>
               ) : (
-                <>{buttonElement}</>
+                <div key={`button-${index}`}>{buttonElement}</div> 
               );
             })}
           </div>

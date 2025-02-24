@@ -18,7 +18,7 @@ const accordionBlock = ({
       previewSrc: previewSrc,
       defaultItem: {
         heading: "Lorem Ipsum",
-        body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        accordionBody: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         accordionItems: [
           {
             label: "Lorem",
@@ -83,7 +83,7 @@ const accordionBlock = ({
       {
         type: "string",
         label: "Body",
-        name: "body",
+        name: "accordionBody",
         description: "Flavour text under the block title.",
       },
       tabletTextAlignmentFieldSchema as TinaField,

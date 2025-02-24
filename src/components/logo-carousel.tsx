@@ -3,6 +3,7 @@ import { ReactElement } from 'react';
 import { tinaField } from 'tinacms/dist/react';
 import { Marquee } from '../internal/shadcn/marquee';
 import { cn } from '../internal/shadcn/utils';
+import React from 'react';
 
 type Logo = {
   logo?: string | null;
@@ -76,7 +77,7 @@ export default function LogoCarousel(props: {
                 };
 
                 return (
-                  <>
+                  <React.Fragment key={`logo-fragment-${index}`}>
                     {logo.logo ? (
                       <Wrapper key={`logo-${index}`}>
                         <Image
@@ -92,7 +93,7 @@ export default function LogoCarousel(props: {
                     ) : (
                       <Wrapper className='bg-white' />
                     )}
-                  </>
+                  </React.Fragment>
                 );
               })}
           </div>

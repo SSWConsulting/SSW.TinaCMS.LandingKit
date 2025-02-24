@@ -10,10 +10,7 @@ import {
   ImageTextBlock,
   LogoCarousel,
 } from "ssw-tinacms-landingkit";
-import type {
-  PostBlocks,
-  PostQuery,
-} from "../../../../tina/__generated__/types";
+import type { PostBlocks, PostQuery } from "../tina/__generated__/types";
 
 interface ClientPageProps {
   query: string;
@@ -52,7 +49,7 @@ const Blocks = ({ blocks }: BlocksProps) => {
   if (!blocks) return <></>;
   return (
     <>
-      {blocks.map((block) => {
+      {blocks.map((block, index) => {
         if (!block) {
           return <></>;
         }
@@ -60,6 +57,7 @@ const Blocks = ({ blocks }: BlocksProps) => {
           case "PostBlocksBreadcrumbs":
             return (
               <Breadcrumbs
+                key={`PostBlocksBreadcrumbs-${index}`}
                 data={{
                   ...block,
                   //URL segment mapping is configured outside of the schema
@@ -74,10 +72,17 @@ const Blocks = ({ blocks }: BlocksProps) => {
               />
             );
           case "PostBlocksLogoCarousel":
-            return <LogoCarousel repeat={10} data={block} />;
+            return (
+              <LogoCarousel
+                key={`PostBlocksLogoCarousel-${index}`}
+                repeat={10}
+                data={block}
+              />
+            );
           case "PostBlocksCardCarousel":
             return (
               <CardCarousel
+                key={`PostBlocksCardCarousel-${index}`}
                 icons={AntIcons}
                 callbackFunctions={callbackFunctions}
                 data={block}
@@ -86,6 +91,7 @@ const Blocks = ({ blocks }: BlocksProps) => {
           case "PostBlocksButton":
             return (
               <Button
+                key={`PostBlocksButton-${index}`}
                 icons={AntIcons}
                 callbackFunctions={callbackFunctions}
                 data={block}
@@ -94,6 +100,7 @@ const Blocks = ({ blocks }: BlocksProps) => {
           case "PostBlocksImageTextBlock":
             return (
               <ImageTextBlock
+                key={`PostBlocksImageTextBlock-${index}`}
                 icons={AntIcons}
                 callbackFunctions={callbackFunctions}
                 data={block}
@@ -102,6 +109,7 @@ const Blocks = ({ blocks }: BlocksProps) => {
           case "PostBlocksAccordion":
             return (
               <Accordion
+                key={`PostBlocksAccordion-${index}`}
                 icons={AntIcons}
                 callbackFunctions={callbackFunctions}
                 data={block}
