@@ -113,7 +113,7 @@ const defaultCardBlock = {
   isStacked: false,
   heading: "Lorem Ipsum",
   isH1: false,
-  body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  cardBlockBody: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
   buttonRow: [
     {
       buttonText: "Lorem",
@@ -167,7 +167,7 @@ export const cardCarouselBlock = ({
       {
         type: "string",
         label: "Body",
-        name: "body",
+        name: "cardBlockBody",
         description: "Flavour text under the block title.",
         ui: {
           component: "textarea",
