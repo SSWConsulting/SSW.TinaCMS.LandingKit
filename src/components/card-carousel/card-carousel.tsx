@@ -92,8 +92,8 @@ const CardCarouselContents = ({ data }: { data: CardCarouselData }) => {
             {data.cardBlockBody}
           </p>
         )}
-        {data.buttons?.length > 0 && (
-          <div className={'mb-4 mt-2 flex justify-center gap-3'}>
+       {data.buttons?.length > 0 && (
+          <div className="mb-4 mt-2 flex justify-center gap-3">
             {data.buttons?.map((button, index) => {
               const onClick =
                 button.callbackFunction &&
@@ -103,8 +103,7 @@ const CardCarouselContents = ({ data }: { data: CardCarouselData }) => {
                   : {};
               const buttonElement = (
                 <Button
-                  className='text-base'
-                  key={`image-text-button-${index}`}
+                  className="text-base"
                   icons={icons}
                   callbackFunctions={callbackFunctions}
                   data={button}
@@ -116,7 +115,7 @@ const CardCarouselContents = ({ data }: { data: CardCarouselData }) => {
                   {buttonElement}
                 </Link>
               ) : (
-                <>{buttonElement}</>
+                <div key={`button-${index}`}>{buttonElement}</div> 
               );
             })}
           </div>
