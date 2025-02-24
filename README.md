@@ -305,9 +305,7 @@ config file.
   - This should indicate whether the change MAJOR, MINOR, or a PATCH
 - Merge any new changes into the `main` branch to prevent snowflake npm publications
   - **Note**: you do not need to merge changes to `/dist` into main
-- rebuild the package with your changes by running `pnpm build`
-- run `npm publish --public`
-- when prompted to log into npm Navigate to **Keeper** and use the one time authentication code
+- Publish a GitHub release with the same version number as the one you incremented in the file package.json at https://github.com/SSWConsulting/SSW.TinaCMS.LandingKit/releases/new
 
 ## License
 
