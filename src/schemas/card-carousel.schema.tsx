@@ -113,7 +113,8 @@ const defaultCardBlock = {
   isStacked: false,
   heading: "Lorem Ipsum",
   isH1: false,
-  cardBlockBody: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  cardBlockBody:
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
   buttonRow: [
     {
       buttonText: "Lorem",
@@ -187,7 +188,7 @@ export const cardCarouselBlock = ({
       categoryGroupField as TinaField,
       {
         name: "cardStyle",
-        type: "string",
+        type: "number",
         label: "Card Style",
         options: ["Glass", "Transparent"],
         ui: {

@@ -5,12 +5,13 @@ import { useTina } from "tinacms/dist/react";
 import {
   Accordion,
   Breadcrumbs,
-  Button,
+  // Button,
   CardCarousel,
   ImageTextBlock,
   LogoCarousel,
+  ButtonRow,
 } from "ssw-tinacms-landingkit";
-import type { PostBlocks, PostQuery } from "../tina/__generated__/types";
+import type { PostBlocks, PostQuery } from "../../../tina/__generated__/types";
 
 interface ClientPageProps {
   query: string;
@@ -88,12 +89,12 @@ const Blocks = ({ blocks }: BlocksProps) => {
                 data={block}
               />
             );
-          case "PostBlocksButton":
+          case "PostBlocksButtonRowSchema":
             return (
-              <Button
+              <ButtonRow
                 key={`PostBlocksButton-${index}`}
                 icons={AntIcons}
-                callbackFunctions={callbackFunctions}
+                // callbackFunctions={callbackFunctions}
                 data={block}
               />
             );

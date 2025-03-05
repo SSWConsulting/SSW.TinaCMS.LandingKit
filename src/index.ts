@@ -1,9 +1,11 @@
-import { Button, buttonColors } from "./components/button";
+import { Button } from "./components/button";
 import { CardCarousel } from "./components/card-carousel/card-carousel";
 import { ImageTextBlock } from "./components/image-text-block";
 import Accordion from "./components/accordion";
 import Breadcrumbs from "./components/breadcrumbs";
 import LogoCarousel from "./components/logo-carousel";
+import ComponentWrapper from "./internal/component-wrapper";
+import { ButtonRow } from "./components/button-row";
 
 import CarouselCardPicker from "./components/sub-templates/tina-form-elements/card-picker";
 import { cardColors } from "./components/card-carousel/card";
@@ -14,6 +16,7 @@ import { cardCarouselBlock } from "./schemas/card-carousel.schema";
 import { imageTextBlock } from "./schemas/image-text-block.schema";
 import breadcrumbBlock from "./schemas/breadcrumbs.schema";
 import buttonBlock from "./schemas/button.schema";
+import buttonRowSchema from "./schemas/button-row.schema";
 import logoCarouselBlock from "./schemas/logo-carousel.schema";
 import accordionBlock from "./schemas/accordion.schema";
 
@@ -23,8 +26,10 @@ export {
   Breadcrumbs,
   breadcrumbBlock,
   Button,
+  ButtonRow,
   buttonBlock,
-  buttonColors,
+  buttonRowSchema,
+  //buttonColors,
   CardCarousel,
   cardCarouselBlock,
   cardColors,
@@ -35,4 +40,5 @@ export {
   ImageTextBlock,
   LogoCarousel,
   logoCarouselBlock,
+  ComponentWrapper,
 };

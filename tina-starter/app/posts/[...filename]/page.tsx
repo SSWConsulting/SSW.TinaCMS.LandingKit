@@ -1,4 +1,4 @@
-import client from "../tina/__generated__/client";
+import client from "../../../tina/__generated__/client";
 import Post from "./client-page";
 
 export async function generateStaticParams() {
@@ -10,22 +10,21 @@ export async function generateStaticParams() {
   return paths || [];
 }
 
-
 export default async function PostPage({
   params,
 }: {
   params: { filename: string[] };
 }) {
-
-  let filename = params.filename;
-  if (!filename) {
-    filename = ["HelloWorld"];
-  }
+  // let filename = params.filename;
+  // if (!filename) {
+  //   filename = ["HelloWorld"];
+  // }
+  // const data = await client.queries.post({
+  //   relativePath: `${filename}.md`,
+  // });
   const data = await client.queries.post({
-    relativePath: `${filename}.md`,
+    relativePath: `${params.filename}.md`,
   });
 
-  return (
-    <Post {...data}></Post>
-  );
+  return <Post {...data}></Post>;
 }

@@ -1,13 +1,18 @@
-
 import { useEffect, useState } from "react";
-import { Carousel, CarouselContent, CarouselItem, CarouselPickItem, useCarousel } from "../../../internal/shadcn/carousel";
-import { Card, CardData, CardOptions } from "../card";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselPickItem,
+  useCarousel,
+} from "../../../internal/shadcn/carousel";
+import { Card, CardData } from "../card";
 
 import { CategoryGroup } from "../card-carousel";
 type CardSlideshowProps = {
   data: {
     cards: CardData[];
-    cardStyle: CardOptions;
+    cardStyle: number;
   };
   hasImages: boolean;
   activeCategory: CategoryGroup;
@@ -57,8 +62,9 @@ const CardList = ({ activeCategory, data, hasImages }: CardSlideshowProps) => {
                   key={`card-carousel-${index}`}
                 >
                   <Card
+                    className="w-90"
                     showPlaceholder={hasImages}
-                    data={{ ...cardData, cardOption: data.cardStyle }}
+                    data={{ ...cardData, cardStyle: data.cardStyle }}
                   />
                 </CarouselItem>
               );
@@ -91,4 +97,3 @@ const CarouselButton = ({ index }) => {
 };
 
 export { CardList };
-

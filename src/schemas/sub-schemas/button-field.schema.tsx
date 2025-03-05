@@ -1,4 +1,4 @@
-import { buttonColors } from "../../components/button";
+import { buttonOptions } from "../../components/sub-templates/tina-form-elements/colour-options/button-options";
 import { ColorPickerInput } from "../../components/sub-templates/tina-form-elements/color-selector";
 import { IconDictionary } from "../../components/sub-templates/tina-form-elements/icon";
 import { IconPickerInput } from "../../components/sub-templates/tina-form-elements/icon-selector";
@@ -35,11 +35,11 @@ const buttonFieldSchema = (icons: IconDictionary) => [
     description: "Place the icon to the left of the button text.",
   },
   {
-    type: "string",
-    label: "Color",
-    name: "color",
+    type: "number",
+    label: "Colour",
+    name: "colour",
     ui: {
-      component: ColorPickerInput(buttonColors),
+      component: ColorPickerInput(buttonOptions),
     },
   },
 ];

@@ -1,13 +1,18 @@
-'use client';
-import React from 'react';
+"use client";
+
+import React from "react";
 
 export type BreadcrumbProps = {
   textColor?: `text-${string}-${number}` | `text-${string}`;
   textSize?: `text-${string}`;
   textUnderlineOffset?: `underline-offset-${string}`;
   hoverColor?: `hover:text-${string}-${number}` | `hover:text-${string}`;
-  separatorColor?: `stroke-${string}-${number}` | `stroke-${string}`;
-  separatorSize?: `size-${number}`;
+  separatorColor?:
+    | `stroke-${string}-${number}`
+    | `stroke-${string}`
+    | `dark:stroke-${string}-${number}`
+    | `dark:stroke-${string}`;
+  separatorSize?: `size-${number}` | `h-${number} w-${number}`;
 };
 
 export type CallbackFunctions = {

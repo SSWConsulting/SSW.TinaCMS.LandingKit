@@ -3,7 +3,7 @@ import {
   ColorPickerOptions,
 } from "../components/sub-templates/tina-form-elements/color-selector";
 
-export function backgroundSchema(backgroundOptions: ColorPickerOptions) {
+export const backgroundSchema = (backgroundOptions: ColorPickerOptions[]) => {
   return {
     type: "object",
     label: "Background",
@@ -13,8 +13,10 @@ export function backgroundSchema(backgroundOptions: ColorPickerOptions) {
       {
         type: "number",
         label: "Background Colour",
-        name: "backgroundColor",
-        component: ColorPickerInput(backgroundOptions),
+        name: "backgroundColour",
+        ui: {
+          component: ColorPickerInput(backgroundOptions),
+        },
       },
       {
         type: "image",
@@ -44,4 +46,4 @@ export function backgroundSchema(backgroundOptions: ColorPickerOptions) {
       },
     ],
   };
-}
+};

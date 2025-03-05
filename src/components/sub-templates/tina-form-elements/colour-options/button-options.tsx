@@ -1,15 +1,16 @@
 import { ColorPickerOptions } from "../color-selector";
 
-export const buttonOptions: ColorPickerOptions = 
+export const buttonOptions: ColorPickerOptions[] = [
   {
-    "Red": {
+    name: "Red",
     classes: "bg-ssw-red text-white",
     //Note: this is necessary as Tina doesn't recognise tailwind config settings
     editorClasses: "bg-[#cc4141] text-white",
-    },
-    "Transparent": 
-    {
-    classes: "bg-transparent text-gray-950",
+    reference: 0,
   },
-}
-
+  {
+    name: "Transparent",
+    classes: "bg-transparent text-gray-950",
+    reference: 1,
+  },
+];

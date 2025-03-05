@@ -6,67 +6,79 @@ import { cn } from "../internal/shadcn/utils";
 import { ColorPickerOptions } from "./sub-templates/tina-form-elements/color-selector";
 import { Icon, IconDictionary } from "./sub-templates/tina-form-elements/icon";
 
-export type ButtonColors = "Primary" | "Secondary" | string;
+// export type ButtonColors = "Primary" | "Secondary" | string;
+
+enum ButtonColors {
+  Red = 0,
+  Transparent = 1,
+}
+
+export interface ButtonTinaFields {
+  textTinaField?: string;
+}
 
 export interface TemplateButtonOptions extends ButtonTinaFields {
   buttonText?: string | null;
-  color?: ButtonColors | null;
-  iconFirst?: boolean | null;
-  callbackFunction?: string | null;
   buttonLink?: string | null;
+  colour?: number | null;
+  callbackFunction?: string | null;
   icon?: string | null;
-  showLeadCaptureForm?: boolean | null;
+  iconFirst?: boolean | null;
+  // showLeadCaptureForm?: boolean | null;
+  // leadCaptureFormOption?: string;
 }
 
 type ButtonProps = {
   className?: string;
+  data: TemplateButtonOptions;
   icons?: IconDictionary;
   callbackFunctions?: CallbackFunctions | null;
-  data: TemplateButtonOptions;
 };
 
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, icons, callbackFunctions, data }: ButtonProps, ref) => {
-    const { iconFirst, buttonText, icon } = data;
-    const color = data.color ?? "Primary";
-    const button = (
+    const { iconFirst, buttonText, icon, colour } = data;
+    const variants: ColorVariant[] = ["primary", "secondary"];
+    console.log(colour);
+    console.log(variants[colour]);
+    return (
       <RippleButton
-        onClick={(e) => {
+        onClick={() => {
           if (!data.callbackFunction) return;
           if (!callbackFunctions) return;
           if (!callbackFunctions[data.callbackFunction]) return;
           callbackFunctions[data.callbackFunction]();
         }}
         ref={ref}
-        textTinaField={tinaField(data)}
+        textTinaField={tinaField(data, "buttonText")}
         className={className}
         fontClassName={cn(
           "gap-0.5",
           iconFirst ? "flex-row" : "flex-row-reverse"
         )}
-        variant={color}
+        variant={variants[colour]}
       >
-        <Icon icons={icons} data={{ name: icon }} />
+        <Icon
+          icons={icons}
+          tinaField={tinaField(data, "icon")}
+          data={{ name: icon }}
+        />
         {buttonText}
       </RippleButton>
     );
-    return (
-      <>
-        {data.buttonLink ? (
-          <Link href={data.buttonLink}>{button}</Link>
-        ) : (
-          button
-        )}
-      </>
-    );
+    // return (
+    //   <>
+    //     {data.buttonLink ? (
+    //       <Link href={data.buttonLink}>{button}</Link>
+    //     ) : (
+    //       button
+    //     )}
+    //   </>
+    // );
   }
 );
 
 export type ColorVariant = "primary" | "secondary";
-
-export interface ButtonTinaFields {
-  textTinaField?: string;
-}
 
 interface RippleButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
@@ -75,14 +87,14 @@ interface RippleButtonProps
   rippleColor?: string;
   fontClassName?: string;
   duration?: string;
-  variant: ButtonColors;
+  variant: ColorVariant;
   onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
 }
 
 const RippleButton = React.forwardRef<HTMLButtonElement, RippleButtonProps>(
   (
     {
-      variant = "Primary",
+      variant = "primary",
       className,
       fontClassName,
       children,
@@ -98,7 +110,7 @@ const RippleButton = React.forwardRef<HTMLButtonElement, RippleButtonProps>(
       Array<{ x: number; y: number; size: number; key: number }>
     >([]);
 
-    const isPrimary = variant === "Primary";
+    const isPrimary = variant === "primary";
     const createRipple = (event: MouseEvent<HTMLButtonElement>) => {
       const button = event.currentTarget;
       const rect = button.getBoundingClientRect();
@@ -127,8 +139,7 @@ const RippleButton = React.forwardRef<HTMLButtonElement, RippleButtonProps>(
         onClick={(e) => onClick(e)}
         className={cn(
           "text-primary font-semibold relative cursor-pointer items-center justify-center overflow-hidden rounded-md px-6 py-3 text-center",
-          "",
-          buttonColors[variant].classes,
+          variants[variant],
           className
         )}
         onMouseEnter={isPrimary ? createRipple : undefined}
@@ -137,7 +148,10 @@ const RippleButton = React.forwardRef<HTMLButtonElement, RippleButtonProps>(
       >
         <div
           data-tina-field={textTinaField}
-          className={cn("relative z-10 flex items-center gap-2", fontClassName)}
+          className={cn(
+            "relative z-10 flex items-center justify-center gap-2",
+            fontClassName
+          )}
         >
           {children}
         </div>
@@ -161,16 +175,28 @@ const RippleButton = React.forwardRef<HTMLButtonElement, RippleButtonProps>(
     );
   }
 );
-export const buttonColors: ColorPickerOptions = {
-  Primary: {
-    classes: `bg-sswRed hover:bg-sswDarkRed text-white`,
-    editorClasses: "bg-[#cc4141] text-white",
-  },
-  Secondary: {
-    classes:
-      "bg-transparent outline -outline-1.5 outline-white -outline-offset-1.5 hover:outline-gray-200 hover:text-gray-200 text-white",
-    editorClasses: "bg-transparent text-gray-700",
-  },
+
+const variants: Record<ColorVariant, string> = {
+  primary: "bg-sswRed hover:bg-sswDarkRed text-white",
+  secondary:
+    "bg-transparent outline -outline-1.5 outline-white -outline-offset-1.5 hover:outline-gray-200 hover:text-gray-200 text-white",
 };
+
+// export const buttonColors: ColorPickerOptions[] = [
+//   {
+//     name: "Primary",
+//     classes: `bg-sswRed hover:bg-sswDarkRed text-white`,
+//     editorClasses: "bg-[#cc4141] text-white",
+//     reference: 0,
+//   },
+//   {
+//     name: "Secondary",
+//     classes:
+//       "bg-transparent outline -outline-1.5 outline-white -outline-offset-1.5 hover:outline-gray-200 hover:text-gray-200 text-white",
+//     editorClasses: "bg-transparent text-gray-700",
+//     reference: 1,
+//   },
+// ];
+RippleButton.displayName = "RippleButton";
 
 export default RippleButton;

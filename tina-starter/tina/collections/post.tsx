@@ -1,11 +1,11 @@
 import * as AntIcons from "../../node_modules/react-icons/ai";
 import {
   breadcrumbBlock,
-  buttonBlock,
   cardCarouselBlock,
   imageTextBlock,
   logoCarouselBlock,
   accordionBlock,
+  buttonRowSchema,
 } from "../../node_modules/ssw-tinacms-landingkit/dist";
 
 const blogPosts = {
@@ -28,7 +28,7 @@ const blogPosts = {
           icons: AntIcons,
           previewSrc: "/tina/previews/accordion.png",
         }),
-        buttonBlock({
+        buttonRowSchema({
           icons: AntIcons,
           previewSrc: "/tina/previews/button.png",
         }),
@@ -45,9 +45,10 @@ const blogPosts = {
   ],
   ui: {
     router: ({ document }) => {
-      if (document._sys.filename === "HelloWorld") {
-        return "/";
-      }
+      // if (document._sys.filename === "HelloWorld") {
+      //   return "/";
+      // }
+      return `/posts/${document._sys.filename}`;
     },
   },
 };
