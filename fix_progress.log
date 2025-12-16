@@ -1,0 +1,169 @@
+[0;34m[INFO][0m Creating branch: fix/nextjs-cve-20251216
+Switched to a new branch 'fix/nextjs-cve-20251216'
+[0;32m✅ [SUCCESS][0m Created branch: fix/nextjs-cve-20251216
+[0;34m[INFO][0m Running npx fix-react2shell-next --fix...
+
+[1mfix-react2shell-next[0m[2m - Next.js vulnerability scanner
+[0m
+[2mChecking for 4 known vulnerabilities:
+[0m
+[2m  - [0m[31mCVE-2025-66478[0m[2m (critical): Remote code execution via crafted RSC payload[0m
+[2m  - [0m[33mCVE-2025-55184[0m[2m (high): DoS via malicious HTTP request causing server to hang and consume CPU[0m
+[2m  - [0m[36mCVE-2025-55183[0m[2m (medium): Compiled Server Action source code can be exposed via malicious request[0m
+[2m  - [0m[33mCVE-2025-67779[0m[2m (high): Incomplete fix for CVE-2025-55184 DoS via malicious RSC payload causing infinite loop[0m
+
+[2mFound 2 package.json file(s)
+[0m
+[31mFound 1 vulnerable file(s):
+[0m
+[33m  tina-starter/package.json[0m
+[2m     next: [0m[31m^14.2.18[0m[2m -> [0m[32m14.2.35[0m[35m [CVE-2025-55184, CVE-2025-67779][0m
+
+[36m
+Applying fixes...
+[0m
+[32m   Updated tina-starter/package.json[0m
+[36m
+Installing dependencies...
+[0m
+[2mtina-starter (pnpm)[0m
+[2m
+$ pnpm install
+[0m
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Progress: resolved 9, reused 3, downloaded 5, added 0
+Progress: resolved 12, reused 3, downloaded 8, added 0
+Progress: resolved 12, reused 3, downloaded 9, added 0
+Progress: resolved 223, reused 155, downloaded 56, added 0
+Progress: resolved 238, reused 158, downloaded 68, added 0
+Progress: resolved 288, reused 161, downloaded 118, added 0
+Progress: resolved 684, reused 462, downloaded 168, added 0
+Progress: resolved 833, reused 546, downloaded 233, added 0
+Progress: resolved 1175, reused 868, downloaded 253, added 0
+Progress: resolved 1187, reused 870, downloaded 263, added 0
+Progress: resolved 1197, reused 870, downloaded 274, added 0
+Progress: resolved 1219, reused 871, downloaded 295, added 0
+Progress: resolved 1277, reused 905, downloaded 319, added 0
+Progress: resolved 1299, reused 911, downloaded 335, added 0
+Progress: resolved 1322, reused 912, downloaded 357, added 0
+Progress: resolved 1329, reused 915, downloaded 358, added 0
+ WARN  8 deprecated subdependencies found: @babel/plugin-proposal-class-properties@7.18.6, @babel/plugin-proposal-object-rest-spread@7.20.7, @humanwhocodes/config-array@0.13.0, @humanwhocodes/object-schema@2.0.3, glob@7.2.3, inflight@1.0.6, react-beautiful-dnd@13.1.1, rimraf@3.0.2
+Packages: +1284
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Progress: resolved 1329, reused 915, downloaded 361, added 159
+Progress: resolved 1329, reused 915, downloaded 361, added 335
+Progress: resolved 1329, reused 915, downloaded 361, added 996
+Progress: resolved 1329, reused 915, downloaded 361, added 1283
+Progress: resolved 1329, reused 915, downloaded 361, added 1284, done
+ WARN  Issues with peer dependencies found
+.
+├─┬ @tinacms/cli 1.8.1
+│ ├─┬ tinacms 2.6.1
+│ │ └─┬ @tinacms/search 1.0.37
+│ │   └─┬ @tinacms/schema-tools 1.7.0
+│ │     └── ✕ unmet peer yup@^0.32.0: found 1.4.0
+│ └─┬ @tinacms/metrics 1.0.8
+│   └── ✕ unmet peer fs-extra@^9.0.1: found 11.2.0
+└─┬ eslint-config-next 14.2.18
+  └─┬ @typescript-eslint/eslint-plugin 8.6.0
+    └── ✕ unmet peer @typescript-eslint/parser@"^8.0.0 || ^8.0.0-alpha.0": found 7.2.0
+
+dependencies:
++ next 14.2.35 (16.0.10 is available)
++ react 18.3.1
++ react-dom 18.3.1
++ react-icons 5.4.0
++ tinacms 2.6.1
++ typescript 5.5.2
+
+devDependencies:
++ @tinacms/cli 1.8.1
++ @types/node 22.10.1
++ autoprefixer 10.4.20
++ eslint 8.57.1
++ eslint-config-next 14.2.18
++ postcss 8.5.1
++ tailwindcss 3.4.17
+
+╭ Warning ─────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│   Ignored build scripts: better-sqlite3, esbuild.                            │
+│   Run "pnpm approve-builds" to pick which dependencies should be allowed     │
+│   to run scripts.                                                            │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+Done in 22.6s using pnpm v10.20.0
+[32m
+Patches applied![0m
+[2m   Remember to test your app and commit the changes.
+[0m
+[0;32m✅ [SUCCESS][0m Fix command completed - vulnerabilities found and fixed
+[0;34m[INFO][0m Updating lockfiles for modified packages...
+[0;34m[INFO][0m   Found modified package.json in: tina-starter
+[0;34m[INFO][0m Processing directory: tina-starter
+[0;34m[INFO][0m   Detected pnpm-lock.yaml in tina-starter, running pnpm install...
+[0;34m[INFO][0m Checking root directory for lockfiles...
+[0;34m[INFO][0m   Running pnpm install in root...
+Lockfile is up to date, resolution step is skipped
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Packages: +801
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Progress: resolved 801, reused 668, downloaded 42, added 258
+Progress: resolved 801, reused 668, downloaded 88, added 664
+Progress: resolved 801, reused 668, downloaded 117, added 717
+Progress: resolved 801, reused 668, downloaded 127, added 795
+Progress: resolved 801, reused 668, downloaded 129, added 799
+Progress: resolved 801, reused 668, downloaded 130, added 799
+Progress: resolved 801, reused 668, downloaded 131, added 801, done
+
+dependencies:
++ @headlessui/react 2.2.0
++ @radix-ui/react-accordion 1.2.2
++ @radix-ui/react-checkbox 1.1.3
++ @radix-ui/react-dropdown-menu 2.1.4
++ @radix-ui/react-slot 1.1.1
++ clsx 2.1.1
++ embla-carousel 8.5.1
++ embla-carousel-autoplay 8.5.1
++ embla-carousel-react 8.5.1
++ framer-motion 11.16.4
++ headlessui 0.0.0
++ lucide-react 0.471.1
++ next 14.2.23
++ prettier 3.4.2
++ react-icons 5.4.0
++ tailwind-merge 2.6.0
++ usehooks-ts 3.1.0
+
+devDependencies:
++ @rollup/plugin-commonjs 28.0.2
++ @rollup/plugin-node-resolve 16.0.0
++ @rollup/plugin-typescript 12.1.2
++ @types/node 22.10.2
++ @types/react 18.3.18
++ @types/react-dom 18.3.5
++ autoprefixer 10.4.20
++ postcss 8.4.49
++ postcss-cli 11.0.0
++ radix-ui 1.0.1
++ react 18.3.1
++ react-dom 18.3.1
++ rollup 4.28.1
++ rollup-plugin-peer-deps-external 2.2.4
++ tailwindcss 3.4.17
++ tinacms 2.5.2
++ tslib 2.8.1
++ typescript 5.7.2
+
+╭ Warning ─────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│   Ignored build scripts: better-sqlite3.                                     │
+│   Run "pnpm approve-builds" to pick which dependencies should be allowed     │
+│   to run scripts.                                                            │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+Done in 8s using pnpm v10.20.0
+[0;32m✅ [SUCCESS][0m Lockfiles updated
+[0;34m[INFO][0m Changes detected, proceeding with commit...
